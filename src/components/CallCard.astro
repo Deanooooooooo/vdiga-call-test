@@ -11,7 +11,7 @@ import { site } from "../data/site";
       site.demoPhone ? (
         <a class="demo-number" href={`tel:${site.demoPhone}`}>{site.demoPhone}</a>
       ) : (
-        <strong class="demo-number muted-number">Демо номерът се подготвя</strong>
+        <strong class="demo-number muted-number">Демо потокът е готов за преглед</strong>
       )
     }
     <div class="button-row">
@@ -19,10 +19,10 @@ import { site } from "../data/site";
         site.demoPhone ? (
           <a class="btn btn-primary" href={`tel:${site.demoPhone}`}>Обади се — вдига веднага</a>
         ) : (
-          <a class="btn btn-primary" href="/demo">Вижте демо потока</a>
+          <a class="btn btn-primary" href="/demo">Чуйте демото</a>
         )
       }
-      <a class="btn btn-secondary" href="/kak-raboti">Вижте потока</a>
+      <a class="btn btn-secondary" href="/kak-raboti">Как работи</a>
     </div>
     <ul class="call-meta">
       <li>24/7 отговор</li>

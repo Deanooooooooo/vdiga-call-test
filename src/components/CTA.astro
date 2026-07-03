@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  title = "Чуйте как ще звучи вашият рецепционист.",
-  text = "Демо номерът ще бъде добавен след първите тестови разговори. Сайтът вече е готов да го покаже като основен продавач.",
+  title = "Чуйте AI рецепциониста, преди да говорим за внедряване.",
+  text = "Vdiga трябва да мине най-простия тест: звучи ли достатъчно ясно, за да му поверите първото обаждане?",
 } = Astro.props;
 ---
 
@@ -23,10 +23,9 @@ const {
         site.demoPhone ? (
           <a class="btn btn-primary" href={`tel:${site.demoPhone}`}>Обадете се сега</a>
         ) : (
-          <span class="btn btn-muted">{site.demoPhoneLabel}</span>
+          <a class="btn btn-primary" href="/demo">{site.demoPhoneLabel}</a>
         )
       }
     </div>
   </div>
 </section>
-
