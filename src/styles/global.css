@@ -9,7 +9,7 @@
   --white: #fffef9;
   --muted: #657068;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  --display: "Sofia Sans Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --display: "Arial Narrow", "Helvetica Neue Condensed Bold", "Roboto Condensed", "Sofia Sans Condensed", Arial, sans-serif;
   --body: "Sofia Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
 }
 
@@ -188,9 +188,8 @@ p {
 .answer-block {
   max-width: 760px;
   padding: 18px 20px;
-  border: 1px solid var(--line);
   border-left: 3px solid var(--answer);
-  background: var(--white);
+  background: transparent;
   color: #23302b;
   font-weight: 600;
 }
@@ -253,7 +252,7 @@ p {
   justify-content: center;
   gap: 8px;
   padding: 12px 18px;
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: 6px;
   background: var(--white);
   color: var(--ink);
@@ -271,6 +270,7 @@ p {
 
 .btn-secondary {
   background: transparent;
+  color: var(--ink);
 }
 
 .btn-muted {
@@ -341,12 +341,16 @@ p {
 }
 
 .call-meta li {
-  padding: 7px 9px;
-  border: 1px solid var(--line);
-  border-radius: 6px;
+  padding: 0;
   color: #47534d;
   font-family: var(--mono);
   font-size: 0.74rem;
+}
+
+.call-meta li:not(:last-child)::after {
+  margin-left: 8px;
+  color: var(--line);
+  content: "·";
 }
 
 .player {
@@ -415,7 +419,6 @@ p {
 }
 
 .price-card,
-.author-box,
 .cta-band {
   border: 1px solid var(--line);
   border-radius: 6px;
@@ -591,6 +594,7 @@ tr:last-child td {
   gap: 14px;
   align-items: center;
   padding: 16px;
+  border-top: 1px solid var(--line);
 }
 
 .avatar {
@@ -741,15 +745,20 @@ tr:last-child td {
   }
 
   .pricing-grid {
-    border: 0;
-    background: transparent;
+    border: 1px solid var(--line);
+    background: var(--white);
   }
 
   .price-card {
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    margin-bottom: 14px;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    border-radius: 0;
+    margin-bottom: 0;
     background: var(--white);
+  }
+
+  .price-card:last-child {
+    border-bottom: 0;
   }
 
   .button-row .btn,
