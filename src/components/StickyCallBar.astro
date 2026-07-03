@@ -5,9 +5,7 @@ import { site } from "../data/site";
 {
   site.demoPhone ? (
     <a class="sticky-call" data-sticky-call href={`tel:${site.demoPhone}`}><span></span> Обади се на демото</a>
-  ) : (
-    <a class="sticky-call" data-sticky-call href="/demo"><span></span> Демо номерът се подготвя</a>
-  )
+  ) : null
 }
 
 <script>
