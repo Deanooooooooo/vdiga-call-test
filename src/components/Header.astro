@@ -2,7 +2,7 @@
 import { site } from "../data/site";
 ---
 
-<header class="header">
+<header class="site-top">
   <div class="container nav">
     <a class="brand" href="/" aria-label="Vdiga начало">
       <span class="brand-mark">V</span>
@@ -11,6 +11,6 @@ import { site } from "../data/site";
     <nav class="nav-links" aria-label="Основна навигация">
       {site.nav.map((item) => <a href={item.href}>{item.label}</a>)}
     </nav>
-    <a class="btn btn-primary" href="/demo">Чуйте демото</a>
+    <a class="btn btn-primary nav-cta" href="/demo">Чуйте демото</a>
   </div>
 </header>

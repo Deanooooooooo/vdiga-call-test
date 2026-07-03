@@ -6,9 +6,9 @@ const heights = [18, 34, 22, 46, 16, 52, 28, 38, 58, 20, 44, 32, 24, 54, 18, 36,
 
 <div class="player">
   <div class="player-inner">
-    <div class="button-row" style="justify-content: space-between;">
-      <button class="btn btn-secondary" type="button" aria-label="Пусни демо записа">▶ Пусни 35 сек.</button>
-      <span class="eyebrow" style="margin: 0;">транскриптът е видим за търсачки</span>
+    <div class="player-head">
+      <button class="play-button" type="button" aria-label="Пусни демо записа">▶</button>
+      <span class="mono">00:35 демо разговор</span>
     </div>
     <div class="waveform" aria-hidden="true">
       {heights.map((height) => <span style={`--h:${height}px`}></span>)}
@@ -16,4 +16,3 @@ const heights = [18, 34, 22, 46, 16, 52, 28, 38, 58, 20, 44, 32, 24, 54, 18, 36,
     <Transcript />
   </div>
 </div>
-

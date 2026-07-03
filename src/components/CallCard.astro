@@ -1,28 +1,27 @@
 ---
 import WaveformPlayer from "./WaveformPlayer.astro";
-import Transcript from "./Transcript.astro";
 import { site } from "../data/site";
 ---
 
 <article class="call-card" aria-label="Демо обаждане към Vdiga">
+  <div class="phone-top">
+    <span></span>
+    <strong>Входящ разговор</strong>
+    <span class="live-dot">на линия</span>
+  </div>
   <div class="call-card-inner">
-    <p class="eyebrow" style="margin-bottom: 8px;">на линия сега</p>
+    <p class="eyebrow compact">AI рецепционист</p>
     {
       site.demoPhone ? (
         <a class="demo-number" href={`tel:${site.demoPhone}`}>{site.demoPhone}</a>
       ) : (
-        <strong class="demo-number muted-number">Демо потокът е готов за преглед</strong>
+        <strong class="demo-number muted-number">Демо поток</strong>
       )
     }
-    <div class="button-row">
-      {
-        site.demoPhone ? (
-          <a class="btn btn-primary" href={`tel:${site.demoPhone}`}>Обади се — вдига веднага</a>
-        ) : (
-          <a class="btn btn-primary" href="/demo">Чуйте демото</a>
-        )
-      }
-      <a class="btn btn-secondary" href="/kak-raboti">Как работи</a>
+    <p class="card-copy">Клиент звъни, Vdiga пита за услугата, намира слот и връща кратко резюме към екипа.</p>
+    <div class="button-row card-actions">
+      <a class="btn btn-primary" href="/demo">Чуйте демото</a>
+      <a class="btn btn-ghost-light" href="/kak-raboti">Как работи</a>
     </div>
     <ul class="call-meta">
       <li>24/7 отговор</li>
@@ -30,5 +29,5 @@ import { site } from "../data/site";
       <li>обобщение след разговор</li>
     </ul>
   </div>
-  {site.demoPhone ? <WaveformPlayer /> : <div class="static-transcript"><Transcript /></div>}
+  <WaveformPlayer />
 </article>
