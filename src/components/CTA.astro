@@ -10,6 +10,8 @@ const {
   title = "Чуйте AI рецепциониста, преди да говорим за внедряване.",
   text = "Vdiga трябва да мине най-простия тест: звучи ли достатъчно ясно, за да му поверите първото обаждане?",
 } = Astro.props;
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
+const href = (path: string) => `${basePath}${path}`;
 ---
 
 <section class="section-tight">
@@ -23,7 +25,7 @@ const {
         site.demoPhone ? (
           <a class="btn btn-primary" href={`tel:${site.demoPhone}`}>Обадете се сега</a>
         ) : (
-          <a class="btn btn-primary" href="/demo">{site.demoPhoneLabel}</a>
+          <a class="btn btn-primary" href={href("/demo")}>{site.demoPhoneLabel}</a>
         )
       }
     </div>
