@@ -74,8 +74,8 @@ body {
   background: var(--paper);
   color: var(--txt);
   font-family: var(--body);
-  font-size: 18px;
-  line-height: 1.62;
+  font-size: 21px;
+  line-height: 1.58;
   letter-spacing: 0;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -147,7 +147,7 @@ h2 {
 
 h3 {
   margin-bottom: 12px;
-  font-size: 1.58rem;
+  font-size: 1.76rem;
   line-height: 1.16;
   letter-spacing: 0;
 }
@@ -155,8 +155,8 @@ h3 {
 p {
   max-width: 66ch;
   color: var(--txt-mute);
-  font-size: 1.15rem;
-  line-height: 1.68;
+  font-size: 1.22rem;
+  line-height: 1.62;
 }
 
 .mono {
@@ -170,10 +170,10 @@ p {
   gap: 8px;
   margin: 0 0 24px;
   color: var(--answer-deep);
-  font-family: var(--mono);
-  font-size: 13px;
+  font-family: var(--disp);
+  font-size: 18px;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -240,7 +240,7 @@ p {
 
 .nav-links a {
   color: var(--txt-inv-mute);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
 }
 
@@ -250,16 +250,16 @@ p {
 
 .btn {
   display: inline-flex;
-  min-height: 56px;
+  min-height: 60px;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 17px 31px;
+  padding: 19px 34px;
   border: 1px solid transparent;
   border-radius: 999px;
   cursor: pointer;
   font-family: var(--body);
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 800;
   line-height: 1;
   letter-spacing: 0;
@@ -282,21 +282,33 @@ p {
 }
 
 .btn-secondary,
-.btn-ghost-light {
+.btn-ghost-light,
+.btn-outline {
   border-color: rgba(250, 250, 247, 0.22);
   background: transparent;
   color: var(--txt-inv);
 }
 
 .btn-secondary:hover,
-.btn-ghost-light:hover {
+.btn-ghost-light:hover,
+.btn-outline:hover {
   border-color: rgba(250, 250, 247, 0.5);
 }
 
+.btn-outline {
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+
+.btn-outline:hover {
+  border-color: var(--answer);
+  color: var(--answer-deep);
+}
+
 .nav-cta {
-  min-height: 46px;
-  padding: 12px 24px;
-  font-size: 15.5px;
+  min-height: 50px;
+  padding: 14px 26px;
+  font-size: 17.5px;
 }
 
 .button-row {
@@ -358,12 +370,31 @@ p {
   color: var(--txt-inv);
 }
 
+.hero p {
+  color: rgba(250, 250, 247, 0.74);
+}
+
 .hero-sub {
   max-width: 46ch;
   margin-bottom: 22px;
-  color: var(--txt-inv-mute);
-  font-size: 20px;
+  color: rgba(250, 250, 247, 0.78);
+  font-size: 22px;
   line-height: 1.62;
+  font-weight: 650;
+}
+
+.answer-block {
+  max-width: 58ch;
+  margin-bottom: 26px;
+  font-size: 1.34rem;
+  line-height: 1.6;
+  font-weight: 700;
+}
+
+.lead {
+  margin-bottom: 28px;
+  font-size: 1.25rem;
+  font-weight: 650;
 }
 
 .grid-2 {
@@ -423,7 +454,8 @@ p {
 .card-copy {
   max-width: 38ch;
   color: var(--txt-mute);
-  font-size: 17.5px;
+  font-size: 19px;
+  font-weight: 600;
 }
 
 .card-actions {
@@ -441,8 +473,8 @@ p {
 
 .call-meta li {
   color: var(--txt-mute);
-  font-family: var(--mono);
-  font-size: 13px;
+  font-family: var(--body);
+  font-size: 17px;
   font-weight: 700;
 }
 
@@ -470,7 +502,7 @@ p {
   gap: 16px;
   margin-bottom: 20px;
   color: var(--txt);
-  font-size: 14px;
+  font-size: 17px;
 }
 
 .play-button {
@@ -495,7 +527,7 @@ p {
 .player-head strong {
   display: block;
   color: var(--ink);
-  font-size: 17px;
+  font-size: 19px;
   line-height: 1.35;
 }
 
@@ -503,8 +535,8 @@ p {
   display: block;
   margin-top: 3px;
   color: var(--txt-mute);
-  font-size: 13px;
-  font-weight: 400;
+  font-size: 17px;
+  font-weight: 600;
 }
 
 .waveform {
@@ -533,7 +565,7 @@ p {
   margin: 0;
   padding: 0;
   list-style: none;
-  font-size: 16.5px;
+  font-size: 18px;
   line-height: 1.55;
 }
 
@@ -556,9 +588,9 @@ p {
   display: inline;
   margin-bottom: 0;
   color: var(--answer-deep);
-  font-family: var(--mono);
-  font-size: 13px;
-  font-weight: 600;
+  font-family: var(--body);
+  font-size: 17px;
+  font-weight: 800;
 }
 
 .missed {
@@ -574,7 +606,7 @@ p {
 }
 
 .feature p {
-  font-size: 1.15rem;
+  font-size: 1.22rem;
   font-weight: 600;
 }
 
@@ -591,7 +623,7 @@ p {
   grid-template-columns: 20px 1fr;
   gap: 8px;
   color: #34403a;
-  font-size: 1.08rem;
+  font-size: 1.18rem;
   font-weight: 650;
   line-height: 1.55;
 }
@@ -611,7 +643,7 @@ table {
   width: 100%;
   min-width: 0;
   border-collapse: collapse;
-  font-size: 1.12rem;
+  font-size: 1.2rem;
 }
 
 th,
@@ -624,7 +656,7 @@ td {
 
 th {
   color: var(--ink);
-  font-size: 1rem;
+  font-size: 1.08rem;
   font-weight: 800;
 }
 
@@ -648,10 +680,17 @@ tr:last-child td {
 }
 
 .price-card {
-  min-height: 390px;
+  display: flex;
+  flex-direction: column;
+  min-height: 460px;
   padding: 42px 34px;
   border-right: 1px solid var(--line);
   background: var(--paper);
+}
+
+.price-card > p {
+  font-size: 1.22rem;
+  font-weight: 650;
 }
 
 .price-card:last-child {
@@ -667,22 +706,39 @@ tr:last-child td {
   margin-top: 8px;
   color: var(--answer-deep);
   content: "най-избиран";
-  font-family: var(--mono);
-  font-size: 0.9rem;
+  font-family: var(--disp);
+  font-size: 1.05rem;
 }
 
 .price {
   margin: 24px 0 8px;
   color: var(--ink);
-  font-family: var(--mono);
-  font-size: 3.25rem;
-  font-weight: 600;
+  font-family: var(--disp);
+  font-size: 4.55rem;
+  font-weight: 800;
   line-height: 1;
+  letter-spacing: 0;
 }
 
 .price small {
   color: var(--txt-mute);
-  font-size: 0.95rem;
+  font-family: var(--body);
+  font-size: 1.28rem;
+  font-weight: 800;
+}
+
+.price-card .split-list {
+  margin-bottom: 28px;
+}
+
+.price-card .split-list li {
+  font-size: 1.22rem;
+  line-height: 1.5;
+}
+
+.price-card .btn {
+  width: 100%;
+  margin-top: auto;
 }
 
 .faq {
@@ -695,8 +751,8 @@ tr:last-child td {
   padding: 22px 0;
   border-bottom: 1px solid var(--line);
   color: var(--ink);
-  font-size: 1.12rem;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 800;
 }
 
 .faq-item p {
@@ -757,14 +813,15 @@ tr:last-child td {
 .footer p,
 .footer a {
   color: var(--txt-inv-mute);
-  font-size: 1rem;
+  font-size: 1.08rem;
 }
 
 .footer .trust-strip {
   margin-top: 18px;
   color: rgba(250, 250, 247, 0.58);
-  font-family: var(--mono);
-  font-size: 13px;
+  font-family: var(--body);
+  font-size: 17px;
+  font-weight: 700;
 }
 
 .footer-grid {
