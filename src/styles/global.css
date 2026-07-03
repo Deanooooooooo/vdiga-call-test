@@ -432,13 +432,13 @@ p {
 }
 
 .call-card .eyebrow {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   color: var(--answer-deep);
 }
 
 .demo-number {
   display: block;
-  margin: 0 0 26px;
+  margin: 0 0 18px;
   color: var(--ink);
   font-family: var(--disp);
   font-size: clamp(2.45rem, 4.8vw, 3.35rem);
@@ -462,31 +462,9 @@ p {
   display: none;
 }
 
-.call-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 22px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.call-meta li {
-  color: var(--txt-mute);
-  font-family: var(--body);
-  font-size: 17px;
-  font-weight: 700;
-}
-
-.call-meta li:not(:last-child)::after {
-  margin-left: 8px;
-  color: var(--line-strong);
-  content: "/";
-}
-
 .player {
-  margin-top: 24px;
-  padding-top: 24px;
+  margin-top: 0;
+  padding-top: 18px;
   border-top: 1px solid var(--line);
   background: transparent;
 }

@@ -21,16 +21,10 @@ const href = (path: string) => `${basePath}${path}`;
         <strong class="demo-number muted-number">Как звучи Vdiga</strong>
       )
     }
-    <p class="card-copy">Клиент звъни. Vdiga пита за услугата, намира свободен час и ви праща кратко обобщение.</p>
     <div class="button-row card-actions">
       <a class="btn btn-primary" href={href("/demo")}>Чуйте разговора</a>
       <a class="btn btn-ghost-light" href={href("/kak-raboti")}>Как работи</a>
     </div>
-    <ul class="call-meta">
-      <li>отговаря веднага</li>
-      <li>календар</li>
-      <li>SMS обобщение</li>
-    </ul>
   </div>
   <WaveformPlayer />
 </article>
