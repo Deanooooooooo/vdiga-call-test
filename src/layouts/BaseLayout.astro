@@ -39,8 +39,7 @@ const allSchemas = [
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preload" href={`${basePath}fonts/inter-tight-cyrillic.woff2`} as="font" type="font/woff2" crossorigin />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href={`${basePath}favicon.svg`} type="image/svg+xml" />
     {allSchemas.map((schema) => <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />)}
   </head>
   <body>

@@ -13,7 +13,7 @@ const href = (path: string) => `${basePath}${path}`;
     <span class="live-dot">на линия</span>
   </div>
   <div class="call-card-inner">
-    <p class="eyebrow compact">AI рецепционист</p>
+    <p class="eyebrow compact">демо линия</p>
     {
       site.demoPhone ? (
         <a class="demo-number" href={`tel:${site.demoPhone}`}>{site.demoPhone}</a>
@@ -21,15 +21,15 @@ const href = (path: string) => `${basePath}${path}`;
         <strong class="demo-number muted-number">Демо поток</strong>
       )
     }
-    <p class="card-copy">Клиент звъни, Vdiga пита за услугата, намира слот и връща кратко резюме към екипа.</p>
+    <p class="card-copy">Клиент звъни. Vdiga пита за услугата, намира свободен час и връща кратко обобщение към екипа.</p>
     <div class="button-row card-actions">
       <a class="btn btn-primary" href={href("/demo")}>Чуйте демото</a>
       <a class="btn btn-ghost-light" href={href("/kak-raboti")}>Как работи</a>
     </div>
     <ul class="call-meta">
       <li>24/7 отговор</li>
-      <li>записване на час</li>
-      <li>обобщение след разговор</li>
+      <li>календар</li>
+      <li>SMS обобщение</li>
     </ul>
   </div>
   <WaveformPlayer />
