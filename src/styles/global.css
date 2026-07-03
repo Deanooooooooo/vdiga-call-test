@@ -74,7 +74,7 @@ body {
   background: var(--paper);
   color: var(--txt);
   font-family: var(--body);
-  font-size: 16.5px;
+  font-size: 18px;
   line-height: 1.62;
   letter-spacing: 0;
   -webkit-font-smoothing: antialiased;
@@ -101,7 +101,7 @@ input {
 }
 
 .section {
-  padding: 106px 0;
+  padding: 116px 0;
 }
 
 .section-tight {
@@ -130,32 +130,32 @@ h3 {
 }
 
 h1 {
-  max-width: 10.5ch;
+  max-width: 11ch;
   margin-bottom: 24px;
-  font-size: clamp(2.7rem, 6.4vw, 4.7rem);
+  font-size: clamp(3rem, 6vw, 5.05rem);
   line-height: 1.02;
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
 }
 
 h2 {
   max-width: 20ch;
-  margin-bottom: 18px;
-  font-size: clamp(1.85rem, 3.8vw, 2.75rem);
+  margin-bottom: 24px;
+  font-size: clamp(2.4rem, 4.4vw, 3.55rem);
   line-height: 1.06;
-  letter-spacing: -0.028em;
+  letter-spacing: 0;
 }
 
 h3 {
   margin-bottom: 12px;
-  font-size: 1.35rem;
+  font-size: 1.58rem;
   line-height: 1.16;
-  letter-spacing: -0.018em;
+  letter-spacing: 0;
 }
 
 p {
   max-width: 66ch;
   color: var(--txt-mute);
-  font-size: 1.06rem;
+  font-size: 1.15rem;
   line-height: 1.68;
 }
 
@@ -168,12 +168,12 @@ p {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin: 0 0 22px;
+  margin: 0 0 24px;
   color: var(--answer-deep);
   font-family: var(--mono);
-  font-size: 10.5px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
@@ -217,7 +217,7 @@ p {
   font-family: var(--disp);
   font-size: 1.2rem;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .brand-mark {
@@ -240,8 +240,8 @@ p {
 
 .nav-links a {
   color: var(--txt-inv-mute);
-  font-size: 14.5px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .nav-links a:hover {
@@ -250,19 +250,19 @@ p {
 
 .btn {
   display: inline-flex;
-  min-height: 48px;
+  min-height: 56px;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 14px 26px;
+  padding: 17px 31px;
   border: 1px solid transparent;
   border-radius: 999px;
   cursor: pointer;
   font-family: var(--body);
-  font-size: 15.5px;
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: 800;
   line-height: 1;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   transition: transform 0.15s ease, background 0.12s, border-color 0.12s, color 0.12s;
 }
 
@@ -294,9 +294,9 @@ p {
 }
 
 .nav-cta {
-  min-height: 40px;
-  padding: 10px 20px;
-  font-size: 14px;
+  min-height: 46px;
+  padding: 12px 24px;
+  font-size: 15.5px;
 }
 
 .button-row {
@@ -308,8 +308,8 @@ p {
 .hero {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
-  padding: 76px 0 0;
+  overflow: visible;
+  padding: 36px 0 84px;
   background: linear-gradient(180deg, #0d1512 0%, #0b1210 64%);
   color: var(--txt-inv);
 }
@@ -350,7 +350,7 @@ p {
 }
 
 .hero .eyebrow {
-  margin-bottom: 28px;
+  margin-bottom: 22px;
   color: #4ade80;
 }
 
@@ -360,24 +360,10 @@ p {
 
 .hero-sub {
   max-width: 46ch;
-  margin-bottom: 36px;
+  margin-bottom: 22px;
   color: var(--txt-inv-mute);
-  font-size: 18px;
-  line-height: 1.65;
-}
-
-.hero-proof {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  margin-top: 34px;
-  color: rgba(250, 250, 247, 0.58);
-  font-size: 14px;
-}
-
-.hero-proof strong {
-  color: var(--txt-inv);
-  font-family: var(--mono);
+  font-size: 20px;
+  line-height: 1.62;
 }
 
 .grid-2 {
@@ -396,8 +382,8 @@ p {
 .call-card {
   position: relative;
   z-index: 2;
-  margin-bottom: -100px;
-  padding: 32px 28px;
+  margin-bottom: 0;
+  padding: 38px 34px;
   overflow: visible;
   border: 0;
   border-radius: 18px;
@@ -424,20 +410,20 @@ p {
   margin: 0 0 26px;
   color: var(--ink);
   font-family: var(--disp);
-  font-size: clamp(2.1rem, 4.6vw, 3rem);
+  font-size: clamp(2.45rem, 4.8vw, 3.35rem);
   font-weight: 800;
   line-height: 1;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .muted-number {
-  max-width: 7ch;
+  max-width: 10ch;
 }
 
 .card-copy {
   max-width: 38ch;
   color: var(--txt-mute);
-  font-size: 15.5px;
+  font-size: 17.5px;
 }
 
 .card-actions {
@@ -456,7 +442,8 @@ p {
 .call-meta li {
   color: var(--txt-mute);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .call-meta li:not(:last-child)::after {
@@ -483,7 +470,7 @@ p {
   gap: 16px;
   margin-bottom: 20px;
   color: var(--txt);
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .play-button {
@@ -508,7 +495,7 @@ p {
 .player-head strong {
   display: block;
   color: var(--ink);
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1.35;
 }
 
@@ -516,7 +503,7 @@ p {
   display: block;
   margin-top: 3px;
   color: var(--txt-mute);
-  font-size: 11.5px;
+  font-size: 13px;
   font-weight: 400;
 }
 
@@ -546,7 +533,7 @@ p {
   margin: 0;
   padding: 0;
   list-style: none;
-  font-size: 15px;
+  font-size: 16.5px;
   line-height: 1.55;
 }
 
@@ -570,7 +557,7 @@ p {
   margin-bottom: 0;
   color: var(--answer-deep);
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
 }
 
@@ -581,13 +568,14 @@ p {
 }
 
 .feature {
-  min-height: 170px;
-  padding-top: 24px;
-  border-top: 1px solid var(--line-strong);
+  min-height: 190px;
+  padding-top: 26px;
+  border-top: 2px solid var(--line-strong);
 }
 
 .feature p {
-  font-size: 1rem;
+  font-size: 1.15rem;
+  font-weight: 600;
 }
 
 .split-list {
@@ -603,6 +591,8 @@ p {
   grid-template-columns: 20px 1fr;
   gap: 8px;
   color: #34403a;
+  font-size: 1.08rem;
+  font-weight: 650;
   line-height: 1.55;
 }
 
@@ -621,12 +611,12 @@ table {
   width: 100%;
   min-width: 0;
   border-collapse: collapse;
-  font-size: 1rem;
+  font-size: 1.12rem;
 }
 
 th,
 td {
-  padding: 18px 16px;
+  padding: 22px 16px;
   border-bottom: 1px solid var(--line);
   text-align: left;
   vertical-align: top;
@@ -634,12 +624,13 @@ td {
 
 th {
   color: var(--ink);
-  font-size: 0.86rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 800;
 }
 
 td {
   color: #45514b;
+  font-weight: 600;
 }
 
 tr:last-child td {
@@ -657,8 +648,8 @@ tr:last-child td {
 }
 
 .price-card {
-  min-height: 350px;
-  padding: 34px;
+  min-height: 390px;
+  padding: 42px 34px;
   border-right: 1px solid var(--line);
   background: var(--paper);
 }
@@ -677,21 +668,21 @@ tr:last-child td {
   color: var(--answer-deep);
   content: "най-избиран";
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.9rem;
 }
 
 .price {
   margin: 24px 0 8px;
   color: var(--ink);
   font-family: var(--mono);
-  font-size: 2.85rem;
+  font-size: 3.25rem;
   font-weight: 600;
   line-height: 1;
 }
 
 .price small {
   color: var(--txt-mute);
-  font-size: 0.82rem;
+  font-size: 0.95rem;
 }
 
 .faq {
@@ -773,7 +764,7 @@ tr:last-child td {
   margin-top: 18px;
   color: rgba(250, 250, 247, 0.58);
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .footer-grid {
@@ -853,16 +844,17 @@ tr:last-child td {
   }
 
   h1 {
-    max-width: 11ch;
-    font-size: clamp(2.45rem, 13vw, 3.55rem);
+    max-width: 100%;
+    font-size: clamp(2.55rem, 11.2vw, 3.05rem);
+    line-height: 1.08;
   }
 
   h2 {
-    font-size: clamp(1.95rem, 10vw, 2.75rem);
+    font-size: clamp(2.25rem, 10.5vw, 3rem);
   }
 
   .hero {
-    padding-top: 50px;
+    padding: 56px 0 70px;
   }
 
   .hero-grid {
@@ -870,12 +862,12 @@ tr:last-child td {
   }
 
   .hero-sub {
-    font-size: 17px;
+    font-size: 19px;
   }
 
   .call-card {
-    margin-bottom: -72px;
-    padding: 28px 22px;
+    margin-bottom: 0;
+    padding: 30px 22px;
     border-radius: 18px;
   }
 
@@ -890,6 +882,7 @@ tr:last-child td {
 
   .button-row .btn {
     width: 100%;
+    min-height: 58px;
   }
 
   .cta-band {
