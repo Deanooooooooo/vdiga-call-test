@@ -1,0 +1,13 @@
+---
+const lines = [
+  { speaker: "Клиент", text: "Здравейте, имате ли свободен час утре следобед?" },
+  { speaker: "Vdiga", text: "Да, ще проверя календара. За преглед ли е, или имате болка?" },
+  { speaker: "Клиент", text: "За преглед. Може след 16:00 ч." },
+  { speaker: "Vdiga", text: "Свободен час има в 16:30 ч. Да го запиша ли на вашето име?" },
+];
+---
+
+<ul class="transcript" aria-label="Примерен разговор">
+  {lines.map((line) => <li><strong>{line.speaker}:</strong> {line.text}</li>)}
+</ul>
+

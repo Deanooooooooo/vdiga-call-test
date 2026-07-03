@@ -1,0 +1,21 @@
+---
+import { site } from "../data/site";
+---
+
+{
+  site.demoPhone ? (
+    <a class="sticky-call" data-sticky-call href={`tel:${site.demoPhone}`}><span></span> Обади се на демото</a>
+  ) : (
+    <a class="sticky-call" data-sticky-call href="/demo"><span></span> Демо номерът се подготвя</a>
+  )
+}
+
+<script>
+  const bar = document.querySelector("[data-sticky-call]");
+  const toggle = () => {
+    if (!bar) return;
+    bar.toggleAttribute("data-visible", window.scrollY > window.innerHeight * 0.72);
+  };
+  toggle();
+  window.addEventListener("scroll", toggle, { passive: true });
+</script>

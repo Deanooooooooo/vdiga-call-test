@@ -1,0 +1,30 @@
+---
+import WaveformPlayer from "./WaveformPlayer.astro";
+import { site } from "../data/site";
+---
+
+<article class="call-card" aria-label="Демо обаждане към Vdiga">
+  <div class="call-card-inner">
+    <p class="eyebrow" style="margin-bottom: 8px;">на линия сега</p>
+    <a class="demo-number" href={site.demoPhone ? `tel:${site.demoPhone}` : "/demo"}>
+      {site.demoPhone || "0888 000 000"}
+    </a>
+    <div class="button-row">
+      {
+        site.demoPhone ? (
+          <a class="btn btn-primary" href={`tel:${site.demoPhone}`}>Обади се — вдига веднага</a>
+        ) : (
+          <a class="btn btn-primary" href="/demo">Чуйте демото</a>
+        )
+      }
+      <a class="btn btn-secondary" href="/kak-raboti">Вижте потока</a>
+    </div>
+    <ul class="call-meta">
+      <li>24/7 отговор</li>
+      <li>записване на час</li>
+      <li>обобщение след разговор</li>
+    </ul>
+  </div>
+  <WaveformPlayer />
+</article>
+
