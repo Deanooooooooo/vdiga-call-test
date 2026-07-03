@@ -9,7 +9,7 @@ const faqs = [
   {
     question: "Vdiga отделна фирма ли е?",
     answer:
-      "Не. На този етап Vdiga е продукт под Blast Off EOOD. Отделно OOD има смисъл след платени пилоти и реален приход.",
+      "Не. На този етап Vdiga е продукт под Blast Off EOOD. Отделно дружество има смисъл след платени пилоти и реален приход.",
   },
   {
     question: "Защо не е създадена нова фирма още сега?",
@@ -19,7 +19,7 @@ const faqs = [
   {
     question: "Кой преглежда съдържанието?",
     answer:
-      "Публичните страници минават човешка редакция преди финално публикуване. Числата се публикуват само с източник или собствено проучване.",
+      "Публичните страници минават човешка редакция преди публикуване. Числата се показват само с източник или собствено проучване.",
   },
   {
     question: "Какво е Vdiga на английски?",
@@ -33,22 +33,22 @@ const href = (path: string) => `${basePath}${path}`;
 
 <BaseLayout
   title="За нас — Vdiga by Blast Off EOOD"
-  description="Vdiga е AI рецепционист на български език, разработван от Blast Off EOOD, София."
+  description="Кой стои зад Vdiga: AI рецепционист на български, разработван под Blast Off EOOD, София."
   path="/za-nas"
   schemas={[faqSchema(faqs), articleSchema("За нас — Vdiga", "/za-nas", "Кой стои зад Vdiga и защо продуктът стартира под Blast Off EOOD.")]}
 >
   <section class="hero">
     <div class="container">
-      <p class="eyebrow">За нас</p>
-      <h1>Vdiga е AI рецепционист на български от Blast Off EOOD.</h1>
+      <p class="eyebrow">за нас</p>
+      <h1>Vdiga е AI рецепционист от Blast Off EOOD.</h1>
       <p class="answer-block">
-        Към юли 2026 г. Vdiga е AI (изкуствен интелект) рецепционист, разработван от Blast Off EOOD, София. Продуктът стартира под съществуваща фирма, за да има реален оператор, фактуриране и ясна отговорност.
+        Към юли 2026 г. Vdiga е AI (изкуствен интелект) рецепционист, разработван под Blast Off EOOD, София. Продуктът стартира под съществуваща фирма, за да има реален оператор, фактуриране и ясна отговорност.
       </p>
       <p class="lead">
         Целта е проста: телефонен асистент, който вие можете да чуете, проверите и после да включите към бизнеса си.
       </p>
       <div class="button-row hero-actions">
-        <a class="btn btn-primary" href={href("/demo")}>Чуйте демото</a>
+        <a class="btn btn-primary" href={href("/demo")}>Чуйте разговор</a>
         <a class="btn btn-secondary" href={href("/kak-raboti")}>Как работи</a>
       </div>
     </div>
@@ -57,13 +57,13 @@ const href = (path: string) => `${basePath}${path}`;
   <section class="section band">
     <div class="container grid-2">
       <div>
-        <p class="eyebrow">Правен оператор</p>
+        <p class="eyebrow">правен оператор</p>
         <h2>Защо Vdiga стартира под съществуваща фирма?</h2>
         <p>
           Клиентите търсят реална отговорност. Затова Vdiga започва под Blast Off EOOD за фактури, условия, поверителност и публична проверимост.
         </p>
         <p>
-          Ако продуктът докаже търсене, може да се създаде отделно дружество и операциите да се прехвърлят чисто.
+          Ако продуктът докаже търсене, може да се създаде отделно дружество. Операциите се прехвърлят само когато има смисъл.
         </p>
       </div>
       <div class="table-wrap">
@@ -100,7 +100,7 @@ const href = (path: string) => `${basePath}${path}`;
   <section class="section">
     <div class="container grid-2">
       <div>
-        <p class="eyebrow">Автор и отговорност</p>
+        <p class="eyebrow">автор и отговорност</p>
         <h2>Кой пише и поддържа страниците?</h2>
         <p>
           Съдържанието на Vdiga следва ясни правила: кратки изречения, без пълнеж, без измислени статистики и без преводно звучене.
@@ -119,12 +119,12 @@ const href = (path: string) => `${basePath}${path}`;
   <section class="section band">
     <div class="container grid-2">
       <div>
-        <p class="eyebrow">Чести въпроси</p>
-        <h2>Какво трябва да е ясно преди публикуване?</h2>
+        <p class="eyebrow">чести въпроси</p>
+        <h2>Какво трябва да е ясно преди първия клиент?</h2>
       </div>
       <FAQ items={faqs} />
     </div>
   </section>
 
-  <CTA title="Доверието започва преди първия разговор." text="Затова Vdiga показва кой стои зад продукта и какво вече може да се тества." />
+  <CTA title="Доверието започва преди първия разговор." text="Затова Vdiga показва кой стои зад продукта и какво вече може да чуете." />
 </BaseLayout>

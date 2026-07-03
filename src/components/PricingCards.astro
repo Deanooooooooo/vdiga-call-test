@@ -14,7 +14,7 @@ const href = (path: string) => `${basePath}${path}`;
         <div class="price">
           {tier.price} <small>{tier.suffix}</small>
         </div>
-        <p>Без ДДС. Месечно, без дълго обвързване.</p>
+        <p>Без ДДС. Месечно. Спирате след текущия месец.</p>
         <ul class="split-list">
           {tier.features.map((feature) => <li>{feature}</li>)}
         </ul>
