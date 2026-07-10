@@ -7,17 +7,12 @@ const href = (path: string) => `${basePath}${path}`;
 ---
 
 <article class="call-card" aria-label="Демо обаждане към Vdiga">
-  <div class="phone-top">
-    <span></span>
-    <strong>Входящ разговор</strong>
-    <span class="live-dot">на линия</span>
-  </div>
   <div class="call-card-inner">
     {
       site.demoPhone ? (
         <a class="demo-number" href={`tel:${site.demoPhone}`}>{site.demoPhone}</a>
       ) : (
-        <strong class="demo-number muted-number">ПРИМЕРНО ОБАЖДАНЕ</strong>
+        <strong class="demo-number muted-number">Примерно обаждане</strong>
       )
     }
     <div class="button-row card-actions">
