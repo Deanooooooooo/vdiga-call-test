@@ -220,6 +220,16 @@ p {
   letter-spacing: 0;
 }
 
+.site-top .brand {
+  flex: 0 0 auto;
+}
+
+.site-top .brand-logo {
+  display: block;
+  width: 116px;
+  height: auto;
+}
+
 .brand-mark {
   display: grid;
   width: 30px;
@@ -904,6 +914,10 @@ tr:last-child td {
 
   .nav {
     gap: 12px;
+  }
+
+  .site-top .brand-logo {
+    width: 104px;
   }
 
   .nav-actions {
