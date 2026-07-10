@@ -2,10 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import FAQ from "../components/FAQ.astro";
 import CTA from "../components/CTA.astro";
-import ArticleMeta from "../components/ArticleMeta.astro";
 import { site } from "../data/site";
 import { articleSchema, faqSchema } from "../data/schema";
-import { contentPageByPath } from "../data/content-pages";
 
 const faqs = [
   {
@@ -31,26 +29,24 @@ const faqs = [
 ];
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
 const href = (path: string) => `${basePath}${path}`;
-const page = contentPageByPath["/za-nas"];
 ---
 
 <BaseLayout
   title="За нас — Vdiga by Blast Off EOOD"
   description="Кой стои зад Vdiga: AI рецепционист на български, разработван под Blast Off EOOD, София."
   path="/za-nas"
-  schemas={[faqSchema(faqs), articleSchema("За нас — Vdiga", "/za-nas", "Кой стои зад Vdiga и защо продуктът стартира под Blast Off EOOD.", page)]}
+  schemas={[faqSchema(faqs), articleSchema("За нас — Vdiga", "/za-nas", "Кой стои зад Vdiga и защо продуктът стартира под Blast Off EOOD.")]}
 >
   <section class="hero">
     <div class="container">
       <p class="eyebrow">за нас</p>
       <h1>Vdiga е AI рецепционист от Blast Off EOOD.</h1>
       <p class="answer-block">
-        Vdiga е AI (изкуствен интелект) рецепционист, разработван под Blast Off EOOD, София. Продуктът стартира под съществуваща фирма, за да има реален оператор, фактуриране и ясна отговорност.
+        Към юли 2026 г. Vdiga е AI (изкуствен интелект) рецепционист, разработван под Blast Off EOOD, София. Продуктът стартира под съществуваща фирма, за да има реален оператор, фактуриране и ясна отговорност.
       </p>
       <p class="lead">
         Целта е проста: телефонен асистент, който вие можете да чуете, проверите и после да включите към бизнеса си.
       </p>
-      <ArticleMeta datePublished={page.datePublished} dateModified={page.dateModified} />
       <div class="button-row hero-actions">
         <a class="btn btn-primary" href={href("/demo")}>Чуйте разговор</a>
         <a class="btn btn-secondary" href={href("/kak-raboti")}>Как работи</a>

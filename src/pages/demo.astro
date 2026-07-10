@@ -3,9 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import CallCard from "../components/CallCard.astro";
 import FAQ from "../components/FAQ.astro";
 import CTA from "../components/CTA.astro";
-import ArticleMeta from "../components/ArticleMeta.astro";
 import { articleSchema, faqSchema } from "../data/schema";
-import { contentPageByPath } from "../data/content-pages";
 
 const faqs = [
   {
@@ -31,14 +29,13 @@ const faqs = [
 ];
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
 const href = (path: string) => `${basePath}${path}`;
-const page = contentPageByPath["/demo"];
 ---
 
 <BaseLayout
   title="AI рецепционист демо — чуйте разговор | Vdiga"
   description="Чуйте AI рецепционист демо на български. Вижте как трябва да започва разговорът и кога човек поема сложния случай."
   path="/demo"
-  schemas={[faqSchema(faqs), articleSchema("AI рецепционист демо — Vdiga", "/demo", "Как се тества AI рецепционист на български преди публичен старт.", page)]}
+  schemas={[faqSchema(faqs), articleSchema("AI рецепционист демо — Vdiga", "/demo", "Как се тества AI рецепционист на български преди публичен старт.")]}
 >
   <section class="hero">
     <div class="container grid-2">
@@ -46,12 +43,11 @@ const page = contentPageByPath["/demo"];
         <p class="eyebrow">AI рецепционист демо</p>
         <h1>Чуйте AI рецепционист на български.</h1>
         <p class="answer-block">
-          Демото на Vdiga показва примерен AI (изкуствен интелект) рецепционист. Чувате начало на разговор, уточняващи въпроси, записване на час и пренасочване към човек при сложен случай.
+          Към юли 2026 г. демото на Vdiga показва примерен AI (изкуствен интелект) рецепционист. Чувате начало на разговор, уточняващи въпроси, записване на час и пренасочване към човек при сложен случай.
         </p>
         <p class="lead">
           Първо слушате разговора. После гледате цената, настройката и реалния номер.
         </p>
-        <ArticleMeta datePublished={page.datePublished} dateModified={page.dateModified} />
         <div class="button-row hero-actions">
           <a class="btn btn-primary" href="#test">Проверете критериите</a>
           <a class="btn btn-secondary" href={href("/tseni")}>Вижте планове</a>
