@@ -1,17 +1,16 @@
 import { site } from "../data/site";
-
-const pages = ["/", "/tseni", "/demo", "/kak-raboti", "/za-nas"];
+import { publishedPages } from "../data/content-pages";
 
 export function GET() {
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${pages
+${publishedPages
   .map(
-    (path) => `  <url>
-    <loc>${site.url}${path}</loc>
-    <lastmod>2026-07-03</lastmod>
+    (page) => `  <url>
+    <loc>${site.url}${page.path}</loc>
+    <lastmod>${page.dateModified}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>${path === "/" ? "1.0" : "0.8"}</priority>
+    <priority>${page.path === "/" ? "1.0" : page.priority === "P1" ? "0.8" : "0.6"}</priority>
   </url>`,
   )
   .join("\n")}
@@ -23,4 +22,3 @@ ${pages
     },
   });
 }
-

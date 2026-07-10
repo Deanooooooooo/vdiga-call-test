@@ -2,7 +2,9 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import FAQ from "../components/FAQ.astro";
 import CTA from "../components/CTA.astro";
+import ArticleMeta from "../components/ArticleMeta.astro";
 import { articleSchema, faqSchema } from "../data/schema";
+import { contentPageByPath } from "../data/content-pages";
 
 const faqs = [
   {
@@ -28,24 +30,26 @@ const faqs = [
 ];
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
 const href = (path: string) => `${basePath}${path}`;
+const page = contentPageByPath["/kak-raboti"];
 ---
 
 <BaseLayout
   title="Как работи AI рецепционист — Vdiga"
   description="Как работи AI рецепционист: Vdiga вдига, пита, проверява календар, записва час и праща обобщение след разговора."
   path="/kak-raboti"
-  schemas={[faqSchema(faqs), articleSchema("Как работи AI рецепционист — Vdiga", "/kak-raboti", "Стъпка по стъпка как AI рецепционист отговаря и записва часове.")]}
+  schemas={[faqSchema(faqs), articleSchema("Как работи AI рецепционист — Vdiga", "/kak-raboti", "Стъпка по стъпка как AI рецепционист отговаря и записва часове.", page)]}
 >
   <section class="hero">
     <div class="container">
       <p class="eyebrow">как работи AI рецепционист</p>
       <h1>Как работи AI рецепционистът при входящо обаждане?</h1>
       <p class="answer-block">
-        Към юли 2026 г. Vdiga приема входящото обаждане, пита за нужната услуга, проверява календара и записва час. AI (изкуствен интелект) рецепционистът покрива моментите, в които никой не може да вдигне.
+        Vdiga приема входящото обаждане, пита за нужната услуга, проверява календара и записва час. AI (изкуствен интелект) рецепционистът покрива моментите, в които никой не може да вдигне.
       </p>
       <p class="lead">
         Не учите нова система. Подавате публичната информация, слушате тестовите разговори и включвате реалния номер след одобрение.
       </p>
+      <ArticleMeta datePublished={page.datePublished} dateModified={page.dateModified} />
       <div class="button-row hero-actions">
         <a class="btn btn-primary" href={href("/demo")}>Чуйте разговор</a>
         <a class="btn btn-secondary" href={href("/tseni")}>Вижте планове</a>

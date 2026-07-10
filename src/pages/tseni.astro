@@ -3,7 +3,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PricingCards from "../components/PricingCards.astro";
 import FAQ from "../components/FAQ.astro";
 import CTA from "../components/CTA.astro";
+import ArticleMeta from "../components/ArticleMeta.astro";
 import { articleSchema, faqSchema, productSchema } from "../data/schema";
+import { contentPageByPath } from "../data/content-pages";
 
 const faqs = [
   {
@@ -29,24 +31,26 @@ const faqs = [
 ];
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
 const href = (path: string) => `${basePath}${path}`;
+const page = contentPageByPath["/tseni"];
 ---
 
 <BaseLayout
   title="AI рецепционист цена — от 75 евро | Vdiga"
   description="AI рецепционист цена: 75, 150 или 200-250 евро/месец без ДДС. Вижте кой план пасва на обажданията ви."
   path="/tseni"
-  schemas={[faqSchema(faqs), productSchema(), articleSchema("AI рецепционист цена — Vdiga", "/tseni", "Ориентировъчни цени за AI рецепционист на български език.")]}
+  schemas={[faqSchema(faqs), productSchema(), articleSchema("AI рецепционист цена — Vdiga", "/tseni", "Ориентировъчни цени за AI рецепционист на български език.", page)]}
 >
   <section class="hero">
     <div class="container">
       <p class="eyebrow">AI рецепционист цена</p>
       <h1>Цени — AI рецепционист от 75 евро/месец.</h1>
       <p class="answer-block">
-        Към юли 2026 г. Vdiga има три плана без ДДС: 75 евро, 150 евро и 200-250 евро/месец. Основният план включва отговор на входящи обаждания, записване на часове и кратко обобщение след разговора.
+        Vdiga има три плана без ДДС: 75 евро, 150 евро и 200-250 евро/месец. Основният план включва отговор на входящи обаждания, записване на часове и кратко обобщение след разговора.
       </p>
       <p class="lead">
         Плащате за обаждания, които стигат до резултат. Не плащате за човек, който чака телефонът да звънне.
       </p>
+      <ArticleMeta datePublished={page.datePublished} dateModified={page.dateModified} />
       <div class="button-row hero-actions">
         <a class="btn btn-primary" href={href("/demo")}>Чуйте разговор</a>
         <a class="btn btn-secondary" href="#plans">Вижте планове</a>

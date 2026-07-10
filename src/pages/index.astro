@@ -4,7 +4,9 @@ import CallCard from "../components/CallCard.astro";
 import PricingCards from "../components/PricingCards.astro";
 import FAQ from "../components/FAQ.astro";
 import CTA from "../components/CTA.astro";
+import ArticleMeta from "../components/ArticleMeta.astro";
 import { articleSchema, faqSchema, productSchema } from "../data/schema";
+import { contentPageByPath } from "../data/content-pages";
 
 const faqs = [
   {
@@ -30,22 +32,27 @@ const faqs = [
 ];
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
 const href = (path: string) => `${basePath}${path}`;
+const page = contentPageByPath["/"];
 ---
 
 <BaseLayout
   title="AI рецепционист — обаждания и часове | Vdiga"
   description="Vdiga е AI рецепционист на български. Вдига телефона, записва часове и праща обобщение след разговора."
   path="/"
-  schemas={[faqSchema(faqs), productSchema(), articleSchema("AI рецепционист — Vdiga", "/", "AI рецепционист на български език за клиники, салони и услуги.")]}
+  schemas={[faqSchema(faqs), productSchema(), articleSchema("AI рецепционист — Vdiga", "/", "AI рецепционист на български език за клиники, салони и услуги.", page)]}
 >
   <section class="hero">
     <div class="container hero-grid">
       <div>
         <p class="eyebrow">AI рецепционист на български</p>
         <h1>AI рецепционист, който вдига вместо вас.</h1>
-        <p class="hero-sub">
-          Към юли 2026 г. Vdiga е AI (изкуствен интелект) рецепционист за входящи обаждания. Вдига телефона, записва часове в календара ви и праща кратко обобщение след разговора.
+        <p class="answer-block">
+          Vdiga е AI (изкуствен интелект) рецепционист за входящи обаждания. Вдига телефона, записва часове в календара ви и праща кратко обобщение след разговора.
         </p>
+        <p class="hero-sub">
+          Първият тестов рецепционист се подготвя от публичната ви информация. Целта е работещ тест до 10 минути след сайт, Google профил или Facebook страница.
+        </p>
+        <ArticleMeta datePublished={page.datePublished} dateModified={page.dateModified} />
         <div class="button-row hero-actions">
           <a class="btn btn-primary" href={href("/demo")}>Чуйте разговор</a>
           <a class="btn btn-secondary" href={href("/tseni")}>Вижте планове</a>

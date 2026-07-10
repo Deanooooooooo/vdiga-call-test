@@ -44,6 +44,7 @@ export const site = {
     { href: "/tseni", label: "Цени" },
     { href: "/demo", label: "Демо" },
     { href: "/kak-raboti", label: "Как работи" },
+    { href: "/ai-retseptsionist-dentalna-klinika", label: "Дентални клиники" },
     { href: "/za-nas", label: "За нас" },
   ],
 };
