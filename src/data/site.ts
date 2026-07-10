@@ -54,3 +54,5 @@ export const coreQuestions = [
   "Как работи AI телефонен асистент?",
   "Кой стои зад Vdiga?",
 ];
+
+export const withBase = (path: string) => `${import.meta.env.BASE_URL.replace(/\/$/, "")}${path}`;
