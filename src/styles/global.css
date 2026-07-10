@@ -230,6 +230,43 @@ p {
   height: auto;
 }
 
+.logo-compare {
+  min-height: calc(100vh - 64px);
+  display: grid;
+  align-items: center;
+  background: #050607;
+}
+
+.logo-compare-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.logo-compare-card {
+  margin: 0;
+}
+
+.logo-compare-preview {
+  display: grid;
+  min-height: 220px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: #050607;
+}
+
+.logo-compare-preview img {
+  width: min(320px, 72%);
+  height: auto;
+}
+
+.logo-compare-card figcaption {
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.92rem;
+}
+
 .brand-mark {
   display: grid;
   width: 30px;

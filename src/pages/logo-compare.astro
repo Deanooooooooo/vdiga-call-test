@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const logoOptions = [
+  {
+    title: "All white",
+    src: "/assets/vdiga-logo-nav-all-white.png?v=259afb18",
+  },
+  {
+    title: "White with green V",
+    src: "/assets/vdiga-logo-nav-green-v.png?v=259afb18",
+  },
+];
+---
+
+<BaseLayout
+  title="Logo comparison | Vdiga"
+  description="Local Vdiga logo comparison."
+  path="/logo-compare"
+>
+  <section class="section logo-compare">
+    <div class="container">
+      <div class="logo-compare-grid">
+        {logoOptions.map((option) => (
+          <figure class="logo-compare-card">
+            <div class="logo-compare-preview">
+              <img src={option.src} alt={option.title} width="320" height="123" />
+            </div>
+            <figcaption>{option.title}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
