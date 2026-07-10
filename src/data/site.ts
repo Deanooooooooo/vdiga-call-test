@@ -40,10 +40,9 @@ export const site = {
     },
   ],
   nav: [
-    { href: "/", label: "Начало" },
-    { href: "/tseni", label: "Цени" },
-    { href: "/demo", label: "Демо" },
     { href: "/kak-raboti", label: "Как работи" },
+    { href: "/demo", label: "Демо" },
+    { href: "/tseni", label: "Цени" },
     { href: "/za-nas", label: "За нас" },
   ],
 };
