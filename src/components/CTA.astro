@@ -6,6 +6,7 @@ interface Props {
   text?: string;
   buttonLabel?: string;
   buttonHref?: string;
+  playDemo?: boolean;
 }
 
 const {
@@ -13,6 +14,7 @@ const {
   text = "Един примерен разговор показва повече от страница с обещания.",
   buttonLabel,
   buttonHref,
+  playDemo = false,
 } = Astro.props;
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
 const href = (path: string) => `${basePath}${path}`;
@@ -26,7 +28,9 @@ const href = (path: string) => `${basePath}${path}`;
         <p>{text}</p>
       </div>
       {
-        buttonLabel && buttonHref ? (
+        playDemo && buttonLabel ? (
+          <button class="btn btn-primary" type="button" data-play-demo aria-pressed="false">{buttonLabel}</button>
+        ) : buttonLabel && buttonHref ? (
           <a class="btn btn-primary" href={buttonHref}>{buttonLabel}</a>
         ) : site.demoPhone ? (
           <a class="btn btn-primary" href={`tel:${site.demoPhone}`}>Обадете се сега</a>

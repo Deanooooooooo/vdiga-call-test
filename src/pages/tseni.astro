@@ -28,8 +28,6 @@ const faqs = [
       "Разглеждаме кога изпускате обаждания, за какво звънят клиентите, колко линии са нужни и какво трябва да прави Vdiga. Получавате конкретно предложение преди да решите.",
   },
 ];
-const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
-const href = (path: string) => `${basePath}${path}`;
 ---
 
 <BaseLayout
@@ -49,7 +47,7 @@ const href = (path: string) => `${basePath}${path}`;
         Vdiga отговаря, когато вие не можете, записва какво иска клиентът и ви оставя ясен резултат след разговора. Избирате план според реалния си обем, не според броя служители.
       </p>
       <div class="button-row hero-actions">
-        <a class="btn btn-primary" href={href("/demo")}>Чуйте разговор</a>
+        <button class="btn btn-primary" type="button" data-play-demo aria-pressed="false">Чуйте разговор</button>
         <a class="btn btn-secondary" href="#plans">Вижте планове</a>
       </div>
     </div>
@@ -121,5 +119,5 @@ const href = (path: string) => `${basePath}${path}`;
     </div>
   </section>
 
-  <CTA title="Цената има смисъл само ако разговорът звучи добре." text="Чуйте как Vdiga приема реално клиентско обаждане на български." buttonLabel="Чуйте примерен разговор" buttonHref={href("/demo")} />
+  <CTA title="Цената има смисъл само ако разговорът звучи добре." text="Чуйте как Vdiga приема реално клиентско обаждане на български." buttonLabel="Чуйте примерен разговор" playDemo={true} />
 </BaseLayout>

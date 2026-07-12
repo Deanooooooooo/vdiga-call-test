@@ -51,6 +51,7 @@ const allSchemas = [
       <StickyCallBar />
       <Footer />
     </div>
+    <audio id="site-demo-audio" preload="metadata" src={`${basePath}assets/vdiga-mdsolution-demo-v35.mp3`} hidden></audio>
     <script>
       document.addEventListener("click", (event) => {
         const link = (event.target as Element).closest<HTMLAnchorElement>('a[href*="#"]');
@@ -71,6 +72,39 @@ const allSchemas = [
         window.scrollTo({ top: window.scrollY, behavior: "auto" });
         requestAnimationFrame(() => {
           window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
+        });
+      });
+
+      document.querySelectorAll<HTMLElement>("[data-play-demo]").forEach((trigger) => {
+        const fallbackAudio = document.querySelector<HTMLAudioElement>("#site-demo-audio");
+        const visibleAudio = document.querySelector<HTMLAudioElement>(".demo-audio");
+        const audio = visibleAudio || fallbackAudio;
+        if (!audio) return;
+
+        const originalLabel = trigger.textContent?.trim() || "Чуйте как звучи";
+
+        trigger.addEventListener("click", async (event) => {
+          event.preventDefault();
+
+          document.querySelectorAll("audio").forEach((otherAudio) => {
+            if (otherAudio !== audio) otherAudio.pause();
+          });
+
+          if (audio.paused) {
+            await audio.play();
+          } else {
+            audio.pause();
+          }
+        });
+
+        audio.addEventListener("play", () => {
+          trigger.setAttribute("aria-pressed", "true");
+          trigger.textContent = "Спрете записа";
+        });
+
+        audio.addEventListener("pause", () => {
+          trigger.setAttribute("aria-pressed", "false");
+          trigger.textContent = originalLabel;
         });
       });
     </script>

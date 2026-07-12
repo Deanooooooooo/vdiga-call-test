@@ -33,8 +33,6 @@ const faqs = [
       "Получавате най-важното: кой се е обадил, какво иска, какво е уговорено и дали е нужно действие от вашия екип.",
   },
 ];
-const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
-const href = (path: string) => `${basePath}${path}`;
 ---
 
 <BaseLayout
@@ -54,7 +52,7 @@ const href = (path: string) => `${basePath}${path}`;
         Вие определяте какво може да прави, какво да пита и кога разговорът трябва да стигне до човек.
       </p>
       <div class="button-row hero-actions">
-        <a class="btn btn-primary" href={href("/demo")}>Чуйте как звучи</a>
+        <button class="btn btn-primary" type="button" data-play-demo aria-pressed="false">Чуйте как звучи</button>
         <a class="btn btn-secondary" href="#nastroyka">Вижте настройката</a>
       </div>
     </div>
@@ -183,5 +181,5 @@ const href = (path: string) => `${basePath}${path}`;
     </div>
   </section>
 
-  <CTA title="Искате първо да го чуете? Така трябва." text="Пуснете примерния разговор и преценете сами дали Vdiga звучи като правилния първи контакт за вашите клиенти." buttonLabel="Чуйте примерен разговор" buttonHref={href("/demo")} />
+  <CTA title="Искате първо да го чуете? Така трябва." text="Пуснете примерния разговор и преценете сами дали Vdiga звучи като правилния първи контакт за вашите клиенти." buttonLabel="Чуйте примерен разговор" playDemo={true} />
 </BaseLayout>

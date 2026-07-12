@@ -48,7 +48,7 @@ const href = (path: string) => `${basePath}${path}`;
         Целта е проста: телефонен асистент, който вие можете да чуете, проверите и после да включите към бизнеса си.
       </p>
       <div class="button-row hero-actions">
-        <a class="btn btn-primary" href={href("/demo")}>Чуйте разговор</a>
+        <button class="btn btn-primary" type="button" data-play-demo aria-pressed="false">Чуйте разговор</button>
         <a class="btn btn-secondary" href={href("/kak-raboti")}>Как работи</a>
       </div>
     </div>

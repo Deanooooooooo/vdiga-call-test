@@ -16,7 +16,7 @@ const href = (path: string) => `${basePath}${path}`;
       )
     }
     <div class="button-row card-actions">
-      <a class="btn btn-primary" href={href("/demo")}>Чуйте разговора</a>
+      <button class="btn btn-primary" type="button" data-play-demo aria-pressed="false">Чуйте разговора</button>
       <a class="btn btn-ghost-light" href={href("/kak-raboti")}>Как работи</a>
     </div>
   </div>
