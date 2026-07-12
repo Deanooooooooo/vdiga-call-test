@@ -14,8 +14,7 @@ const href = (path: string) => `${basePath}${path}`;
       {site.nav.map((item) => <a href={href(item.href)}>{item.label}</a>)}
     </nav>
     <div class="nav-actions">
-      <a class="btn btn-secondary nav-cta nav-login" href={href("/login")}>Вход</a>
-      <a class="btn btn-primary nav-cta nav-signup" href={href("/signup")}>Регистрация</a>
+      <a class="btn btn-primary nav-cta nav-phone" href={`tel:${site.salesPhone.replace(/\s/g, "")}`}>Обадете се: {site.salesPhone}</a>
     </div>
   </div>
 </header>

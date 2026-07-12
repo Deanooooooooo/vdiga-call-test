@@ -1,0 +1,117 @@
+---
+import { site } from "../data/site";
+---
+
+<section class="onboarding-panel" id="zayavka" aria-labelledby="onboarding-title">
+  <div class="onboarding-copy">
+    <p class="eyebrow">заявете разговор</p>
+    <h2 id="onboarding-title">Не изпускайте следващия клиент.</h2>
+    <p class="onboarding-lead">
+      Оставете ни телефон. Ще ви се обадим, за да разберем какво губите с пропуснатите обаждания и как Vdiga може да ги поеме.
+    </p>
+    <ul class="onboarding-points" aria-label="Какво следва">
+      <li>Говорите с човек от екипа ни</li>
+      <li>Получавате цена за вашия бизнес</li>
+      <li>Решавате след разговора</li>
+    </ul>
+    {site.salesPhone && (
+      <div class="direct-call">
+        <span class="direct-call-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M7.3 3.5 4.8 6c-.8.8-.9 2-.4 3 2.1 4.7 5.9 8.5 10.6 10.6 1 .5 2.2.3 3-.4l2.5-2.5-4-4-2.3 2.3c-2.2-1.2-4-3-5.2-5.2l2.3-2.3-4-4Z"/></svg>
+        </span>
+        <div>
+          <strong>Не искате да чакате?</strong>
+          <a href={`tel:${site.salesPhone}`}>Обадете ни се на {site.salesPhone}</a>
+          <p>{site.salesHours}</p>
+        </div>
+      </div>
+    )}
+  </div>
+
+  <form class="onboarding-form" method="post" action="/api/onboarding-requests" data-frontend-only novalidate>
+    <input type="hidden" name="selected_plan" value="" data-selected-plan />
+    <input type="hidden" name="billing_period" value="monthly" data-billing-period />
+    <div class="form-heading">
+      <span>Нека ви се обадим</span>
+      <small>Отнема около минута</small>
+    </div>
+
+    <div class="form-grid">
+      <label>
+        <span>Вашето име</span>
+        <input type="text" name="contact_name" autocomplete="name" placeholder="Име и фамилия" required />
+      </label>
+      <label>
+        <span>Име на бизнеса</span>
+        <input type="text" name="business_name" autocomplete="organization" placeholder="Например Studio Forma" required />
+      </label>
+      <label>
+        <span>Телефон</span>
+        <input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+359 88 123 4567" required />
+      </label>
+      <label>
+        <span>Имейл</span>
+        <input type="email" name="email" autocomplete="email" inputmode="email" placeholder="name@business.bg" required />
+      </label>
+      <label class="form-field-wide">
+        <span>За какво ви звънят клиентите?</span>
+        <select name="primary_need" required>
+          <option value="" selected disabled>Изберете най-важното</option>
+          <option value="appointments">Записване на часове</option>
+          <option value="reservations">Приемане на резервации</option>
+          <option value="orders">Приемане на поръчки</option>
+          <option value="enquiries">Запитвания и огледи</option>
+          <option value="other">Друго</option>
+        </select>
+      </label>
+      <label class="form-field-wide">
+        <span>Кога изпускате най-много обаждания? <small>по желание</small></span>
+        <textarea name="current_call_problem" rows="3" placeholder="Например: когато сме с клиенти или след работно време"></textarea>
+      </label>
+    </div>
+
+    <label class="consent-row">
+      <input type="checkbox" name="callback_consent" value="yes" required />
+      <span>Съгласен съм Vdiga да се свърже с мен по тази заявка.</span>
+    </label>
+
+    <button class="btn btn-primary form-submit" type="submit">Искам да ми се обадите</button>
+    <p class="form-note">Няма плащане или абонамент. Първо разговаряме.</p>
+    <p class="form-status" data-form-status aria-live="polite"></p>
+  </form>
+</section>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("[data-frontend-only]");
+  const status = form?.querySelector<HTMLElement>("[data-form-status]");
+  const selectedPlan = form?.querySelector<HTMLInputElement>("[data-selected-plan]");
+  const billingPeriod = form?.querySelector<HTMLInputElement>("[data-billing-period]");
+  const formHeading = form?.querySelector<HTMLElement>(".form-heading span");
+
+  document.querySelectorAll<HTMLAnchorElement>("[data-plan]").forEach((link) => {
+    link.addEventListener("click", () => {
+      const plan = link.dataset.plan || "";
+      if (selectedPlan) selectedPlan.value = plan;
+      if (formHeading) formHeading.textContent = plan === "500+ минути" ? "Нека обсъдим обема ви" : `План ${plan}`;
+    });
+  });
+
+  document.addEventListener("vdiga:billing-change", ((event: CustomEvent<{ period: string }>) => {
+    if (billingPeriod) billingPeriod.value = event.detail.period;
+  }) as EventListener);
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      if (status) status.textContent = "Проверете задължителните полета.";
+      return;
+    }
+
+    if (status) {
+      status.textContent = "Формата е готова за свързване с бекенда. Данните не са изпратени в този локален тест.";
+      status.classList.add("is-success");
+    }
+  });
+</script>

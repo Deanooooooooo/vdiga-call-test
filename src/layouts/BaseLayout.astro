@@ -51,5 +51,28 @@ const allSchemas = [
       <StickyCallBar />
       <Footer />
     </div>
+    <script>
+      document.addEventListener("click", (event) => {
+        const link = (event.target as Element).closest<HTMLAnchorElement>('a[href*="#"]');
+        if (!link) return;
+
+        const url = new URL(link.href, window.location.href);
+        if (url.pathname !== window.location.pathname || !url.hash) return;
+
+        const target = document.querySelector<HTMLElement>(url.hash);
+        if (!target) return;
+
+        event.preventDefault();
+        const header = document.querySelector<HTMLElement>(".site-top");
+        const headerHeight = header?.offsetHeight || 0;
+        const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        window.scrollTo({ top: window.scrollY, behavior: "auto" });
+        requestAnimationFrame(() => {
+          window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
+        });
+      });
+    </script>
   </body>
 </html>

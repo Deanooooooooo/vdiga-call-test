@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CallCard from "../components/CallCard.astro";
 import PricingCards from "../components/PricingCards.astro";
+import OnboardingForm from "../components/OnboardingForm.astro";
 import FAQ from "../components/FAQ.astro";
 import CTA from "../components/CTA.astro";
 import { articleSchema, faqSchema, productSchema } from "../data/schema";
@@ -28,8 +29,6 @@ const faqs = [
       "На английски най-често се използват AI receptionist, AI answering service и voice AI assistant. На български използваме AI рецепционист.",
   },
 ];
-const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
-const href = (path: string) => `${basePath}${path}`;
 ---
 
 <BaseLayout
@@ -47,9 +46,10 @@ const href = (path: string) => `${basePath}${path}`;
           Vdiga отговаря, записва часове и ви оставя най-важното след разговора: кой се обади, какво поиска и какво е уговорено.
         </p>
         <div class="button-row hero-actions">
-          <a class="btn btn-primary" href={href("/demo")}>Чуйте разговор</a>
-          <a class="btn btn-secondary" href={href("/tseni")}>Вижте планове</a>
+          <a class="btn btn-primary" href="#zayavka"><span class="hero-cta-wide">Обсъдете Vdiga за вашия бизнес</span><span class="hero-cta-short">Vdiga за вашия бизнес</span></a>
+          <a class="btn btn-secondary" href="#planove">Вижте плановете</a>
         </div>
+        <p class="hero-cta-note">Ще ви кажем какво може да поема и колко ще струва.</p>
       </div>
       <CallCard />
     </div>
@@ -57,89 +57,144 @@ const href = (path: string) => `${basePath}${path}`;
 
   <section class="section band outcome-section" id="propusnato-obazhdane">
     <div class="container">
-      <p class="eyebrow">пропуснато обаждане</p>
-      <h2>Какво струва едно пропуснато обаждане?</h2>
-      <p class="outcome-intro">
-        Понякога е един записан час. Понякога е поръчка. Понякога е клиент, който вече говори с конкурента ви.
-        Повечето хора не чакат някой да им върне обаждане. Затварят и звънят на следващия. Vdiga не позволява това да се случи.
-      </p>
+      <div class="outcome-head">
+        <div class="outcome-head-copy">
+          <p class="eyebrow">цената на пропуснатия разговор</p>
+          <h2>Какво струва едно пропуснато обаждане?</h2>
+          <p class="outcome-intro">
+            Клиентът звъни, защото иска час, резервация, поръчка или оферта. Ако никой не вдигне, често звъни на следващия бизнес.
+          </p>
+        </div>
+        <div class="outcome-person" aria-hidden="true">
+          <span class="outcome-person-circle"></span>
+          <span class="outcome-person-arc"></span>
+          <img src="/assets/vdiga-person-cutout-v1.png" alt="" loading="eager" decoding="async" />
+        </div>
+      </div>
       <div class="grid-3 outcome-grid">
         <article class="feature outcome-feature">
-          <span class="outcome-step">01</span>
-          <h3>Всеки получава отговор.</h3>
+          <h3>Клиентът търси решение сега</h3>
           <p>
-            След работно време, в натоварен момент или когато целият екип е зает, Vdiga вдига телефона вместо вас.
-            Разговаря на български, представя се като AI асистент и започва разговора веднага. Клиентът не слуша свободен сигнал.
-            Не чака. Не си тръгва.
+            Когато не вдигнете, той не знае дали ще му се обадите след пет минути или утре. Затваря и продължава да търси.
           </p>
         </article>
         <article class="feature outcome-feature">
-          <span class="outcome-step">02</span>
-          <h3>Всяко обаждане става заявка.</h3>
+          <h3>Vdiga вдига вместо вас</h3>
           <p>
-            Vdiga разбира защо се обаждат, записва име и телефон и следва начина, по който работи вашият бизнес.
-            Час, резервация, поръчка, оглед, обратно обаждане или друга заявка. Всеки разговор завършва с конкретен резултат,
-            вместо с пропусната възможност.
+            Докато работите, шофирате или сте с друг клиент, Vdiga отговаря и пита за всичко необходимо.
           </p>
         </article>
         <article class="feature outcome-feature">
-          <span class="outcome-step">03</span>
-          <h3>Екипът знае какво да направи.</h3>
+          <h3>Получавате готовата заявка</h3>
           <p>
-            След разговора получавате най-важното: кой се е обадил, какво иска, какво е обещано и има ли спешност.
-            Вместо списък с пропуснати повиквания, получавате подредени задачи и следващи действия.
+            Виждате кой се е обадил, какво иска и какво е уговорено. Можете да действате, без първо да връщате пропуснато обаждане.
           </p>
         </article>
       </div>
-      <p class="outcome-close">Телефонът звъни. Клиентът получава отговор. Бизнесът ви не губи възможности.</p>
+      <p class="outcome-close">Клиентът получава отговор, когато е готов да купи, резервира или запише час.</p>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container grid-2">
-      <div>
-        <p class="eyebrow">къде има смисъл</p>
-        <h2>Къде Vdiga има най-много смисъл?</h2>
-        <p>
-          Vdiga е най-полезна там, където пропуснатото обаждане значи празен час. Първите силни случаи са дентални клиники, медицински центрове и салони.
-        </p>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Бизнес</th>
-              <th>Какво пита клиентът</th>
-              <th>Какво прави Vdiga</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Дентална клиника</td>
-              <td>„Имате ли час утре?“</td>
-              <td>Проверява календара и записва час с потвърждение.</td>
-            </tr>
-            <tr>
-              <td>Медицински център</td>
-              <td>„Кога приема докторът?“</td>
-              <td>Отговаря по вашите правила и пренасочва сложните случаи към човек.</td>
-            </tr>
-            <tr>
-              <td>Салон за красота</td>
-              <td>„Свободно ли е в петък?“</td>
-              <td>Намира свободен час, записва го и ви праща какво е уговорено.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section class="section band">
+  <section class="section use-case-section" id="kude-si-struva">
     <div class="container">
-      <p class="eyebrow">AI рецепционист цена</p>
-      <h2>Колко струва AI рецепционист?</h2>
+      <div class="use-case-head">
+        <div class="use-case-copy">
+          <p class="eyebrow">къде си струва най-много</p>
+          <h2>Не губете клиенти, когато не можете да вдигнете.</h2>
+        </div>
+        <div class="use-case-intro">
+          <p>
+            Докато работите, шофирате или сте с друг клиент, Vdiga вдига телефона вместо вас.
+            Приема записването, резервацията или запитването и ви изпраща информацията след разговора.
+          </p>
+        </div>
+      </div>
+      <div class="use-case-grid" aria-label="Къде Vdiga помага най-много">
+        <article class="use-case-card rev" style="--d: 0s">
+          <div class="use-case-title">
+            <span class="use-case-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/><path d="m9 14 2 2 4-4"/></svg>
+            </span>
+            <h3>Клиентът иска час сега</h3>
+            <p class="use-case-label"><span>клиники</span><span>салони</span><span>студиа</span><span>сервизи</span></p>
+          </div>
+          <p class="use-case-description">Не прекъсвате работата си, за да вдигнете. Vdiga пита за услугата, деня и часа и записва заявката според вашия график.</p>
+          <p class="use-case-result"><strong>Вие продължавате да работите.</strong> Новият час влиза в графика.</p>
+        </article>
+        <article class="use-case-card rev" style="--d: .06s">
+          <div class="use-case-title">
+            <span class="use-case-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 18h16M6 18v-2a6 6 0 0 1 12 0v2M12 8V5M10 5h4"/><path d="M9 13h6"/></svg>
+            </span>
+            <h3>Резервацията не чака</h3>
+            <p class="use-case-label"><span>ресторанти</span><span>хотели</span><span>зали</span><span>събития</span></p>
+          </div>
+          <p class="use-case-description">Когато персоналът е зает, Vdiga приема датата, часа и броя гости. Клиентът резервира, вместо да затвори и да звънне другаде.</p>
+          <p class="use-case-result"><strong>Приемате повече резервации</strong> в натоварените часове.</p>
+        </article>
+        <article class="use-case-card rev" style="--d: .12s">
+          <div class="use-case-title">
+            <span class="use-case-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 7h12l-1 13H7L6 7ZM9 7V5a3 3 0 0 1 6 0v2"/><path d="M9 12h6"/></svg>
+            </span>
+            <h3>Приемайте поръчки, докато работите</h3>
+            <p class="use-case-label"><span>доставки</span><span>магазини</span><span>местни услуги</span></p>
+          </div>
+          <p class="use-case-description">Vdiga записва какво поръчва клиентът, количеството, адреса и телефона му. Получавате поръчката веднага след разговора.</p>
+          <p class="use-case-result"><strong>По-малко изпуснати поръчки.</strong> По-малко грешки по телефона.</p>
+        </article>
+        <article class="use-case-card rev" style="--d: .18s">
+          <div class="use-case-title">
+            <span class="use-case-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M8 5H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3l4 3v-3h7a2 2 0 0 0 2-2v-4"/><path d="M15 3h6v6M21 3l-7 7"/></svg>
+            </span>
+            <h3>Не губете запитвания за оглед</h3>
+            <p class="use-case-label"><span>майстори</span><span>агенции</span><span>услуги за бизнеса</span></p>
+          </div>
+          <p class="use-case-description">Vdiga пита каква услуга търси клиентът, къде е обектът и кога е удобно за оглед. След това ви изпраща телефона и отговорите.</p>
+          <p class="use-case-result"><strong>Знаете за какво звъните обратно</strong> и кои запитвания не могат да чакат.</p>
+        </article>
+      </div>
+      <div class="use-case-proof">
+        <div>
+          <p>Vdiga вдига, когато вие не можете. <strong>Клиентът получава отговор, преди да звънне на конкуренцията.</strong></p>
+          <a href="/demo">Чуйте как Vdiga приема обаждане <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band" id="planove">
+    <div class="container">
+      <div class="pricing-heading">
+        <div>
+          <p class="eyebrow">изберете план за входящите си обаждания</p>
+          <h2>Колко струва AI рецепционист от Vdiga?</h2>
+        </div>
+        <p>Изберете според минутите входящи разговори, които искате Vdiga да поема. Ако не знаете колко са, ще ги изчислим с вас.</p>
+      </div>
       <PricingCards />
+      <OnboardingForm />
+      <section class="setup-trust" aria-labelledby="setup-trust-title">
+        <div>
+          <p class="eyebrow">какво става след заявката</p>
+          <h2 id="setup-trust-title">Първо уточняваме всичко. После решавате.</h2>
+        </div>
+        <div class="setup-trust-grid">
+          <article>
+            <h3>Разговаряме</h3>
+            <p>Разбираме какви входящи обаждания получавате и какво трябва да прави Vdiga.</p>
+          </article>
+          <article>
+            <h3>Изпращаме предложение</h3>
+            <p>Виждате какво ще поема Vdiga, как ще бъде настроен и колко ще струва.</p>
+          </article>
+          <article>
+            <h3>Вие решавате</h3>
+            <p>Не създаваме профил и не започваме абонамент, преди да потвърдите.</p>
+          </article>
+        </div>
+      </section>
     </div>
   </section>
 
@@ -147,11 +202,16 @@ const href = (path: string) => `${basePath}${path}`;
     <div class="container grid-2">
       <div>
         <p class="eyebrow">чести въпроси</p>
-        <h2>Какво питат собствениците преди тест?</h2>
+        <h2>Какво искат да знаят клиентите преди да започнат?</h2>
       </div>
       <FAQ items={faqs} />
     </div>
   </section>
 
-  <CTA title="Чуйте как звучи вашият рецепционист." text="Ако разговорът звучи нормално, следващата стъпка е лесна." />
+  <CTA
+    title="Нека Vdiga вдига следващото обаждане."
+    text="Кажете ни как работи бизнесът ви. Ще обсъдим какво може да поема Vdiga и колко ще струва."
+    buttonLabel="Vdiga за вашия бизнес"
+    buttonHref="#zayavka"
+  />
 </BaseLayout>

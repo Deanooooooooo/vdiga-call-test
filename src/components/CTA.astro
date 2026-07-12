@@ -4,11 +4,15 @@ import { site } from "../data/site";
 interface Props {
   title?: string;
   text?: string;
+  buttonLabel?: string;
+  buttonHref?: string;
 }
 
 const {
   title = "Първо чуйте гласа. После решете.",
   text = "Един примерен разговор показва повече от страница с обещания.",
+  buttonLabel,
+  buttonHref,
 } = Astro.props;
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
 const href = (path: string) => `${basePath}${path}`;
@@ -22,7 +26,9 @@ const href = (path: string) => `${basePath}${path}`;
         <p>{text}</p>
       </div>
       {
-        site.demoPhone ? (
+        buttonLabel && buttonHref ? (
+          <a class="btn btn-primary" href={buttonHref}>{buttonLabel}</a>
+        ) : site.demoPhone ? (
           <a class="btn btn-primary" href={`tel:${site.demoPhone}`}>Обадете се сега</a>
         ) : (
           <a class="btn btn-primary" href={href("/demo")}>{site.demoPhoneLabel}</a>
