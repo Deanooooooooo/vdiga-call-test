@@ -401,6 +401,12 @@ p {
   }
 }
 
+@media (max-width: 979px) {
+  .hero .call-card {
+    justify-self: center;
+  }
+}
+
 .hero .eyebrow {
   margin-bottom: 20px;
   color: #74d98b;
