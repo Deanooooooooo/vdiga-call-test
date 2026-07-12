@@ -1,25 +1,66 @@
 ---
 import { site } from "../data/site";
-
-const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
-const href = (path: string) => `${basePath}${path}`;
 ---
 
-<div class="pricing-grid">
+<div class="billing-switch" aria-label="Период на плащане">
+  <button type="button" class="is-active" data-billing="monthly" aria-pressed="true">Месечно</button>
+  <button type="button" data-billing="annual" aria-pressed="false">Годишно <strong>2 месеца безплатно</strong></button>
+</div>
+
+<div class="pricing-grid" data-pricing-grid>
   {
     site.pricing.map((tier, index) => (
       <article class:list={["price-card", index === 1 && "featured"]}>
-        <h3>{tier.name}</h3>
-        <p>{tier.note}</p>
-        <div class="price">
-          {tier.price} <small>{tier.suffix}</small>
+        <div class="price-card-head">
+          <h3>{tier.name}</h3>
+          {index === 1 && <span class="price-popular">най-избиран</span>}
         </div>
-        <p>Без ДДС. Месечно. Спирате след текущия месец.</p>
+        <p class="price-audience">{tier.note}</p>
+        <p class="price-minutes"><strong>{tier.minutes}</strong><span>{tier.minutesContext}</span></p>
+        <div class="price">
+          <span data-price data-monthly={tier.price} data-annual={tier.annualPrice}>{tier.price}</span>
+          {tier.suffix && <small data-price-suffix>€/месец</small>}
+        </div>
+        <p class="price-saving" data-price-saving>{tier.annualSaving}</p>
+        <p class="price-terms" data-price-terms>Без ДДС. Без дългосрочен договор.</p>
         <ul class="split-list">
           {tier.features.map((feature) => <li>{feature}</li>)}
         </ul>
-        <a class:list={["btn", index === 1 ? "btn-primary" : "btn-outline"]} href={href("/demo")}>{tier.cta}</a>
+        <a class:list={["btn", index === 1 ? "btn-primary" : "btn-outline"]} href="#zayavka" data-plan={tier.name}>{tier.cta}</a>
       </article>
     ))
   }
 </div>
+
+<script>
+  const billingButtons = document.querySelectorAll<HTMLButtonElement>("[data-billing]");
+  const priceCards = document.querySelectorAll<HTMLElement>(".price-card");
+
+  billingButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const annual = button.dataset.billing === "annual";
+
+      billingButtons.forEach((item) => {
+        const active = item === button;
+        item.classList.toggle("is-active", active);
+        item.setAttribute("aria-pressed", String(active));
+      });
+
+      priceCards.forEach((card) => {
+        const price = card.querySelector<HTMLElement>("[data-price]");
+        const suffix = card.querySelector<HTMLElement>("[data-price-suffix]");
+        const saving = card.querySelector<HTMLElement>("[data-price-saving]");
+        const terms = card.querySelector<HTMLElement>("[data-price-terms]");
+        if (!price) return;
+
+        const isCustom = price.dataset.monthly === "Индивидуална оферта";
+        price.textContent = annual ? price.dataset.annual || "" : price.dataset.monthly || "";
+        if (suffix) suffix.textContent = annual ? "€/година" : "€/месец";
+        if (saving) saving.classList.toggle("is-visible", annual && !isCustom);
+        if (terms) terms.textContent = annual && !isCustom ? "Без ДДС. Плащане веднъж годишно." : "Без ДДС. Без дългосрочен договор.";
+      });
+
+      document.dispatchEvent(new CustomEvent("vdiga:billing-change", { detail: { period: annual ? "annual" : "monthly" } }));
+    });
+  });
+</script>

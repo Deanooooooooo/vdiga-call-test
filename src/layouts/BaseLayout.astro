@@ -39,7 +39,7 @@ const allSchemas = [
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" href={`${basePath}favicon.svg`} type="image/svg+xml" />
+    <link rel="icon" href={`${basePath}favicon.jpg?v=6fa21b71`} type="image/jpeg" />
     {allSchemas.map((schema) => <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />)}
   </head>
   <body>
@@ -51,5 +51,28 @@ const allSchemas = [
       <StickyCallBar />
       <Footer />
     </div>
+    <script>
+      document.addEventListener("click", (event) => {
+        const link = (event.target as Element).closest<HTMLAnchorElement>('a[href*="#"]');
+        if (!link) return;
+
+        const url = new URL(link.href, window.location.href);
+        if (url.pathname !== window.location.pathname || !url.hash) return;
+
+        const target = document.querySelector<HTMLElement>(url.hash);
+        if (!target) return;
+
+        event.preventDefault();
+        const header = document.querySelector<HTMLElement>(".site-top");
+        const headerHeight = header?.offsetHeight || 0;
+        const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        window.scrollTo({ top: window.scrollY, behavior: "auto" });
+        requestAnimationFrame(() => {
+          window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
+        });
+      });
+    </script>
   </body>
 </html>
