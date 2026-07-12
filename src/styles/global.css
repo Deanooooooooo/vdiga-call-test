@@ -1415,17 +1415,20 @@ tr:last-child td {
 
 .onboarding-panel {
   scroll-margin-top: 28px;
+  width: 100vw;
+  margin-top: 68px;
+  margin-left: calc(50% - 50vw);
+  background: var(--ink);
+}
+
+.onboarding-inner {
   display: grid;
   grid-template-columns: minmax(0, 0.88fr) minmax(520px, 1.12fr);
   gap: clamp(44px, 6vw, 84px);
   align-items: start;
-  margin-top: 68px;
+  width: min(var(--w), calc(100% - 44px));
+  margin-inline: auto;
   padding: clamp(34px, 5vw, 64px);
-  border: 0;
-  border-radius: 0;
-  background: var(--ink);
-  box-shadow: 0 0 0 100vmax var(--ink);
-  clip-path: inset(0 -100vmax);
 }
 
 .onboarding-copy .eyebrow {
@@ -1829,7 +1832,7 @@ tr:last-child td {
     min-height: 0;
   }
 
-  .onboarding-panel {
+  .onboarding-inner {
     grid-template-columns: 1fr;
   }
 
@@ -2175,10 +2178,13 @@ tr:last-child td {
   }
 
   .onboarding-panel {
-    gap: 34px;
     margin-top: 44px;
+  }
+
+  .onboarding-inner {
+    width: min(var(--w), calc(100% - 28px));
+    gap: 34px;
     padding: 28px 18px 18px;
-    border-radius: 0;
   }
 
   .billing-switch {
