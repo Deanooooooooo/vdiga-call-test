@@ -6,6 +6,7 @@ import OnboardingForm from "../components/OnboardingForm.astro";
 import FAQ from "../components/FAQ.astro";
 import CTA from "../components/CTA.astro";
 import { articleSchema, faqSchema, productSchema } from "../data/schema";
+import { withBase as href } from "../data/site";
 
 const faqs = [
   {
@@ -46,7 +47,7 @@ const faqs = [
           Vdiga отговаря, записва часове и ви оставя най-важното след разговора: кой се обади, какво поиска и какво е уговорено.
         </p>
         <div class="button-row hero-actions">
-          <a class="btn btn-primary" href="#zayavka"><span class="hero-cta-wide">Обсъдете Vdiga за вашия бизнес</span><span class="hero-cta-short">Vdiga за вашия бизнес</span></a>
+          <a class="btn btn-primary" href="#zayavka"><span class="hero-cta-wide">Vdiga за вашия бизнес</span><span class="hero-cta-short">Vdiga за вашия бизнес</span></a>
           <a class="btn btn-secondary" href="#planove">Вижте плановете</a>
         </div>
         <p class="hero-cta-note">Ще ви кажем какво може да поема и колко ще струва.</p>
@@ -68,7 +69,7 @@ const faqs = [
         <div class="outcome-person" aria-hidden="true">
           <span class="outcome-person-circle"></span>
           <span class="outcome-person-arc"></span>
-          <img src="/assets/vdiga-person-cutout-v1.png" alt="" loading="eager" decoding="async" />
+          <img src={href("/assets/vdiga-person-cutout-v1.png")} alt="" loading="eager" decoding="async" />
         </div>
       </div>
       <div class="grid-3 outcome-grid">
