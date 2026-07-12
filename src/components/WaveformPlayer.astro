@@ -1,12 +1,13 @@
 ---
 import Transcript from "./Transcript.astro";
+import { withBase as href } from "../data/site";
 
 const heights = [18, 34, 22, 46, 16, 52, 28, 38, 58, 20, 44, 32, 24, 54, 18, 36, 49, 27, 60, 22, 42, 30, 56, 18, 48, 26, 36, 52, 20, 40, 58, 28, 34, 46, 18, 54];
 ---
 
 <div class="player">
   <div class="player-inner">
-    <audio class="demo-audio" preload="metadata" src="/assets/vdiga-mdsolution-demo-v35.mp3"></audio>
+    <audio class="demo-audio" preload="metadata" src={href("/assets/vdiga-mdsolution-demo-v35.mp3")}></audio>
     <div class="player-head">
       <button class="play-button" type="button" aria-label="Пусни демо записа" aria-pressed="false">
         <svg viewBox="0 0 24 24" aria-hidden="true">
