@@ -616,6 +616,21 @@ p {
   background: linear-gradient(180deg, #3ddc6a, #28b34d);
 }
 
+.player.is-playing .waveform span {
+  animation: waveform-pulse 0.88s ease-in-out infinite alternate;
+  animation-delay: calc(var(--i, 0) * -0.04s);
+}
+
+@keyframes waveform-pulse {
+  from {
+    transform: scaleY(0.72);
+  }
+
+  to {
+    transform: scaleY(1);
+  }
+}
+
 .transcript {
   display: grid;
   gap: 9px;

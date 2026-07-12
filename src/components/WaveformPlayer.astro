@@ -6,17 +6,57 @@ const heights = [18, 34, 22, 46, 16, 52, 28, 38, 58, 20, 44, 32, 24, 54, 18, 36,
 
 <div class="player">
   <div class="player-inner">
+    <audio class="demo-audio" preload="metadata" src="/assets/vdiga-mdsolution-demo-v35.mp3"></audio>
     <div class="player-head">
-      <button class="play-button" type="button" aria-label="Пусни демо записа">
+      <button class="play-button" type="button" aria-label="Пусни демо записа" aria-pressed="false">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 3.5a1 1 0 0 1 1-1H7.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z" />
         </svg>
       </button>
-      <span><strong>Чуйте примерен разговор</strong><small class="mono">00:35 · дентална клиника</small></span>
+      <span><strong>Чуйте примерен разговор</strong><small class="mono">00:57 · дентална клиника</small></span>
     </div>
     <div class="waveform" aria-hidden="true">
-      {heights.map((height) => <span style={`--h:${height}px`}></span>)}
+      {heights.map((height, index) => <span style={`--h:${height}px;--i:${index}`}></span>)}
     </div>
     <Transcript />
   </div>
 </div>
+
+<script>
+  document.querySelectorAll(".player").forEach((player) => {
+    const audio = player.querySelector("audio");
+    const button = player.querySelector(".play-button");
+
+    if (!(audio instanceof HTMLAudioElement) || !(button instanceof HTMLButtonElement)) {
+      return;
+    }
+
+    button.addEventListener("click", async () => {
+      if (audio.paused) {
+        document.querySelectorAll("audio").forEach((otherAudio) => {
+          if (otherAudio !== audio) {
+            otherAudio.pause();
+          }
+        });
+        await audio.play();
+        return;
+      }
+
+      audio.pause();
+    });
+
+    audio.addEventListener("play", () => {
+      button.setAttribute("aria-pressed", "true");
+      player.classList.add("is-playing");
+    });
+
+    audio.addEventListener("pause", () => {
+      button.setAttribute("aria-pressed", "false");
+      player.classList.remove("is-playing");
+    });
+
+    audio.addEventListener("ended", () => {
+      audio.currentTime = 0;
+    });
+  });
+</script>
