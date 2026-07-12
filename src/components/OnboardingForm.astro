@@ -28,9 +28,7 @@ import { site } from "../data/site";
     )}
   </div>
 
-  <form class="onboarding-form" method="post" action="/api/onboarding-requests" data-frontend-only novalidate>
-    <input type="hidden" name="selected_plan" value="" data-selected-plan />
-    <input type="hidden" name="billing_period" value="monthly" data-billing-period />
+  <form class="onboarding-form" data-onboarding-form novalidate>
     <div class="form-heading">
       <span>Нека ви се обадим</span>
       <small>Отнема около минута</small>
@@ -82,36 +80,120 @@ import { site } from "../data/site";
 </section>
 
 <script>
-  const form = document.querySelector<HTMLFormElement>("[data-frontend-only]");
+  import { supabase } from "../lib/supabase";
+
+  const form = document.querySelector<HTMLFormElement>("[data-onboarding-form]");
   const status = form?.querySelector<HTMLElement>("[data-form-status]");
-  const selectedPlan = form?.querySelector<HTMLInputElement>("[data-selected-plan]");
-  const billingPeriod = form?.querySelector<HTMLInputElement>("[data-billing-period]");
+  const submitButton = form?.querySelector<HTMLButtonElement>("[type='submit']");
   const formHeading = form?.querySelector<HTMLElement>(".form-heading span");
+  let selectedPlan: string | null = null;
+  let selectedBillingPeriod: "monthly" | "annual" | null = null;
+  const primaryNeedLabels: Record<string, string> = {
+    appointments: "Записване на часове",
+    reservations: "Приемане на резервации",
+    orders: "Приемане на поръчки",
+    enquiries: "Запитвания и огледи",
+    other: "Друго",
+  };
+  const primaryNeeds = new Set(Object.keys(primaryNeedLabels));
+
+  const setStatus = (message: string, state: "idle" | "success" | "error" = "idle") => {
+    if (!status) return;
+    status.textContent = message;
+    status.classList.toggle("is-success", state === "success");
+    status.classList.toggle("is-error", state === "error");
+  };
+
+  const cleanText = (value: FormDataEntryValue | null) => String(value || "").trim();
+  const getActiveBillingPeriod = () => {
+    const activeBilling = document.querySelector<HTMLButtonElement>("[data-billing].is-active");
+    return activeBilling?.dataset.billing === "annual" ? "annual" : "monthly";
+  };
 
   document.querySelectorAll<HTMLAnchorElement>("[data-plan]").forEach((link) => {
     link.addEventListener("click", () => {
       const plan = link.dataset.plan || "";
-      if (selectedPlan) selectedPlan.value = plan;
+      selectedPlan = plan || null;
+      selectedBillingPeriod = selectedPlan ? getActiveBillingPeriod() : null;
       if (formHeading) formHeading.textContent = plan === "500+ минути" ? "Нека обсъдим обема ви" : `План ${plan}`;
     });
   });
 
   document.addEventListener("vdiga:billing-change", ((event: CustomEvent<{ period: string }>) => {
-    if (billingPeriod) billingPeriod.value = event.detail.period;
+    if (!selectedPlan) return;
+    selectedBillingPeriod = event.detail.period === "annual" ? "annual" : "monthly";
   }) as EventListener);
 
-  form?.addEventListener("submit", (event) => {
+  form?.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     if (!form.checkValidity()) {
       form.reportValidity();
-      if (status) status.textContent = "Проверете задължителните полета.";
+      setStatus("Проверете задължителните полета.", "error");
       return;
     }
 
-    if (status) {
-      status.textContent = "Формата е готова за свързване с бекенда. Данните не са изпратени в този локален тест.";
-      status.classList.add("is-success");
+    if (!supabase) {
+      setStatus("Връзката към базата още не е конфигурирана.", "error");
+      return;
     }
+
+    const formData = new FormData(form);
+    const primaryNeed = cleanText(formData.get("primary_need"));
+    const callbackConsent = formData.get("callback_consent") === "yes";
+    const phone = cleanText(formData.get("phone"));
+    const phoneDigits = phone.replace(/\D/g, "");
+
+    if (!primaryNeeds.has(primaryNeed)) {
+      setStatus("Изберете за какво най-често звънят клиентите.", "error");
+      return;
+    }
+
+    if (!callbackConsent) {
+      setStatus("Потвърдете, че можем да се свържем с вас.", "error");
+      return;
+    }
+
+    if (phoneDigits.length < 8) {
+      setStatus("Въведете валиден телефон, за да можем да се свържем с вас.", "error");
+      return;
+    }
+
+    const currentCallProblem = cleanText(formData.get("current_call_problem"));
+    const payload = {
+      contact_name: cleanText(formData.get("contact_name")),
+      business_name: cleanText(formData.get("business_name")),
+      phone,
+      email: cleanText(formData.get("email")),
+      primary_need: primaryNeed,
+      primary_need_label: primaryNeedLabels[primaryNeed],
+      current_call_problem: currentCallProblem || null,
+      callback_consent: callbackConsent,
+      selected_plan: selectedPlan,
+      billing_period: selectedPlan ? selectedBillingPeriod : null,
+      source_path: window.location.pathname,
+      user_agent: navigator.userAgent,
+      metadata: {
+        referrer: document.referrer || null,
+      },
+    };
+
+    setStatus("Изпращаме заявката...");
+    if (submitButton) submitButton.disabled = true;
+
+    const { error } = await supabase.from("onboarding_requests").insert(payload);
+
+    if (error) {
+      setStatus("Не успяхме да изпратим заявката. Опитайте пак или ни се обадете директно.", "error");
+      if (submitButton) submitButton.disabled = false;
+      return;
+    }
+
+    form.reset();
+    selectedPlan = null;
+    selectedBillingPeriod = null;
+    if (formHeading) formHeading.textContent = "Нека ви се обадим";
+    setStatus("Получихме заявката. Ще се свържем с вас.", "success");
+    if (submitButton) submitButton.disabled = false;
   });
 </script>

@@ -1666,6 +1666,10 @@ tr:last-child td {
   color: var(--answer-deep);
 }
 
+.form-status.is-error {
+  color: #9f2a2a;
+}
+
 .faq {
   display: grid;
   border-top: 1px solid var(--line);
