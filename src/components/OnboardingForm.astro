@@ -5,15 +5,15 @@ import { site } from "../data/site";
 <section class="onboarding-panel" id="zayavka" aria-labelledby="onboarding-title">
   <div class="onboarding-inner">
   <div class="onboarding-copy">
-    <p class="eyebrow">заявете разговор</p>
-    <h2 id="onboarding-title">Не изпускайте следващия клиент.</h2>
+    <p class="eyebrow">разговор с екипа ни</p>
+    <h2 id="onboarding-title">Вижте как Vdiga ще работи за вашия бизнес.</h2>
     <p class="onboarding-lead">
-      Оставете ни телефон. Ще ви се обадим, за да разберем какво губите с пропуснатите обаждания и как Vdiga може да ги поеме.
+      Оставете ни телефон. Ще обсъдим кога изпускате обаждания, какво трябва да поема Vdiga и колко ще струва за вашия бизнес.
     </p>
     <ul class="onboarding-points" aria-label="Какво следва">
-      <li>Говорите с човек от екипа ни</li>
-      <li>Получавате цена за вашия бизнес</li>
-      <li>Решавате след разговора</li>
+      <li>Разглеждаме как приемате обажданията сега</li>
+      <li>Показваме как Vdiga ще работи при вас</li>
+      <li>Получавате конкретна цена</li>
     </ul>
     {site.salesPhone && (
       <div class="direct-call">
@@ -31,7 +31,7 @@ import { site } from "../data/site";
 
   <form class="onboarding-form" data-onboarding-form novalidate>
     <div class="form-heading">
-      <span>Нека ви се обадим</span>
+      <span>Заявете разговор</span>
       <small>Отнема около минута</small>
     </div>
 
@@ -74,7 +74,7 @@ import { site } from "../data/site";
       <span>Съгласен съм Vdiga да се свърже с мен по тази заявка.</span>
     </label>
 
-    <button class="btn btn-primary form-submit" type="submit">Искам да ми се обадите</button>
+    <button class="btn btn-primary form-submit" type="submit">Заявете разговор</button>
     <p class="form-note">Няма плащане или абонамент. Първо разговаряме.</p>
     <p class="form-status" data-form-status aria-live="polite"></p>
   </form>
@@ -225,7 +225,7 @@ import { site } from "../data/site";
     form.reset();
     selectedPlan = null;
     selectedBillingPeriod = null;
-    if (formHeading) formHeading.textContent = "Нека ви се обадим";
+    if (formHeading) formHeading.textContent = "Заявете разговор";
     setStatus("Получихме заявката. Ще се свържем с вас.", "success");
     if (submitButton) submitButton.disabled = false;
   });
