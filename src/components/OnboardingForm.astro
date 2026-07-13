@@ -36,10 +36,6 @@ import { site } from "../data/site";
     </div>
 
     <div class="form-grid">
-      <label class="honeypot-field" aria-hidden="true">
-        <span>Website</span>
-        <input type="text" name="company_website" tabindex="-1" autocomplete="off" />
-      </label>
       <label>
         <span>Вашето име</span>
         <input type="text" name="contact_name" autocomplete="name" placeholder="Име и фамилия" required />
@@ -111,6 +107,10 @@ import { site } from "../data/site";
   };
 
   const cleanText = (value: FormDataEntryValue | null) => String(value || "").trim();
+  const isValidBulgarianPhone = (value: string) => {
+    const digits = value.replace(/\D/g, "");
+    return /^0\d{9}$/.test(digits) || /^359\d{9}$/.test(digits);
+  };
   const getActiveBillingPeriod = () => {
     const activeBilling = document.querySelector<HTMLButtonElement>("[data-billing].is-active");
     return activeBilling?.dataset.billing === "annual" ? "annual" : "monthly";
@@ -145,17 +145,9 @@ import { site } from "../data/site";
     }
 
     const formData = new FormData(form);
-    const honeypot = cleanText(formData.get("company_website"));
     const primaryNeed = cleanText(formData.get("primary_need"));
     const callbackConsent = formData.get("callback_consent") === "yes";
     const phone = cleanText(formData.get("phone"));
-    const phoneDigits = phone.replace(/\D/g, "");
-
-    if (honeypot) {
-      form.reset();
-      setStatus("Получихме заявката. Ще се свържем с вас.", "success");
-      return;
-    }
 
     if (!primaryNeeds.has(primaryNeed)) {
       setStatus("Изберете за какво най-често звънят клиентите.", "error");
@@ -167,8 +159,8 @@ import { site } from "../data/site";
       return;
     }
 
-    if (phoneDigits.length < 8) {
-      setStatus("Въведете валиден телефон, за да можем да се свържем с вас.", "error");
+    if (!isValidBulgarianPhone(phone)) {
+      setStatus("Въведете валиден български телефон, например 089 123 4567 или +359 89 123 4567.", "error");
       return;
     }
 
