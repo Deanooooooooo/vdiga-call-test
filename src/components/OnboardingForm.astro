@@ -111,6 +111,14 @@ import { site } from "../data/site";
     const digits = value.replace(/\D/g, "");
     return /^0\d{9}$/.test(digits) || /^359\d{9}$/.test(digits);
   };
+  const isPlainAsciiEmail = (value: string) => {
+    const domain = value.split("@").pop() || "";
+    const hasPunycodeDomainLabel = domain
+      .toLowerCase()
+      .split(".")
+      .some((label) => label.startsWith("xn--"));
+    return /^[\x00-\x7F]+$/.test(value) && !hasPunycodeDomainLabel;
+  };
   const getActiveBillingPeriod = () => {
     const activeBilling = document.querySelector<HTMLButtonElement>("[data-billing].is-active");
     return activeBilling?.dataset.billing === "annual" ? "annual" : "monthly";
@@ -148,6 +156,7 @@ import { site } from "../data/site";
     const primaryNeed = cleanText(formData.get("primary_need"));
     const callbackConsent = formData.get("callback_consent") === "yes";
     const phone = cleanText(formData.get("phone"));
+    const email = cleanText(formData.get("email"));
 
     if (!primaryNeeds.has(primaryNeed)) {
       setStatus("Изберете за какво най-често звънят клиентите.", "error");
@@ -164,12 +173,17 @@ import { site } from "../data/site";
       return;
     }
 
+    if (!isPlainAsciiEmail(email)) {
+      setStatus("Моля, използвайте само латински букви в имейла.", "error");
+      return;
+    }
+
     const currentCallProblem = cleanText(formData.get("current_call_problem"));
     const payload = {
       contact_name: cleanText(formData.get("contact_name")),
       business_name: cleanText(formData.get("business_name")),
       phone,
-      email: cleanText(formData.get("email")),
+      email,
       primary_need: primaryNeed,
       primary_need_label: primaryNeedLabels[primaryNeed],
       current_call_problem: currentCallProblem || null,
