@@ -10,12 +10,13 @@ interface Props {
   title: string;
   description: string;
   path: string;
+  pageClass?: string;
   schemas?: Record<string, unknown>[];
   image?: string;
   imageAlt?: string;
 }
 
-const { title, description, path, schemas = [], image, imageAlt } = Astro.props;
+const { title, description, path, pageClass, schemas = [], image, imageAlt } = Astro.props;
 const basePath = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const canonical = `${site.url}${path}`;
 const socialImage = image ? `${site.url}${image}` : undefined;
@@ -54,7 +55,7 @@ const allSchemas = [
   <body>
     <div class="page-shell">
       <Header />
-      <main>
+      <main class={pageClass}>
         <slot />
       </main>
       <StickyCallBar />
