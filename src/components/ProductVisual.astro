@@ -11,19 +11,19 @@ const heights = [32, 48, 24, 58, 40, 68, 34, 52, 28, 62, 42, 54, 30, 46, 64, 36,
     <div class="call-screen">
       <p style="margin-bottom: 6px; color: rgba(255,255,255,.58);">18:40 ч. след работно време</p>
       <h3 style="color: #fff; margin-bottom: 8px;">„Имате ли свободен час утре?“</h3>
-      <p>Vdiga проверява календара и записва пациента без да ви прекъсва.</p>
+      <p>Vdiga проверява календара и записва пациента, без да ви прекъсва.</p>
       <div class="wave" aria-hidden="true">
         {heights.map((height) => <span style={`--h:${height}px`}></span>)}
       </div>
       <div class="call-actions">
         <span>час записан</span>
-        <span>SMS пратен</span>
+        <span>SMS изпратен</span>
       </div>
     </div>
   </div>
   <div class="ops-panel">
     <div class="panel-top">
-      <strong>Обобщение към собственика</strong>
+      <strong>Обобщение за вас</strong>
       <span class="status">готово</span>
     </div>
     <div class="timeline">
@@ -36,10 +36,9 @@ const heights = [32, 48, 24, 58, 40, 68, 34, 52, 28, 62, 42, 54, 30, 46, 64, 36,
         <span>Записан час за утре в 11:30 ч. Потвърдено по SMS.</span>
       </div>
       <div class="timeline-row">
-        <strong>Ескалация</strong>
-        <span>Не е нужна. Обаждането е приключено нормално.</span>
+        <strong>Нужно действие</strong>
+        <span>Не се налага. Часът е записан.</span>
       </div>
     </div>
   </div>
 </div>
-
