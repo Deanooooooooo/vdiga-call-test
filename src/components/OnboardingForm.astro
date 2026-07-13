@@ -50,7 +50,7 @@ import { site } from "../data/site";
       </label>
       <label>
         <span>Имейл</span>
-        <input type="email" name="email" autocomplete="email" inputmode="email" placeholder="name@business.bg" required />
+        <input type="text" name="email" autocomplete="email" inputmode="email" placeholder="name@business.bg" required />
       </label>
       <label class="form-field-wide">
         <span>За какво ви звънят клиентите?</span>
@@ -119,6 +119,7 @@ import { site } from "../data/site";
       .some((label) => label.startsWith("xn--"));
     return /^[\x00-\x7F]+$/.test(value) && !hasPunycodeDomainLabel;
   };
+  const isValidEmailAddress = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
   const getActiveBillingPeriod = () => {
     const activeBilling = document.querySelector<HTMLButtonElement>("[data-billing].is-active");
     return activeBilling?.dataset.billing === "annual" ? "annual" : "monthly";
@@ -146,6 +147,11 @@ import { site } from "../data/site";
 
     if (!isPlainAsciiEmail(email)) {
       setStatus("Моля, използвайте само латински букви в имейла.", "error");
+      return;
+    }
+
+    if (!isValidEmailAddress(email)) {
+      setStatus("Въведете валиден имейл адрес.", "error");
       return;
     }
 
