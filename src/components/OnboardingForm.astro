@@ -141,6 +141,14 @@ import { site } from "../data/site";
   form?.addEventListener("submit", async (event) => {
     event.preventDefault();
 
+    const formData = new FormData(form);
+    const email = cleanText(formData.get("email"));
+
+    if (!isPlainAsciiEmail(email)) {
+      setStatus("Моля, използвайте само латински букви в имейла.", "error");
+      return;
+    }
+
     if (!form.checkValidity()) {
       form.reportValidity();
       setStatus("Проверете задължителните полета.", "error");
@@ -152,11 +160,9 @@ import { site } from "../data/site";
       return;
     }
 
-    const formData = new FormData(form);
     const primaryNeed = cleanText(formData.get("primary_need"));
     const callbackConsent = formData.get("callback_consent") === "yes";
     const phone = cleanText(formData.get("phone"));
-    const email = cleanText(formData.get("email"));
 
     if (!primaryNeeds.has(primaryNeed)) {
       setStatus("Изберете за какво най-често звънят клиентите.", "error");
@@ -170,11 +176,6 @@ import { site } from "../data/site";
 
     if (!isValidBulgarianPhone(phone)) {
       setStatus("Въведете валиден български телефон, например 089 123 4567 или +359 89 123 4567.", "error");
-      return;
-    }
-
-    if (!isPlainAsciiEmail(email)) {
-      setStatus("Моля, използвайте само латински букви в имейла.", "error");
       return;
     }
 
