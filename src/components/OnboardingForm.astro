@@ -36,6 +36,10 @@ import { site } from "../data/site";
     </div>
 
     <div class="form-grid">
+      <label class="honeypot-field" aria-hidden="true">
+        <span>Website</span>
+        <input type="text" name="company_website" tabindex="-1" autocomplete="off" />
+      </label>
       <label>
         <span>Вашето име</span>
         <input type="text" name="contact_name" autocomplete="name" placeholder="Име и фамилия" required />
@@ -141,10 +145,17 @@ import { site } from "../data/site";
     }
 
     const formData = new FormData(form);
+    const honeypot = cleanText(formData.get("company_website"));
     const primaryNeed = cleanText(formData.get("primary_need"));
     const callbackConsent = formData.get("callback_consent") === "yes";
     const phone = cleanText(formData.get("phone"));
     const phoneDigits = phone.replace(/\D/g, "");
+
+    if (honeypot) {
+      form.reset();
+      setStatus("Получихме заявката. Ще се свържем с вас.", "success");
+      return;
+    }
 
     if (!primaryNeeds.has(primaryNeed)) {
       setStatus("Изберете за какво най-често звънят клиентите.", "error");

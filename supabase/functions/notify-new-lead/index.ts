@@ -99,11 +99,14 @@ Deno.serve(async (request) => {
   }
 
   const expectedSecret = Deno.env.get("LEAD_WEBHOOK_SECRET");
-  if (expectedSecret) {
-    const providedSecret = request.headers.get("x-lead-webhook-secret");
-    if (providedSecret !== expectedSecret) {
-      return jsonResponse({ error: "Unauthorized" }, 401);
-    }
+  if (!expectedSecret) {
+    console.error("Missing LEAD_WEBHOOK_SECRET");
+    return jsonResponse({ error: "Notification webhook is not configured" }, 500);
+  }
+
+  const providedSecret = request.headers.get("x-lead-webhook-secret");
+  if (providedSecret !== expectedSecret) {
+    return jsonResponse({ error: "Unauthorized" }, 401);
   }
 
   let payload: DatabaseWebhookPayload;
