@@ -65,6 +65,27 @@ export function productSchema() {
   };
 }
 
+export function serviceSchema(name: string, path: string, description: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name,
+    serviceType: "AI рецепционист и телефонен асистент",
+    description,
+    url: `${site.url}${path}`,
+    areaServed: {
+      "@type": "Country",
+      name: "България",
+    },
+    provider: {
+      "@type": "Organization",
+      name: site.brand,
+      legalName: site.legalName,
+      url: site.url,
+    },
+  };
+}
+
 export function articleSchema(title: string, path: string, description: string) {
   return {
     "@context": "https://schema.org",
@@ -81,4 +102,3 @@ export function articleSchema(title: string, path: string, description: string) 
     mainEntityOfPage: `${site.url}${path}`,
   };
 }
-

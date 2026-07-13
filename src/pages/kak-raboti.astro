@@ -4,7 +4,10 @@ import ProductVisual from "../components/ProductVisual.astro";
 import OnboardingForm from "../components/OnboardingForm.astro";
 import FAQ from "../components/FAQ.astro";
 import CTA from "../components/CTA.astro";
-import { articleSchema, faqSchema } from "../data/schema";
+import { faqSchema, serviceSchema } from "../data/schema";
+
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
+const href = (path: string) => `${basePath}${path}`;
 
 const faqs = [
   {
@@ -32,24 +35,31 @@ const faqs = [
     answer:
       "Получавате най-важното: кой се е обадил, какво иска, какво е уговорено и дали е нужно действие от вашия екип.",
   },
+  {
+    question: "Какво означава „AI receptionist“?",
+    answer:
+      "„AI receptionist“ е английският термин за AI рецепционист. Това е телефонен асистент, който отговаря на входящи обаждания, следва одобрени правила, записва часове и пренасочва сложните случаи към човек.",
+  },
 ];
 ---
 
 <BaseLayout
-  title="Как работи AI рецепционистът Vdiga"
-  description="Вижте как Vdiga приема обаждане, разбира какво иска клиентът, записва час и изпраща ясно обобщение към вашия екип."
+  title="Как работи AI рецепционист на български | Vdiga"
+  description="Как работи AI рецепционистът Vdiga: приема обаждания на български, записва часове в календар и изпраща ясно обобщение."
   path="/kak-raboti"
-  schemas={[faqSchema(faqs), articleSchema("Как работи AI рецепционистът Vdiga", "/kak-raboti", "От входящото обаждане до записания час и ясното обобщение към бизнеса.")]}
+  image="/assets/vdiga-og-kak-raboti.png"
+  imageAlt="Как работи AI рецепционистът Vdiga в четири стъпки"
+  schemas={[faqSchema(faqs), serviceSchema("Как работи AI рецепционистът Vdiga", "/kak-raboti", "Vdiga приема входящи обаждания на български, записва часове в свързан календар и изпраща структурирано обобщение.")]}
 >
   <section class="hero how-hero">
     <div class="container">
       <p class="eyebrow">от обаждане до свършена работа</p>
-      <h1>Vdiga не просто вдига. Довежда разговора до резултат.</h1>
+      <h1>Как работи AI рецепционистът на Vdiga?</h1>
       <p class="answer-block">
-        Клиентът звъни. Vdiga отговаря на български, разбира какво му трябва, записва уговореното и ви изпраща най-важното. Без клиентът да чака. Без да прекъсва вас.
+        Към юли 2026 г. Vdiga е AI (изкуствен интелект) рецепционист, който обработва входящото обаждане в четири стъпки: отговаря на естествен български, разбира причината, предприема одобреното действие и изпраща ясно обобщение. Vdiga може да записва часове в свързан календар и да пренасочва сложните случаи към човек.
       </p>
       <p class="lead">
-        Вие определяте какво може да прави, какво да пита и кога разговорът трябва да стигне до човек.
+        Vdiga не просто вдига. Довежда разговора до резултат. Вие определяте какво може да прави, какво да пита и кога разговорът трябва да стигне до човек.
       </p>
       <div class="button-row hero-actions">
         <button class="btn btn-primary" type="button" data-play-demo aria-pressed="false">Чуйте как звучи</button>
@@ -63,7 +73,7 @@ const faqs = [
       <div class="how-section-head">
         <div>
           <p class="eyebrow">един разговор, четири ясни стъпки</p>
-          <h2>Какво се случва, когато клиент ви потърси?</h2>
+          <h2>Как работи AI рецепционистът при входящо обаждане?</h2>
         </div>
         <p>За клиента това е нормален телефонен разговор. Зад него Vdiga следва процеса, който сте одобрили.</p>
       </div>
@@ -137,6 +147,54 @@ const faqs = [
     <div class="container">
       <div class="how-section-head">
         <div>
+          <p class="eyebrow">номер, календар и правила</p>
+          <h2>Как се настройва AI рецепционистът с вашия календар?</h2>
+        </div>
+        <p>Вие одобрявате информацията и границите. Vdiga използва само тях при входящите обаждания.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Какво свързваме</th>
+              <th>Какво определяте вие</th>
+              <th>Какво прави Vdiga</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Какво свързваме">Телефонна линия</td>
+              <td data-label="Какво определяте вие">Кои обаждания и кога да поема</td>
+              <td data-label="Какво прави Vdiga">Отговаря според работното време и правилата ви</td>
+            </tr>
+            <tr>
+              <td data-label="Какво свързваме">Календар</td>
+              <td data-label="Какво определяте вие">Услуги, продължителност и свободни часове</td>
+              <td data-label="Какво прави Vdiga">Проверява наличност и записва уговорения час</td>
+            </tr>
+            <tr>
+              <td data-label="Какво свързваме">Информация за бизнеса</td>
+              <td data-label="Какво определяте вие">Услуги, адрес, цени и чести въпроси</td>
+              <td data-label="Какво прави Vdiga">Отговаря само с одобрената информация</td>
+            </tr>
+            <tr>
+              <td data-label="Какво свързваме">Правила за пренасочване</td>
+              <td data-label="Какво определяте вие">Кои случаи са сложни, спешни или приоритетни</td>
+              <td data-label="Какво прави Vdiga">Пренасочва към човек или взема съобщение</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lead" style="margin-top: 26px;">
+        Чуйте <a href={href("/demo")}>AI рецепционист демо на български</a>, проверете <a href={href("/tseni")}>цената на AI рецепционист</a> или вижте <a href={href("/za-nas")}>кой стои зад Vdiga</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="container">
+      <div class="how-section-head">
+        <div>
           <p class="eyebrow">ясни граници</p>
           <h2>Автоматизира рутинното. Оставя важните решения на вас.</h2>
         </div>
@@ -165,7 +223,7 @@ const faqs = [
     </div>
   </section>
 
-  <section class="section band">
+  <section class="section">
     <div class="container grid-2">
       <div>
         <p class="eyebrow">преди да започнете</p>

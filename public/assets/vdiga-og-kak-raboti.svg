@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0b1210"/>
+  <circle cx="1105" cy="78" r="180" fill="#16a05a" opacity="0.12"/>
+  <circle cx="1130" cy="565" r="260" fill="#16a05a" opacity="0.08"/>
+  <image href="vdiga-logo-nav-green-v.png" x="72" y="52" width="210" height="81"/>
+  <rect x="72" y="164" width="332" height="42" rx="21" fill="#16372c"/>
+  <text x="94" y="192" fill="#8fe0b8" font-family="Arial, sans-serif" font-size="21" font-weight="700">AI РЕЦЕПЦИОНИСТ НА БЪЛГАРСКИ</text>
+  <text x="72" y="284" fill="#fafaf7" font-family="Arial, sans-serif" font-size="64" font-weight="800">Как работи Vdiga?</text>
+  <text x="72" y="346" fill="#c8d0cc" font-family="Arial, sans-serif" font-size="31">От обаждането до записания час</text>
+  <g transform="translate(72 420)" font-family="Arial, sans-serif">
+    <rect width="1056" height="118" rx="24" fill="#f5f6f2"/>
+    <text x="34" y="48" fill="#127a49" font-size="25" font-weight="800">01</text>
+    <text x="34" y="82" fill="#0b1210" font-size="20" font-weight="700">Отговаря</text>
+    <text x="289" y="48" fill="#127a49" font-size="25" font-weight="800">02</text>
+    <text x="289" y="82" fill="#0b1210" font-size="20" font-weight="700">Разбира</text>
+    <text x="544" y="48" fill="#127a49" font-size="25" font-weight="800">03</text>
+    <text x="544" y="82" fill="#0b1210" font-size="20" font-weight="700">Действа</text>
+    <text x="799" y="48" fill="#127a49" font-size="25" font-weight="800">04</text>
+    <text x="799" y="82" fill="#0b1210" font-size="20" font-weight="700">Обобщава</text>
+  </g>
+  <text x="72" y="594" fill="#72817a" font-family="Arial, sans-serif" font-size="20">vdiga.bg/kak-raboti</text>
+</svg>
