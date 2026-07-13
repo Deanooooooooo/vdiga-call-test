@@ -20,6 +20,7 @@
   --body: "Inter", system-ui, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --w: 1140px;
+  --eyebrow-size: 15px;
 }
 
 @font-face {
@@ -177,7 +178,7 @@ p {
   margin: 0 0 24px;
   color: var(--answer-deep);
   font-family: var(--disp);
-  font-size: 18px;
+  font-size: var(--eyebrow-size);
   font-weight: 800;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -410,7 +411,6 @@ p {
 .hero .eyebrow {
   margin-bottom: 20px;
   color: #74d98b;
-  font-size: 15px;
 }
 
 .hero h1 {
@@ -930,10 +930,6 @@ p {
 
 .use-case-section .eyebrow {
   color: rgba(246, 244, 238, 0.7);
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
 }
 
 .use-case-section .eyebrow::before {
@@ -2088,7 +2084,6 @@ tr:last-child td {
 
 .how-page .hero .eyebrow,
 .how-page > .section .eyebrow {
-  font-size: 0.78rem;
   line-height: 1.35;
 }
 
