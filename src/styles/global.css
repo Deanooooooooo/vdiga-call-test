@@ -2108,13 +2108,13 @@ tr:last-child td {
 
 .how-page > .section h2,
 .how-page > .section-tight h2 {
-  font-size: clamp(2.2rem, 2.85vw, 2.5rem);
-  line-height: 1.1;
+  font-size: clamp(2.7rem, 3.35vw, 3rem);
+  line-height: 1.08;
 }
 
 .how-page .how-section-head > p,
 .how-page .how-setup-copy > p:not(.eyebrow) {
-  font-size: 1.125rem;
+  font-size: 1.2rem;
   line-height: 1.58;
 }
 
@@ -2155,28 +2155,36 @@ tr:last-child td {
 }
 
 .how-page .product-visual .panel-top strong {
-  font-size: 1rem;
+  font-size: 1.075rem;
 }
 
 .how-page .product-visual .call-screen h3 {
-  font-size: clamp(1.6rem, 2vw, 1.8rem);
+  font-size: clamp(1.8rem, 2.2vw, 2rem);
 }
 
 .how-page .product-visual .call-screen p {
-  font-size: 1rem;
+  font-size: 1.075rem;
 }
 
 .how-page .product-visual .timeline-row strong {
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .how-page .product-visual .timeline-row span {
-  font-size: 0.95rem;
+  font-size: 1.075rem;
+}
+
+.how-page .product-visual .status {
+  font-size: 0.78rem;
+}
+
+.how-page .product-visual .call-actions span {
+  font-size: 0.82rem;
 }
 
 .how-page .onboarding-copy h2 {
-  font-size: clamp(2.2rem, 2.85vw, 2.5rem);
-  line-height: 1.1;
+  font-size: clamp(2.7rem, 3.35vw, 3rem);
+  line-height: 1.08;
 }
 
 .how-page .onboarding-lead {
@@ -2745,7 +2753,7 @@ tr:last-child td {
   .how-page > .section h2,
   .how-page > .section-tight h2,
   .how-page .onboarding-copy h2 {
-    font-size: 1.9rem;
+    font-size: 2rem;
     line-height: 1.1;
   }
 
