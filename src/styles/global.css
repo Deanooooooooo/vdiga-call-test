@@ -2094,14 +2094,14 @@ tr:last-child td {
 
 .how-page .answer-block {
   max-width: 60ch;
-  font-size: 1.16rem;
+  font-size: 1.25rem;
   line-height: 1.58;
   font-weight: 650;
 }
 
 .how-page .hero .lead {
   max-width: 58ch;
-  font-size: 1.06rem;
+  font-size: 1.125rem;
   line-height: 1.55;
   font-weight: 600;
 }
@@ -2120,37 +2120,37 @@ tr:last-child td {
 
 .how-page .how-flow h3,
 .how-page .how-setup-list h3 {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   line-height: 1.18;
 }
 
 .how-page .how-flow p,
 .how-page .how-setup-list p {
-  font-size: 0.98rem;
+  font-size: 1.075rem;
   line-height: 1.55;
 }
 
 .how-page .split-list li {
-  font-size: 1rem;
+  font-size: 1.125rem;
   line-height: 1.5;
 }
 
 .how-page table {
-  font-size: 0.96rem;
+  font-size: 1.05rem;
   line-height: 1.5;
 }
 
 .how-page th {
-  font-size: 0.88rem;
+  font-size: 0.95rem;
 }
 
 .how-page .faq-item summary {
-  font-size: 1.06rem;
+  font-size: 1.15rem;
   line-height: 1.4;
 }
 
 .how-page .faq-item p {
-  font-size: 0.98rem;
+  font-size: 1.075rem;
   line-height: 1.58;
 }
 
@@ -2188,7 +2188,38 @@ tr:last-child td {
 }
 
 .how-page .onboarding-lead {
+  font-size: 1.125rem;
+}
+
+.how-page .onboarding-points li {
+  font-size: 1.05rem;
+}
+
+.how-page .direct-call a {
   font-size: 1rem;
+}
+
+.how-page .direct-call p {
+  font-size: 0.95rem;
+}
+
+.how-page .form-grid label > span {
+  font-size: 0.92rem;
+}
+
+.how-page .form-grid input,
+.how-page .form-grid select,
+.how-page .form-grid textarea {
+  font-size: 1rem;
+}
+
+.how-page .consent-row {
+  font-size: 0.88rem;
+}
+
+.how-page .form-note,
+.how-page .form-status {
+  font-size: 0.82rem;
 }
 
 .how-page .cta-band h2 {
@@ -2196,7 +2227,7 @@ tr:last-child td {
 }
 
 .how-page .cta-band p {
-  font-size: 1rem;
+  font-size: 1.125rem;
   line-height: 1.55;
 }
 
@@ -2748,6 +2779,11 @@ tr:last-child td {
 
   .how-page .hero .lead {
     font-size: 1rem;
+  }
+
+  .how-page .how-section-head > p,
+  .how-page .how-setup-copy > p:not(.eyebrow) {
+    font-size: 1.05rem;
   }
 
   .how-page > .section h2,
