@@ -1470,6 +1470,170 @@ tr:last-child td {
   margin-top: 0;
 }
 
+.product-visual {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  min-height: 430px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 24px 70px rgba(11, 18, 16, 0.1);
+}
+
+.product-visual .phone-panel,
+.product-visual .ops-panel {
+  min-width: 0;
+}
+
+.product-visual .phone-panel {
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(circle at 82% 15%, rgba(61, 220, 106, 0.16), transparent 34%),
+    linear-gradient(145deg, #101a16, #0b1210 72%);
+  color: var(--txt-inv);
+}
+
+.product-visual .ops-panel {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+.product-visual .panel-top {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+  padding: 20px 26px;
+  border-bottom: 1px solid var(--line);
+}
+
+.product-visual .phone-panel .panel-top {
+  border-bottom-color: var(--line-dark);
+}
+
+.product-visual .panel-top strong {
+  color: inherit;
+  font-family: var(--disp);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.product-visual .ops-panel .panel-top strong {
+  color: var(--ink);
+}
+
+.product-visual .status {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(61, 220, 106, 0.14);
+  color: #72e39a;
+  font-size: 0.7rem;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.product-visual .ops-panel .status {
+  background: rgba(22, 160, 90, 0.1);
+  color: var(--answer-deep);
+}
+
+.product-visual .call-screen {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(32px, 4vw, 48px);
+}
+
+.product-visual .call-screen h3 {
+  max-width: 16ch;
+  color: var(--txt-inv);
+  font-size: clamp(1.7rem, 2.7vw, 2.35rem);
+  line-height: 1.08;
+}
+
+.product-visual .call-screen p {
+  margin-bottom: 0;
+  color: var(--txt-inv-mute);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.product-visual .wave {
+  display: flex;
+  height: 76px;
+  gap: 5px;
+  align-items: center;
+  margin: 28px 0;
+}
+
+.product-visual .wave span {
+  flex: 1 1 0;
+  max-width: 7px;
+  height: var(--h);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #72e39a, var(--answer));
+  opacity: 0.9;
+}
+
+.product-visual .call-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.product-visual .call-actions span {
+  padding: 8px 11px;
+  border: 1px solid rgba(114, 227, 154, 0.22);
+  border-radius: 999px;
+  background: rgba(114, 227, 154, 0.08);
+  color: #a5efbf;
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.product-visual .timeline {
+  display: grid;
+  flex: 1;
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.product-visual .timeline-row {
+  display: grid;
+  grid-template-columns: 126px minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+  padding: 28px 30px;
+  border-bottom: 1px solid var(--line);
+}
+
+.product-visual .timeline-row:last-child {
+  border-bottom: 0;
+}
+
+.product-visual .timeline-row strong {
+  color: var(--ink);
+  font-family: var(--disp);
+  font-size: 0.88rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.product-visual .timeline-row span {
+  color: var(--txt-mute);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
 .how-setup {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(460px, 1.1fr);
@@ -1949,6 +2113,14 @@ tr:last-child td {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .product-visual {
+    grid-template-columns: 1fr;
+  }
+
+  .product-visual .phone-panel {
+    min-height: 410px;
+  }
+
   .how-flow article:nth-child(3) {
     padding-left: 0;
     border-left: 0;
@@ -2109,6 +2281,35 @@ tr:last-child td {
 
   .how-section-head {
     margin-bottom: 36px;
+  }
+
+  .product-visual {
+    border-radius: 14px;
+    box-shadow: 0 16px 44px rgba(11, 18, 16, 0.08);
+  }
+
+  .product-visual .phone-panel {
+    min-height: 0;
+  }
+
+  .product-visual .panel-top {
+    min-height: 62px;
+    padding: 16px 18px;
+  }
+
+  .product-visual .call-screen {
+    padding: 30px 20px;
+  }
+
+  .product-visual .wave {
+    gap: 3px;
+    margin: 22px 0;
+  }
+
+  .product-visual .timeline-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 22px 20px;
   }
 
   .how-flow,
