@@ -34,8 +34,8 @@ const href = (path: string) => `${basePath}${path}`;
 <BaseLayout
   title="За нас — Vdiga by Blast Off EOOD"
   description="Кой стои зад Vdiga: AI рецепционист на български, разработван под Blast Off EOOD, София."
-  path="/za-nas"
-  schemas={[faqSchema(faqs), articleSchema("За нас — Vdiga", "/za-nas", "Кой стои зад Vdiga и защо продуктът стартира под Blast Off EOOD.")]}
+  path="/za-nas/"
+  schemas={[faqSchema(faqs), articleSchema("За нас — Vdiga", "/za-nas/", "Кой стои зад Vdiga и защо продуктът стартира под Blast Off EOOD.")]}
 >
   <section class="hero">
     <div class="container">
@@ -49,7 +49,7 @@ const href = (path: string) => `${basePath}${path}`;
       </p>
       <div class="button-row hero-actions">
         <button class="btn btn-primary" type="button" data-play-demo aria-pressed="false">Чуйте разговор</button>
-        <a class="btn btn-secondary" href={href("/kak-raboti")}>Как работи</a>
+        <a class="btn btn-secondary" href={href("/kak-raboti/")}>Как работи</a>
       </div>
     </div>
   </section>

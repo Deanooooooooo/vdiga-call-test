@@ -35,7 +35,7 @@ const href = (path: string) => `${basePath}${path}`;
         ) : site.demoPhone ? (
           <a class="btn btn-primary" href={`tel:${site.demoPhone}`}>Обадете се сега</a>
         ) : (
-          <a class="btn btn-primary" href={href("/demo")}>{site.demoPhoneLabel}</a>
+          <a class="btn btn-primary" href={href("/demo/")}>{site.demoPhoneLabel}</a>
         )
       }
     </div>

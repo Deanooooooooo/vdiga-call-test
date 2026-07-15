@@ -34,8 +34,8 @@ const href = (path: string) => `${basePath}${path}`;
 <BaseLayout
   title="AI рецепционист демо — чуйте разговор | Vdiga"
   description="Чуйте AI рецепционист демо на български. Вижте как трябва да започва разговорът и кога човек поема сложния случай."
-  path="/demo"
-  schemas={[faqSchema(faqs), articleSchema("AI рецепционист демо — Vdiga", "/demo", "Как се тества AI рецепционист на български преди публичен старт.")]}
+  path="/demo/"
+  schemas={[faqSchema(faqs), articleSchema("AI рецепционист демо — Vdiga", "/demo/", "Как се тества AI рецепционист на български преди публичен старт.")]}
 >
   <section class="hero">
     <div class="container grid-2">
@@ -46,11 +46,11 @@ const href = (path: string) => `${basePath}${path}`;
           Демото на Vdiga показва примерен AI (изкуствен интелект) рецепционист. Чувате начало на разговор, уточняващи въпроси, записване на час и пренасочване към човек при сложен случай.
         </p>
         <p class="lead">
-          Първо слушате разговора. После виждате <a href={href("/kak-raboti")}>как работи AI рецепционистът</a>, как се настройва и какво получавате след обаждането.
+          Първо слушате разговора. После виждате <a href={href("/kak-raboti/")}>как работи AI рецепционистът</a>, как се настройва и какво получавате след обаждането.
         </p>
         <div class="button-row hero-actions">
           <a class="btn btn-primary" href="#test">Проверете критериите</a>
-          <a class="btn btn-secondary" href={href("/tseni")}>Вижте планове</a>
+          <a class="btn btn-secondary" href={href("/tseni/")}>Вижте планове</a>
         </div>
       </div>
       <CallCard />
