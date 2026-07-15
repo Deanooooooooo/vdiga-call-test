@@ -2218,19 +2218,14 @@ tr:last-child td {
   text-align: center;
 }
 
-.ai-agent-mark {
-  display: grid;
+.ai-agent-portrait {
+  display: block;
   width: 106px;
   aspect-ratio: 1;
-  place-items: center;
   border: 1px solid rgba(28, 216, 151, 0.42);
   border-radius: 50%;
-  background: linear-gradient(145deg, rgba(28, 216, 151, 0.22), rgba(28, 216, 151, 0.04));
-  box-shadow: inset 0 0 28px rgba(28, 216, 151, 0.1);
-  color: var(--answer);
-  font-family: var(--mono);
-  font-size: 2.4rem;
-  font-weight: 800;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.24);
+  object-fit: cover;
 }
 
 .ai-agent-identity span {
@@ -2901,7 +2896,7 @@ tr:last-child td {
     text-align: left;
   }
 
-  .ai-agent-mark {
+  .ai-agent-portrait {
     width: 92px;
   }
 
