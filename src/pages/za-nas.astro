@@ -3,28 +3,28 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import FAQ from "../components/FAQ.astro";
 import CTA from "../components/CTA.astro";
 import { site } from "../data/site";
-import { faqSchema } from "../data/schema";
+import { breadcrumbSchema, faqSchema, founderSchema } from "../data/schema";
 
 const faqs = [
   {
+    question: "Кой стои зад Vdiga?",
+    answer:
+      "Vdiga се развива от малък екип, ръководен от основателя Деан Дечев. Екипът работи по продукта, настройката на AI асистентите, интеграциите и поддръжката след старта.",
+  },
+  {
     question: "Vdiga отделна фирма ли е?",
     answer:
-      "Не. На този етап Vdiga е продукт под Blast Off EOOD. Отделно дружество има смисъл след платени пилоти и реален приход.",
+      "На този етап Vdiga е продукт на Blast Off EOOD — юридическият оператор, който поема договорите, фактурирането и отговорността към клиентите.",
   },
   {
-    question: "Защо не е създадена нова фирма още сега?",
+    question: "Как се внедрява Vdiga в един бизнес?",
     answer:
-      "Новата фирма има смисъл след доказано търсене. Дотогава Blast Off EOOD дава правен оператор, фактуриране и публична отговорност.",
+      "Започваме с разговор за реалните обаждания и процеси. След това настройваме асистента, свързваме нужните системи, тестваме разговорите и подобряваме поведението му преди и след старта.",
   },
   {
-    question: "Кой преглежда съдържанието?",
+    question: "Кой преглежда съдържанието на сайта?",
     answer:
-      "Публичните страници минават човешка редакция преди публикуване. Числата се показват само с източник или собствено проучване.",
-  },
-  {
-    question: "Какво е Vdiga на английски?",
-    answer:
-      "Vdiga попада в категориите AI receptionist, AI answering service и voice AI assistant.",
+      "Всяка страница минава човешка редакция преди публикуване. Не използваме измислени статистики и отделяме ясно проверените факти от примерите и прогнозите.",
   },
 ];
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -32,87 +32,105 @@ const href = (path: string) => `${basePath}${path}`;
 ---
 
 <BaseLayout
-  title="За нас — Vdiga by Blast Off EOOD"
-  description="Кой стои зад Vdiga: AI рецепционист на български, разработван под Blast Off EOOD, София."
+  title="За Vdiga и екипа зад AI рецепциониста"
+  description="Запознайте се с Vdiga, основателя Деан Дечев и екипа, който разработва и внедрява AI телефонни асистенти за българския бизнес."
   path="/za-nas/"
-  schemas={[faqSchema(faqs)]}
+  schemas={[
+    founderSchema(),
+    breadcrumbSchema([
+      { name: "Начало", href: "/" },
+      { name: "За нас", href: "/za-nas/" },
+    ]),
+    faqSchema(faqs),
+  ]}
 >
-  <section class="hero">
+  <section class="hero about-hero">
     <div class="container">
-      <p class="eyebrow">за нас</p>
-      <h1>Vdiga е AI рецепционист от Blast Off EOOD.</h1>
+      <p class="eyebrow">за Vdiga</p>
+      <h1>AI, който върши реална работа за бизнеса.</h1>
       <p class="answer-block">
-        Vdiga е AI (изкуствен интелект) рецепционист, разработван под Blast Off EOOD, София. Продуктът стартира под съществуваща фирма, за да има реален оператор, фактуриране и поета отговорност.
+        Vdiga създава AI телефонни асистенти, които отговарят на обаждания, разбират какво иска клиентът и изпълняват следващата стъпка — без бизнесът да променя начина си на работа.
       </p>
       <p class="lead">
-        Целта е проста: телефонен асистент, който вие можете да чуете, проверите и после да включите към бизнеса си.
+        Не предлагаме просто глас зад телефона. Настройваме цял работещ процес: разговор, информация, действие, интеграция и проследяване.
       </p>
       <div class="button-row hero-actions">
         <button class="btn btn-primary" type="button" data-play-demo aria-pressed="false">Чуйте разговор</button>
-        <a class="btn btn-secondary" href={href("/kak-raboti/")}>Как работи</a>
+        <a class="btn btn-secondary" href={href("/kak-raboti/")}>Как работи Vdiga</a>
       </div>
     </div>
   </section>
 
   <section class="section band">
-    <div class="container grid-2">
+    <div class="container about-intro">
       <div>
-        <p class="eyebrow">правен оператор</p>
-        <h2>Защо Vdiga стартира под съществуваща фирма?</h2>
-        <p>
-          Клиентите търсят реална отговорност. Затова Vdiga започва под Blast Off EOOD за фактури, условия, поверителност и публична проверимост.
-        </p>
-        <p>
-          Ако продуктът докаже търсене, може да се създаде отделно дружество. Операциите се прехвърлят само когато има смисъл.
-        </p>
+        <p class="eyebrow">нашият подход</p>
+        <h2>Започваме от разговора, не от технологията.</h2>
       </div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Елемент</th>
-              <th>Първа версия</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Марка</td>
-              <td>Vdiga</td>
-            </tr>
-            <tr>
-              <td>Юридически оператор</td>
-              <td>{site.legalName}</td>
-            </tr>
-            <tr>
-              <td>Локация</td>
-              <td>{site.location}</td>
-            </tr>
-            <tr>
-              <td>Бъдещо OOD</td>
-              <td>след платени пилоти или доказан приход</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="about-principles">
+        <article>
+          <span>01</span>
+          <h3>Разбираме процеса</h3>
+          <p>Първо изясняваме кой се обажда, какво пита и какво трябва да се случи след разговора.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Настройваме и тестваме</h3>
+          <p>Изграждаме поведението на асистента с реални сценарии, изключения и ясни правила за прехвърляне към човек.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Подобряваме след старта</h3>
+          <p>Следим как протичат разговорите и коригираме асистента според истинските въпроси на клиентите.</p>
+        </article>
       </div>
     </div>
   </section>
 
   <section class="section">
-    <div class="container grid-2">
+    <div class="container founder-section">
+      <div class="founder-mark" aria-hidden="true">ДД</div>
+      <div class="founder-copy">
+        <p class="eyebrow">основател</p>
+        <h2>{site.author.name}</h2>
+        <p class="founder-role">{site.author.role}</p>
+        <p>{site.author.bio}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="container grid-2 about-team">
       <div>
-        <p class="eyebrow">автор и отговорност</p>
-        <h2>Кой пише и поддържа страниците?</h2>
+        <p class="eyebrow">екипът зад Vdiga</p>
+        <h2>Малък екип с пряка отговорност.</h2>
+      </div>
+      <div>
+        <p class="lead">
+          Vdiga се развива от малък екип с опит в дигиталните продукти, автоматизацията и практическото внедряване на AI.
+        </p>
         <p>
-          Съдържанието на Vdiga следва строги правила: кратки изречения, без пълнеж, без измислени статистики и без преводно звучене.
+          Работим директно с бизнеса — от първия разговор и настройката на асистента до интеграцията, наблюдението и подобряването му след старта. Така клиентът знае кой отговаря за решението и към кого да се обърне.
         </p>
       </div>
-      <div class="author-box">
-        <div class="avatar">D</div>
-        <div>
-          <strong>{site.author.name}</strong>
-          <p style="margin: 4px 0 0;">{site.author.role}. {site.author.bio}</p>
-        </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container legal-trust">
+      <div>
+        <p class="eyebrow">отговорност и прозрачност</p>
+        <h2>Vdiga е продукт с реален юридически оператор.</h2>
+        <p>
+          На този етап Vdiga се разработва и управлява от {site.legalName}. Дружеството поема договорите, фактурирането и отговорността към клиентите, докато Vdiga остава името на продукта и услугата.
+        </p>
       </div>
+      <dl class="company-facts">
+        <div><dt>Продукт</dt><dd>{site.brand}</dd></div>
+        <div><dt>Юридически оператор</dt><dd>{site.legalName}</dd></div>
+        <div><dt>Локация</dt><dd>{site.location}, България</dd></div>
+        <div><dt>Контакт</dt><dd><a href={`tel:+359${site.salesPhone.replace(/\s/g, "").replace(/^0/, "")}`}>{site.salesPhone}</a></dd></div>
+      </dl>
     </div>
   </section>
 
@@ -120,11 +138,11 @@ const href = (path: string) => `${basePath}${path}`;
     <div class="container grid-2">
       <div>
         <p class="eyebrow">чести въпроси</p>
-        <h2>Какво трябва да знаете преди първия клиент?</h2>
+        <h2>Кой създава и поддържа Vdiga?</h2>
       </div>
       <FAQ items={faqs} />
     </div>
   </section>
 
-  <CTA title="Доверието започва преди първия разговор." text="Затова Vdiga показва кой стои зад продукта и какво вече може да чуете." />
+  <CTA title="Първо чуйте как работи." text="След това ще обсъдим къде Vdiga може да помогне във вашия реален процес." />
 </BaseLayout>

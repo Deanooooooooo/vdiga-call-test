@@ -40,6 +40,22 @@ export function websiteSchema() {
   };
 }
 
+export function founderSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: site.author.name,
+    jobTitle: site.author.role,
+    description: site.author.bio,
+    url: `${site.url}/za-nas/`,
+    worksFor: {
+      "@type": "Organization",
+      name: site.brand,
+      url: site.url,
+    },
+  };
+}
+
 export function breadcrumbSchema(items: Array<{ name: string; href: string }>) {
   return {
     "@context": "https://schema.org",
