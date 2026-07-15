@@ -70,6 +70,7 @@ export function founderSchema() {
                 credentialCategory: "Professional Certification",
                 identifier: credential.code,
                 dateCreated: credential.dateAwarded,
+                url: credential.verificationUrl,
                 recognizedBy: {
                   "@type": "Organization",
                   name: credential.issuer,

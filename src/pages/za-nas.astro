@@ -109,7 +109,13 @@ const href = (path: string) => `${basePath}${path}`;
             <h3>{site.coFounder.name}</h3>
             <p class="founder-role">{site.coFounder.role}</p>
             <p>{site.coFounder.bio}</p>
-            <div class="founder-credential" aria-label="Професионален сертификат от Amazon Web Services">
+            <a
+              class="founder-credential"
+              href={site.coFounder.credential.verificationUrl}
+              target="_blank"
+              rel="noopener noreferrer external"
+              aria-label="Проверете AWS сертификата на Мариян Дечев в Credly (отваря се в нов прозорец)"
+            >
               <img
                 src={href("/assets/aws-certified-solutions-architect-associate.png")}
                 width="600"
@@ -119,9 +125,9 @@ const href = (path: string) => `${basePath}${path}`;
               />
               <span>
                 <strong>{site.coFounder.credential.name}</strong>
-                <small>{site.coFounder.credential.code} · Сертифициран през 2025 г.</small>
+                <small>{site.coFounder.credential.code} · Сертифициран през 2025 г. · Проверете сертификата ↗</small>
               </span>
-            </div>
+            </a>
           </div>
         </article>
       </div>

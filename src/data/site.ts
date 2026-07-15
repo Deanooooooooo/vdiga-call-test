@@ -24,6 +24,7 @@ export const site = {
       code: "SAA-C03",
       dateAwarded: "2025-07-03",
       issuer: "Amazon Web Services",
+      verificationUrl: "https://www.credly.com/badges/ca19f7c2-8ff6-441b-b962-d6c2dd062467/public_url",
     },
   },
   pricing: [
