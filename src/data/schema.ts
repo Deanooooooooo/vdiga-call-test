@@ -109,3 +109,45 @@ export function serviceSchema(name: string, path: string, description: string) {
     },
   };
 }
+
+export function articleSchema({
+  headline,
+  description,
+  path,
+  datePublished,
+  dateModified,
+}: {
+  headline: string;
+  description: string;
+  path: string;
+  datePublished: string;
+  dateModified: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline,
+    description,
+    url: `${site.url}${path}`,
+    mainEntityOfPage: `${site.url}${path}`,
+    inLanguage: "bg-BG",
+    datePublished,
+    dateModified,
+    author: {
+      "@type": "Person",
+      name: site.author.name,
+      jobTitle: site.author.role,
+      url: `${site.url}/za-nas/`,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: site.brand,
+      legalName: site.legalName,
+      url: site.url,
+      logo: {
+        "@type": "ImageObject",
+        url: `${site.url}/assets/vdiga-logo-nav-green-v.png`,
+      },
+    },
+  };
+}

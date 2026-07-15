@@ -14,9 +14,10 @@ interface Props {
   schemas?: Record<string, unknown>[];
   image?: string;
   imageAlt?: string;
+  ogType?: "website" | "article";
 }
 
-const { title, description, path, pageClass, schemas = [], image, imageAlt } = Astro.props;
+const { title, description, path, pageClass, schemas = [], image, imageAlt, ogType = "website" } = Astro.props;
 const basePath = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const canonical = `${site.url}${path}`;
 const resolvedImage = image ?? "/assets/vdiga-og-default-v2.png";
@@ -43,7 +44,7 @@ const allSchemas = [
     <link rel="canonical" href={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={site.brand} />
     <meta property="og:locale" content="bg_BG" />

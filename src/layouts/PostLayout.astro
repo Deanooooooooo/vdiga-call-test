@@ -1,0 +1,78 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import { site } from "../data/site";
+import { articleSchema } from "../data/schema";
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  eyebrow?: string;
+  datePublished: string;
+  dateModified: string;
+  schemas?: Record<string, unknown>[];
+  image?: string;
+  imageAlt?: string;
+}
+
+const {
+  title,
+  description,
+  path,
+  eyebrow = "Ръководство",
+  datePublished,
+  dateModified,
+  schemas = [],
+  image,
+  imageAlt,
+} = Astro.props;
+
+const formatDate = (value: string) =>
+  new Intl.DateTimeFormat("bg-BG", { day: "numeric", month: "long", year: "numeric" }).format(
+    new Date(`${value}T12:00:00+03:00`),
+  );
+---
+
+<BaseLayout
+  title={`${title} | ${site.brand}`}
+  description={description}
+  path={path}
+  pageClass="post-page"
+  ogType="article"
+  image={image}
+  imageAlt={imageAlt}
+  schemas={[
+    articleSchema({ headline: title, description, path, datePublished, dateModified }),
+    ...schemas,
+  ]}
+>
+  <article>
+    <header class="post-header">
+      <div class="post-container">
+        <p class="eyebrow">{eyebrow}</p>
+        <h1>{title}</h1>
+        <div class="post-meta" aria-label="Информация за статията">
+          <a href="/za-nas/" rel="author">{site.author.name}</a>
+          <span aria-hidden="true">•</span>
+          <span>Публикувано <time datetime={datePublished}>{formatDate(datePublished)}</time></span>
+          <span aria-hidden="true">•</span>
+          <span>Обновено <time datetime={dateModified}>{formatDate(dateModified)}</time></span>
+        </div>
+        <slot name="answer" />
+      </div>
+    </header>
+
+    <div class="post-container post-body">
+      <slot />
+    </div>
+
+    <footer class="post-container post-author">
+      <div class="avatar" aria-hidden="true">D</div>
+      <div>
+        <p class="post-author-label">Автор</p>
+        <h2><a href="/za-nas/" rel="author">{site.author.name}</a></h2>
+        <p>{site.author.role}. {site.author.bio}</p>
+      </div>
+    </footer>
+  </article>
+</BaseLayout>
