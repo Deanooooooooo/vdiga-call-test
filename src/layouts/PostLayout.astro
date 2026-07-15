@@ -13,8 +13,8 @@ interface Props {
   datePublished: string;
   dateModified: string;
   schemas?: Record<string, unknown>[];
-  image?: string;
-  imageAlt?: string;
+  image: string;
+  imageAlt: string;
   authorSlug?: string;
 }
 
@@ -74,6 +74,17 @@ const formatDate = (value: string) =>
             </p>
           </div>
         </div>
+        <figure class="post-featured-image">
+          <img
+            src={image}
+            width="1200"
+            height="630"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+            alt={imageAlt}
+          />
+        </figure>
         <slot name="answer" />
       </div>
     </header>

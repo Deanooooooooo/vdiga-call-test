@@ -2431,7 +2431,20 @@ tr:last-child td {
 
 .post-header .answer-block {
   max-width: 100%;
-  margin: 0;
+  margin: 32px 0 0;
+}
+
+.post-featured-image {
+  margin: 36px 0 0;
+}
+
+.post-featured-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1200 / 630;
+  object-fit: cover;
+  border-radius: 18px;
 }
 
 .post-body {
@@ -3130,6 +3143,14 @@ tr:last-child td {
 
   .post-header h1 {
     font-size: clamp(2.7rem, 14vw, 4rem);
+  }
+
+  .post-featured-image {
+    margin-top: 28px;
+  }
+
+  .post-featured-image img {
+    border-radius: 12px;
   }
 
   .post-meta {

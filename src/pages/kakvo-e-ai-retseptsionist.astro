@@ -6,7 +6,7 @@ import { faqSchema } from "../data/schema";
 import { articles } from "../data/articles";
 
 const article = articles[0];
-const { path, title, description, eyebrow, authorSlug, datePublished, dateModified } = article;
+const { path, title, description, eyebrow, image, imageAlt, authorSlug, datePublished, dateModified } = article;
 
 const faqs = [
   {
@@ -46,9 +46,9 @@ const faqs = [
   {authorSlug}
   {datePublished}
   {dateModified}
-  image="/assets/articles/ai-retseptsionist/call-to-action-og-v1.jpg"
+  {image}
   schemas={[faqSchema(faqs)]}
-  imageAlt="AI рецепционист на български отговаря на телефонно обаждане"
+  {imageAlt}
 >
   <p slot="answer" class="answer-block">
     AI (изкуствен интелект) рецепционист е гласов софтуер, който отговаря на входящи обаждания, задава въпроси и изпълнява предварително разрешени задачи. Той може да записва часове, да приема съобщения и да прехвърля сложни случаи към човек. Vdiga е AI рецепционист на български език, създаден за тези повтаряеми разговори.
