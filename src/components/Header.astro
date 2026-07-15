@@ -14,7 +14,7 @@ const href = (path: string) => `${basePath}${path}`;
       {site.nav.map((item) => <a href={href(item.href)}>{item.label}</a>)}
     </nav>
     <div class="nav-actions">
-      <a class="btn btn-primary nav-cta nav-phone" href={`tel:${site.salesPhone.replace(/\s/g, "")}`}>Обадете се: {site.salesPhone}</a>
+      <a class="btn btn-primary nav-cta nav-phone" href={`tel:${site.salesPhone.replace(/\s/g, "")}`}><span class="nav-phone-prefix">Обадете се: </span>{site.salesPhone}</a>
     </div>
   </div>
 </header>
