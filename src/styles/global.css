@@ -2375,7 +2375,7 @@ tr:last-child td {
   grid-template-columns: 48px minmax(0, 1fr);
   gap: 13px;
   align-items: center;
-  margin-bottom: 32px;
+  margin-bottom: 0;
 }
 
 .post-byline-photo,
@@ -2431,11 +2431,11 @@ tr:last-child td {
 
 .post-header .answer-block {
   max-width: 100%;
-  margin: 32px 0 0;
+  margin: 0 0 28px;
 }
 
 .post-featured-image {
-  margin: 36px 0 0;
+  margin: 32px 0 0;
 }
 
 .post-featured-image img {
