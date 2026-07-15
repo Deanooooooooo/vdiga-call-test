@@ -1,6 +1,6 @@
 import { site } from "../data/site";
 
-const pages = ["/", "/tseni/", "/demo/", "/kak-raboti/", "/za-nas/", "/kakvo-e-ai-retseptsionist/", "/kolko-obazhdaniya-propuska-biznesat/", "/avtori/dean-dechev/", "/avtori/mariyan-dechev/", "/politika-za-poveritelnost/", "/politika-za-biskvitki/", "/obshti-usloviya/", "/danni-za-druzhestvoto/"];
+const pages = ["/", "/tseni/", "/demo/", "/kak-raboti/", "/za-nas/", "/za-nas/dean-dechev/", "/za-nas/mariyan-dechev/", "/kakvo-e-ai-retseptsionist/", "/kolko-obazhdaniya-propuska-biznesat/", "/politika-za-poveritelnost/", "/politika-za-biskvitki/", "/obshti-usloviya/", "/danni-za-druzhestvoto/"];
 const lastModified = "2026-07-15";
 
 export function GET() {

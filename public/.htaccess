@@ -1,6 +1,11 @@
 # Canonical origin: HTTPS and non-www in one permanent redirect.
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # Permanent author-profile migration. Keep old indexed/shared URLs useful.
+  RewriteRule ^avtori/dean-dechev/?$ https://vdiga.bg/za-nas/dean-dechev/ [R=301,L,NE]
+  RewriteRule ^avtori/mariyan-dechev/?$ https://vdiga.bg/za-nas/mariyan-dechev/ [R=301,L,NE]
+
   RewriteCond %{HTTPS} !=on [OR]
   RewriteCond %{HTTP_HOST} !^vdiga\.bg$ [NC]
   RewriteRule ^ https://vdiga.bg%{REQUEST_URI} [R=301,L,NE]
