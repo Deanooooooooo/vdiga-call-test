@@ -43,16 +43,18 @@ export function websiteSchema() {
 export function founderSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: site.author.name,
-    jobTitle: site.author.role,
-    description: site.author.bio,
-    url: `${site.url}/za-nas/`,
-    worksFor: {
-      "@type": "Organization",
-      name: site.brand,
-      url: site.url,
-    },
+    "@graph": [site.author, site.coFounder].map((founder) => ({
+      "@type": "Person",
+      name: founder.name,
+      jobTitle: founder.role,
+      description: founder.bio,
+      url: `${site.url}/za-nas/`,
+      worksFor: {
+        "@type": "Organization",
+        name: site.brand,
+        url: site.url,
+      },
+    })),
   };
 }
 

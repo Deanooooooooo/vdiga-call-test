@@ -2076,28 +2076,48 @@ tr:last-child td {
   font-size: 1rem;
 }
 
-.founder-section {
+.founders-heading {
+  max-width: 720px;
+  margin-bottom: 44px;
+}
+
+.founders-heading h2 {
+  margin-bottom: 12px;
+}
+
+.founders-grid {
   display: grid;
-  grid-template-columns: minmax(180px, 0.7fr) minmax(0, 1.3fr);
-  gap: clamp(36px, 8vw, 120px);
-  align-items: center;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.founder-card {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 26px;
+  align-items: start;
+  padding: clamp(24px, 4vw, 38px);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--paper-dim);
 }
 
 .founder-mark {
   display: grid;
-  width: min(100%, 320px);
+  width: 112px;
   aspect-ratio: 1;
   place-items: center;
-  border-radius: 22px;
+  border-radius: 16px;
   background: var(--ink);
   color: var(--answer);
   font-family: var(--disp);
-  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-size: 2.35rem;
   font-weight: 800;
 }
 
-.founder-copy h2 {
+.founder-copy h3 {
   margin-bottom: 4px;
+  font-size: clamp(1.7rem, 3vw, 2.35rem);
 }
 
 .founder-role {
@@ -2107,6 +2127,22 @@ tr:last-child td {
   font-size: 0.86rem;
   font-weight: 700;
   text-transform: uppercase;
+}
+
+.founder-copy > p:not(.founder-role):not(.founder-credential) {
+  font-size: 1rem;
+}
+
+.founder-credential {
+  display: inline-block;
+  margin: 6px 0 0;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: rgba(28, 216, 151, 0.12);
+  color: var(--answer-deep);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  font-weight: 700;
 }
 
 .about-team {
@@ -2698,10 +2734,14 @@ tr:last-child td {
   }
 
   .about-intro,
-  .founder-section,
+  .founders-grid,
   .legal-trust {
     grid-template-columns: 1fr;
     gap: 36px;
+  }
+
+  .founder-card {
+    grid-template-columns: 1fr;
   }
 
   .founder-mark {

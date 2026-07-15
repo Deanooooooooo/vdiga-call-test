@@ -88,13 +88,30 @@ const href = (path: string) => `${basePath}${path}`;
   </section>
 
   <section class="section">
-    <div class="container founder-section">
-      <div class="founder-mark" aria-hidden="true">ДД</div>
-      <div class="founder-copy">
-        <p class="eyebrow">съосновател</p>
-        <h2>{site.author.name}</h2>
-        <p class="founder-role">{site.author.role}</p>
-        <p>{site.author.bio}</p>
+    <div class="container">
+      <div class="founders-heading">
+        <p class="eyebrow">съоснователи</p>
+        <h2>Хората зад Vdiga</h2>
+        <p>Продуктът се развива с общата работа на бизнес и технологична експертиза.</p>
+      </div>
+      <div class="founders-grid">
+        <article class="founder-card">
+          <div class="founder-mark" aria-hidden="true">ДД</div>
+          <div class="founder-copy">
+            <h3>{site.author.name}</h3>
+            <p class="founder-role">{site.author.role}</p>
+            <p>{site.author.bio}</p>
+          </div>
+        </article>
+        <article class="founder-card">
+          <div class="founder-mark" aria-hidden="true">МД</div>
+          <div class="founder-copy">
+            <h3>{site.coFounder.name}</h3>
+            <p class="founder-role">{site.coFounder.role}</p>
+            <p>{site.coFounder.bio}</p>
+            <p class="founder-credential">AWS Certified Solutions Architect – Associate</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
