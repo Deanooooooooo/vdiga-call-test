@@ -3,7 +3,7 @@ import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import StickyCallBar from "../components/StickyCallBar.astro";
-import { organizationSchema, breadcrumbSchema } from "../data/schema";
+import { organizationSchema, breadcrumbSchema, websiteSchema } from "../data/schema";
 import { site } from "../data/site";
 
 interface Props {
@@ -19,9 +19,12 @@ interface Props {
 const { title, description, path, pageClass, schemas = [], image, imageAlt } = Astro.props;
 const basePath = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const canonical = `${site.url}${path}`;
-const socialImage = image ? `${site.url}${image}` : undefined;
+const resolvedImage = image ?? "/assets/vdiga-og-default-v1.png";
+const resolvedImageAlt = imageAlt ?? "Vdiga AI рецепционист на български";
+const socialImage = `${site.url}${resolvedImage}`;
 const allSchemas = [
   organizationSchema(),
+  websiteSchema(),
   breadcrumbSchema([
     { name: "Начало", href: "/" },
     ...(path === "/" ? [] : [{ name: title.replace(` | ${site.brand}`, ""), href: path }]),
@@ -42,13 +45,19 @@ const allSchemas = [
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
-    {socialImage && <meta property="og:image" content={socialImage} />}
-    {socialImage && imageAlt && <meta property="og:image:alt" content={imageAlt} />}
+    <meta property="og:site_name" content={site.brand} />
+    <meta property="og:locale" content="bg_BG" />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:secure_url" content={socialImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={resolvedImageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    {socialImage && <meta name="twitter:image" content={socialImage} />}
-    {socialImage && imageAlt && <meta name="twitter:image:alt" content={imageAlt} />}
+    <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content={resolvedImageAlt} />
     <link rel="icon" href={`${basePath}favicon.jpg?v=6fa21b71`} type="image/jpeg" />
     {allSchemas.map((schema) => <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />)}
   </head>

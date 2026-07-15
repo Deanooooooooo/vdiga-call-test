@@ -4,7 +4,7 @@ import PricingCards from "../components/PricingCards.astro";
 import OnboardingForm from "../components/OnboardingForm.astro";
 import FAQ from "../components/FAQ.astro";
 import CTA from "../components/CTA.astro";
-import { articleSchema, faqSchema, productSchema } from "../data/schema";
+import { faqSchema, productSchema } from "../data/schema";
 
 const faqs = [
   {
@@ -34,7 +34,7 @@ const faqs = [
   title="Цени за AI рецепционист — от 97 евро | Vdiga"
   description="Планове за AI рецепционист от 97 евро/месец без ДДС. Изберете 120, 500 или над 500 минути входящи разговори."
   path="/tseni/"
-  schemas={[faqSchema(faqs), productSchema(), articleSchema("AI рецепционист цена — Vdiga", "/tseni/", "Ориентировъчни цени за AI рецепционист на български език.")]}
+  schemas={[faqSchema(faqs), productSchema()]}
 >
   <section class="hero">
     <div class="container">

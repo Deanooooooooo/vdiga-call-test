@@ -5,7 +5,7 @@ import PricingCards from "../components/PricingCards.astro";
 import OnboardingForm from "../components/OnboardingForm.astro";
 import FAQ from "../components/FAQ.astro";
 import CTA from "../components/CTA.astro";
-import { articleSchema, faqSchema, productSchema } from "../data/schema";
+import { faqSchema, productSchema } from "../data/schema";
 import { withBase as href } from "../data/site";
 
 const faqs = [
@@ -36,7 +36,7 @@ const faqs = [
   title="AI рецепционист — обаждания и часове | Vdiga"
   description="Vdiga е AI рецепционист на български. Вдига телефона, записва часове и праща кратка информация след разговора."
   path="/"
-  schemas={[faqSchema(faqs), productSchema(), articleSchema("AI рецепционист — Vdiga", "/", "AI рецепционист на български език за клиники, салони и услуги.")]}
+  schemas={[faqSchema(faqs), productSchema()]}
 >
   <section class="hero">
     <div class="container hero-grid">

@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import FAQ from "../components/FAQ.astro";
 import CTA from "../components/CTA.astro";
 import { site } from "../data/site";
-import { articleSchema, faqSchema } from "../data/schema";
+import { faqSchema } from "../data/schema";
 
 const faqs = [
   {
@@ -35,7 +35,7 @@ const href = (path: string) => `${basePath}${path}`;
   title="За нас — Vdiga by Blast Off EOOD"
   description="Кой стои зад Vdiga: AI рецепционист на български, разработван под Blast Off EOOD, София."
   path="/za-nas/"
-  schemas={[faqSchema(faqs), articleSchema("За нас — Vdiga", "/za-nas/", "Кой стои зад Vdiga и защо продуктът стартира под Blast Off EOOD.")]}
+  schemas={[faqSchema(faqs)]}
 >
   <section class="hero">
     <div class="container">

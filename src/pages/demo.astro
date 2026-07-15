@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import CallCard from "../components/CallCard.astro";
 import FAQ from "../components/FAQ.astro";
 import CTA from "../components/CTA.astro";
-import { articleSchema, faqSchema } from "../data/schema";
+import { faqSchema } from "../data/schema";
 
 const faqs = [
   {
@@ -35,7 +35,7 @@ const href = (path: string) => `${basePath}${path}`;
   title="AI рецепционист демо — чуйте разговор | Vdiga"
   description="Чуйте AI рецепционист демо на български. Вижте как трябва да започва разговорът и кога човек поема сложния случай."
   path="/demo/"
-  schemas={[faqSchema(faqs), articleSchema("AI рецепционист демо — Vdiga", "/demo/", "Как се тества AI рецепционист на български преди публичен старт.")]}
+  schemas={[faqSchema(faqs)]}
 >
   <section class="hero">
     <div class="container grid-2">

@@ -7,12 +7,36 @@ export function organizationSchema() {
     name: site.brand,
     legalName: site.legalName,
     url: site.url,
+    logo: `${site.url}/assets/vdiga-logo-nav-green-v.png`,
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: `+359${site.salesPhone.replace(/\s/g, "").replace(/^0/, "")}`,
+      contactType: "sales",
+      availableLanguage: "Bulgarian",
+      areaServed: "BG",
+    },
     address: {
       "@type": "PostalAddress",
       addressLocality: site.location,
       addressCountry: "BG",
     },
     description: site.descriptor,
+  };
+}
+
+export function websiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: site.brand,
+    url: site.url,
+    inLanguage: "bg-BG",
+    publisher: {
+      "@type": "Organization",
+      name: site.brand,
+      legalName: site.legalName,
+      url: site.url,
+    },
   };
 }
 
@@ -54,13 +78,13 @@ export function productSchema() {
       name: site.brand,
     },
     description: site.descriptor,
-    offers: site.pricing.map((tier) => ({
+    offers: site.pricing.filter((tier) => /^\d+(?:[.,]\d+)?$/.test(tier.price)).map((tier) => ({
       "@type": "Offer",
       name: tier.name,
-      price: tier.price.includes("-") ? tier.price.split("-")[0] : tier.price,
+      price: tier.price.replace(",", "."),
       priceCurrency: "EUR",
-      availability: "https://schema.org/PreOrder",
-      url: `${site.url}/tseni`,
+      availability: "https://schema.org/InStock",
+      url: `${site.url}/tseni/`,
     })),
   };
 }
@@ -83,22 +107,5 @@ export function serviceSchema(name: string, path: string, description: string) {
       legalName: site.legalName,
       url: site.url,
     },
-  };
-}
-
-export function articleSchema(title: string, path: string, description: string) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: title,
-    description,
-    author: {
-      "@type": "Person",
-      name: site.author.name,
-    },
-    publisher: organizationSchema(),
-    datePublished: "2026-07-03",
-    dateModified: "2026-07-03",
-    mainEntityOfPage: `${site.url}${path}`,
   };
 }

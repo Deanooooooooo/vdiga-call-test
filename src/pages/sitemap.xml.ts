@@ -1,7 +1,7 @@
 import { site } from "../data/site";
 
 const pages = ["/", "/tseni/", "/demo/", "/kak-raboti/", "/za-nas/"];
-const lastModified = "2026-07-13";
+const lastModified = "2026-07-15";
 
 export function GET() {
   const body = `<?xml version="1.0" encoding="UTF-8"?>
