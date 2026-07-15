@@ -1,0 +1,93 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CTA from "../../components/CTA.astro";
+import { authors, authorPath, type Author } from "../../data/authors";
+import { articlesByAuthor } from "../../data/articles";
+import { authorProfileSchema } from "../../data/schema";
+
+export function getStaticPaths() {
+  return authors.map((author) => ({ params: { slug: author.slug }, props: { author } }));
+}
+
+interface Props {
+  author: Author;
+}
+
+const { author } = Astro.props;
+const posts = articlesByAuthor(author.slug);
+const path = authorPath(author.slug);
+const isMariyan = author.slug === "mariyan-dechev";
+const title = `${author.name} — автор и съосновател на Vdiga`;
+const description = `${author.name} е ${author.role.toLowerCase()}. Професионален опит, области на експертиза и публикации във Vdiga.`;
+const formatDate = (value: string) =>
+  new Intl.DateTimeFormat("bg-BG", { day: "numeric", month: "long", year: "numeric" }).format(
+    new Date(`${value}T12:00:00+03:00`),
+  );
+---
+
+<BaseLayout {title} {description} {path} pageClass="author-page" schemas={[authorProfileSchema(author)]}>
+  <header class="author-hero">
+    <div class="container author-hero-grid">
+      <img class="author-portrait" src={author.image} width="720" height="720" alt={`${author.name}, съосновател на Vdiga`} />
+      <div class="author-intro">
+        <p class="eyebrow">Автор и съосновател</p>
+        <h1>{author.name}</h1>
+        <p class="author-role">{author.role}</p>
+        <p class="answer-block">{author.bio}</p>
+        <a class="author-about-link" href="/za-nas/">За Vdiga и целия екип →</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="section author-details">
+    <div class="container author-details-grid">
+      <div>
+        <p class="eyebrow">Области на работа</p>
+        <h2>Експертиза във Vdiga</h2>
+        <p>Тези области описват пряката роля на {author.name.split(" ")[0]} в разработването и внедряването на продукта.</p>
+      </div>
+      <ul class="author-expertise" aria-label={`Области на експертиза на ${author.name}`}>
+        {author.expertise.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+
+    {isMariyan && "credential" in author && (
+      <div class="container author-credential-row">
+        <img src="/assets/aws-certified-solutions-architect-associate.png" width="600" height="600" alt="AWS Certified Solutions Architect – Associate" loading="lazy" />
+        <div>
+          <p class="eyebrow">Проверима квалификация</p>
+          <h2>{author.credential.name}</h2>
+          <p>{author.credential.code} · Сертифициран през 2025 г. от Amazon Web Services.</p>
+          <a href={author.credential.verificationUrl} target="_blank" rel="noopener noreferrer external">Проверете сертификата в Credly ↗</a>
+        </div>
+      </div>
+    )}
+  </section>
+
+  <section class="section band author-posts" aria-labelledby="author-posts-title">
+    <div class="container">
+      <div class="author-posts-heading">
+        <p class="eyebrow">Публикации</p>
+        <h2 id="author-posts-title">Последни статии от {author.name}</h2>
+      </div>
+      {posts.length > 0 ? (
+        <div class="author-post-list">
+          {posts.map((post) => (
+            <article>
+              <div>
+                <p class="author-post-meta"><time datetime={post.datePublished}>{formatDate(post.datePublished)}</time> · {post.eyebrow}</p>
+                <h3><a href={post.path}>{post.title}</a></h3>
+                <p>{post.description}</p>
+              </div>
+              <a class="author-post-arrow" href={post.path} aria-label={`Прочетете „${post.title}“`}>→</a>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <p class="author-post-empty">Първите публикации на {author.name} се подготвят. Тук ще се появяват автоматично след публикуването им.</p>
+      )}
+    </div>
+  </section>
+
+  <CTA title="Запознайте се с начина, по който работим." text="Вижте как Vdiga проучва, настройва и тества AI рецепционист за конкретен бизнес." />
+</BaseLayout>

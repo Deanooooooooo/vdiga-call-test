@@ -1,4 +1,5 @@
 import { site } from "./site";
+import { authorPath, type Author } from "./authors";
 
 export function organizationSchema() {
   return {
@@ -57,7 +58,7 @@ export function founderSchema() {
         image: `${site.url}${founder.image}`,
         jobTitle: founder.role,
         description: founder.bio,
-        url: `${site.url}/za-nas/`,
+        url: `${site.url}${authorPath(founder.slug)}`,
         worksFor: {
           "@type": "Organization",
           name: site.brand,
@@ -82,6 +83,50 @@ export function founderSchema() {
           : {}),
       };
     }),
+  };
+}
+
+export function authorProfileSchema(author: Author) {
+  const credential = "credential" in author ? author.credential : null;
+  const personUrl = `${site.url}${authorPath(author.slug)}`;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    name: `${author.name} — ${author.role}`,
+    url: personUrl,
+    inLanguage: "bg-BG",
+    mainEntity: {
+      "@type": "Person",
+      name: author.name,
+      url: personUrl,
+      image: `${site.url}${author.image}`,
+      jobTitle: author.role,
+      description: author.bio,
+      knowsAbout: author.expertise,
+      worksFor: {
+        "@type": "Organization",
+        name: site.brand,
+        url: site.url,
+      },
+      ...(credential
+        ? {
+            hasCredential: {
+              "@type": "EducationalOccupationalCredential",
+              name: credential.name,
+              credentialCategory: "Professional Certification",
+              identifier: credential.code,
+              dateCreated: credential.dateAwarded,
+              url: credential.verificationUrl,
+              recognizedBy: {
+                "@type": "Organization",
+                name: credential.issuer,
+                url: "https://aws.amazon.com/certification/certified-solutions-architect-associate/",
+              },
+            },
+          }
+        : {}),
+    },
   };
 }
 
@@ -161,12 +206,14 @@ export function articleSchema({
   path,
   datePublished,
   dateModified,
+  author = site.author,
 }: {
   headline: string;
   description: string;
   path: string;
   datePublished: string;
   dateModified: string;
+  author?: Author;
 }) {
   return {
     "@context": "https://schema.org",
@@ -180,9 +227,10 @@ export function articleSchema({
     dateModified,
     author: {
       "@type": "Person",
-      name: site.author.name,
-      jobTitle: site.author.role,
-      url: `${site.url}/za-nas/`,
+      name: author.name,
+      jobTitle: author.role,
+      url: `${site.url}${authorPath(author.slug)}`,
+      image: `${site.url}${author.image}`,
     },
     publisher: {
       "@type": "Organization",

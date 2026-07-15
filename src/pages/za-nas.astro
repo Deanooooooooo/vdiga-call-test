@@ -95,17 +95,18 @@ const href = (path: string) => `${basePath}${path}`;
           <div class="founder-header">
             <img class="founder-mark founder-photo" src={href(site.author.image)} width="720" height="720" loading="lazy" alt="Деан Дечев, съосновател на Vdiga" />
             <div>
-              <h3>{site.author.name}</h3>
+              <h3><a href={`/avtori/${site.author.slug}/`}>{site.author.name}</a></h3>
               <p class="founder-role">{site.author.role}</p>
             </div>
           </div>
           <p class="founder-bio">{site.author.bio}</p>
+          <a class="founder-profile-link" href={`/avtori/${site.author.slug}/`}>Профил и публикации →</a>
         </article>
         <article class="founder-card">
           <div class="founder-header">
             <img class="founder-mark founder-photo" src={href(site.coFounder.image)} width="720" height="720" loading="lazy" alt="Мариян Дечев, съосновател на Vdiga" />
             <div>
-              <h3>{site.coFounder.name}</h3>
+              <h3><a href={`/avtori/${site.coFounder.slug}/`}>{site.coFounder.name}</a></h3>
               <p class="founder-role">{site.coFounder.role}</p>
             </div>
           </div>
@@ -130,6 +131,7 @@ const href = (path: string) => `${basePath}${path}`;
                 <small>{site.coFounder.credential.code} · Сертифициран през 2025 г. · Проверете сертификата ↗</small>
               </span>
             </a>
+            <a class="founder-profile-link" href={`/avtori/${site.coFounder.slug}/`}>Профил и публикации →</a>
           </div>
         </article>
       </div>

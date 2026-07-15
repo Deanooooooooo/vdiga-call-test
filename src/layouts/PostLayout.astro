@@ -2,6 +2,7 @@
 import BaseLayout from "./BaseLayout.astro";
 import { site } from "../data/site";
 import { articleSchema } from "../data/schema";
+import { authorPath, getAuthor } from "../data/authors";
 
 interface Props {
   title: string;
@@ -13,6 +14,7 @@ interface Props {
   schemas?: Record<string, unknown>[];
   image?: string;
   imageAlt?: string;
+  authorSlug?: string;
 }
 
 const {
@@ -25,7 +27,11 @@ const {
   schemas = [],
   image,
   imageAlt,
+  authorSlug = site.author.slug,
 } = Astro.props;
+
+const author = getAuthor(authorSlug) ?? site.author;
+const authorUrl = authorPath(author.slug);
 
 const formatDate = (value: string) =>
   new Intl.DateTimeFormat("bg-BG", { day: "numeric", month: "long", year: "numeric" }).format(
@@ -42,7 +48,7 @@ const formatDate = (value: string) =>
   image={image}
   imageAlt={imageAlt}
   schemas={[
-    articleSchema({ headline: title, description, path, datePublished, dateModified }),
+    articleSchema({ headline: title, description, path, datePublished, dateModified, author }),
     ...schemas,
   ]}
 >
@@ -52,7 +58,7 @@ const formatDate = (value: string) =>
         <p class="eyebrow">{eyebrow}</p>
         <h1>{title}</h1>
         <div class="post-meta" aria-label="Информация за статията">
-          <a href="/za-nas/" rel="author">{site.author.name}</a>
+          <a href={authorUrl} rel="author">{author.name}</a>
           <span aria-hidden="true">•</span>
           <span>Публикувано <time datetime={datePublished}>{formatDate(datePublished)}</time></span>
           <span aria-hidden="true">•</span>
@@ -67,11 +73,12 @@ const formatDate = (value: string) =>
     </div>
 
     <footer class="post-container post-author">
-      <img class="avatar" src={site.author.image} width="720" height="720" loading="lazy" alt="Деан Дечев" />
+      <img class="avatar" src={author.image} width="720" height="720" loading="lazy" alt={author.name} />
       <div>
         <p class="post-author-label">Автор</p>
-        <h2><a href="/za-nas/" rel="author">{site.author.name}</a></h2>
-        <p>{site.author.role}. {site.author.bio}</p>
+        <h2><a href={authorUrl} rel="author">{author.name}</a></h2>
+        <p>{author.role}. {author.bio}</p>
+        <a class="post-author-link" href={authorUrl}>Профил и публикации на автора →</a>
       </div>
     </footer>
   </article>

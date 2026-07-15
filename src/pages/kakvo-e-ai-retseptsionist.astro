@@ -3,11 +3,10 @@ import PostLayout from "../layouts/PostLayout.astro";
 import FAQ from "../components/FAQ.astro";
 import CTA from "../components/CTA.astro";
 import { faqSchema } from "../data/schema";
+import { articles } from "../data/articles";
 
-const path = "/kakvo-e-ai-retseptsionist/";
-const title = "Какво е AI рецепционист?";
-const description =
-  "Какво е AI рецепционист, как отговаря на обаждания и записва часове, къде помага и кога трябва да прехвърли разговора към човек.";
+const article = articles[0];
+const { path, title, description, eyebrow, authorSlug, datePublished, dateModified } = article;
 
 const faqs = [
   {
@@ -42,9 +41,10 @@ const faqs = [
   {title}
   {description}
   {path}
-  eyebrow="AI рецепционист"
-  datePublished="2026-07-15"
-  dateModified="2026-07-15"
+  {eyebrow}
+  {authorSlug}
+  {datePublished}
+  {dateModified}
   schemas={[faqSchema(faqs)]}
   imageAlt="AI рецепционист на български отговаря на телефонно обаждане"
 >
