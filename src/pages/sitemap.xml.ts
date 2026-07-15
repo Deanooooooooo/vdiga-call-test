@@ -1,6 +1,6 @@
 import { site } from "../data/site";
 
-const pages = ["/", "/tseni/", "/demo/", "/kak-raboti/", "/za-nas/", "/kakvo-e-ai-retseptsionist/", "/kolko-obazhdaniya-propuska-biznesat/", "/avtori/dean-dechev/", "/avtori/mariyan-dechev/"];
+const pages = ["/", "/tseni/", "/demo/", "/kak-raboti/", "/za-nas/", "/kakvo-e-ai-retseptsionist/", "/kolko-obazhdaniya-propuska-biznesat/", "/avtori/dean-dechev/", "/avtori/mariyan-dechev/", "/politika-za-poveritelnost/"];
 const lastModified = "2026-07-15";
 
 export function GET() {

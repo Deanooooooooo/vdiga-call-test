@@ -7,6 +7,8 @@ export function organizationSchema() {
     "@type": "Organization",
     name: site.brand,
     legalName: site.legalName,
+    taxID: site.companyId,
+    vatID: site.vatId,
     url: site.url,
     logo: `${site.url}/assets/vdiga-logo-nav-green-v.png`,
     contactPoint: {
@@ -18,6 +20,8 @@ export function organizationSchema() {
     },
     address: {
       "@type": "PostalAddress",
+      streetAddress: "ул. „Панайот Волов“ № 4",
+      postalCode: "1527",
       addressLocality: site.location,
       addressCountry: "BG",
     },

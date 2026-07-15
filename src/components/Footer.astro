@@ -14,10 +14,11 @@ const href = (path: string) => `${basePath}${path}`;
       <p style="max-width: 620px; margin: 18px 0 0;">
         {site.descriptor}
       </p>
-      <div class="trust-strip">Blast Off EOOD · София · GDPR рамка · данни в ЕС</div>
+      <div class="trust-strip">{site.legalName} · ЕИК {site.companyId} · София</div>
     </div>
     <div class="footer-links">
       {site.nav.map((item) => <a href={href(item.href)}>{item.label}</a>)}
+      <a href={href("/politika-za-poveritelnost/")}>Поверителност</a>
     </div>
   </div>
 </footer>

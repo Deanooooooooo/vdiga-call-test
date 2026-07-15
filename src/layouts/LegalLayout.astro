@@ -1,0 +1,27 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  updated: string;
+  intro: string;
+}
+
+const { title, description, path, updated, intro } = Astro.props;
+---
+
+<BaseLayout title={`${title} | Vdiga`} {description} {path} pageClass="legal-page">
+  <article class="legal-document">
+    <header class="legal-header">
+      <p class="eyebrow">Правна информация</p>
+      <h1>{title}</h1>
+      <p class="legal-intro">{intro}</p>
+      <p class="legal-updated">Последна актуализация: <time datetime={updated}>15 юли 2026 г.</time></p>
+    </header>
+    <div class="legal-content">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

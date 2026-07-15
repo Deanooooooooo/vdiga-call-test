@@ -2,7 +2,12 @@ export const site = {
   brand: "Vdiga",
   domain: "vdiga.bg",
   url: "https://vdiga.bg",
-  legalName: "Blast Off EOOD",
+  legalName: "„Бласт Офф“ ЕООД",
+  legalNameLatin: "Blast Off EOOD",
+  companyId: "206698934",
+  vatId: "BG206698934",
+  legalAddress: "гр. София 1527, ул. „Панайот Волов“ № 4",
+  legalEmail: "contact@blastoff.limited",
   location: "София",
   descriptor:
     "Vdiga е AI рецепционист на български език. Вдига телефона, записва часове и ви праща кой се обади и какво е уговорено.",
