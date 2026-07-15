@@ -2089,17 +2089,31 @@ tr:last-child td {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
+  align-items: start;
 }
 
 .founder-card {
-  display: grid;
-  grid-template-columns: 112px minmax(0, 1fr);
-  gap: 26px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   padding: clamp(24px, 4vw, 38px);
   border: 1px solid var(--line);
+  border-top: 3px solid var(--answer);
   border-radius: 18px;
   background: var(--paper-dim);
+}
+
+.founder-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.founder-header {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
 }
 
 .founder-mark {
@@ -2121,13 +2135,13 @@ tr:last-child td {
   object-position: center top;
 }
 
-.founder-copy h3 {
+.founder-header h3 {
   margin-bottom: 4px;
   font-size: clamp(1.7rem, 3vw, 2.35rem);
 }
 
 .founder-role {
-  margin-bottom: 24px;
+  margin-bottom: 0;
   color: var(--answer-deep);
   font-family: var(--mono);
   font-size: 0.86rem;
@@ -2135,7 +2149,8 @@ tr:last-child td {
   text-transform: uppercase;
 }
 
-.founder-copy > p:not(.founder-role):not(.founder-credential) {
+.founder-bio {
+  margin-bottom: 0;
   font-size: 1rem;
 }
 
@@ -2143,7 +2158,7 @@ tr:last-child td {
   display: inline-flex;
   gap: 9px;
   align-items: center;
-  margin: 6px 0 0;
+  margin: 0;
   padding: 10px 12px;
   border: 1px solid rgba(28, 216, 151, 0.24);
   border-radius: 8px;
@@ -2894,7 +2909,12 @@ tr:last-child td {
   }
 
   .founder-card {
-    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .founder-header {
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 18px;
   }
 
   .ai-agent-card {
@@ -2910,9 +2930,8 @@ tr:last-child td {
   }
 
   .founder-mark {
-    width: 120px;
+    width: 96px;
     border-radius: 16px;
-    font-size: 2.5rem;
   }
 
   .about-principles article {

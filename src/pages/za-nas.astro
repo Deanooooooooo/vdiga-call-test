@@ -96,19 +96,25 @@ const href = (path: string) => `${basePath}${path}`;
       </div>
       <div class="founders-grid">
         <article class="founder-card">
-          <img class="founder-mark founder-photo" src={href(site.author.image)} width="720" height="720" loading="lazy" alt="Деан Дечев, съосновател на Vdiga" />
-          <div class="founder-copy">
-            <h3>{site.author.name}</h3>
-            <p class="founder-role">{site.author.role}</p>
-            <p>{site.author.bio}</p>
+          <div class="founder-header">
+            <img class="founder-mark founder-photo" src={href(site.author.image)} width="720" height="720" loading="lazy" alt="Деан Дечев, съосновател на Vdiga" />
+            <div>
+              <h3>{site.author.name}</h3>
+              <p class="founder-role">{site.author.role}</p>
+            </div>
           </div>
+          <p class="founder-bio">{site.author.bio}</p>
         </article>
         <article class="founder-card">
-          <img class="founder-mark founder-photo" src={href(site.coFounder.image)} width="720" height="720" loading="lazy" alt="Мариян Дечев, съосновател на Vdiga" />
+          <div class="founder-header">
+            <img class="founder-mark founder-photo" src={href(site.coFounder.image)} width="720" height="720" loading="lazy" alt="Мариян Дечев, съосновател на Vdiga" />
+            <div>
+              <h3>{site.coFounder.name}</h3>
+              <p class="founder-role">{site.coFounder.role}</p>
+            </div>
+          </div>
           <div class="founder-copy">
-            <h3>{site.coFounder.name}</h3>
-            <p class="founder-role">{site.coFounder.role}</p>
-            <p>{site.coFounder.bio}</p>
+            <p class="founder-bio">{site.coFounder.bio}</p>
             <a
               class="founder-credential"
               href={site.coFounder.credential.verificationUrl}
