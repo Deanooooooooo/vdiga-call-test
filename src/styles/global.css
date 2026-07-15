@@ -2221,11 +2221,13 @@ tr:last-child td {
 .ai-agent-portrait {
   display: block;
   width: 106px;
+  height: auto;
   aspect-ratio: 1;
   border: 1px solid rgba(28, 216, 151, 0.42);
   border-radius: 50%;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.24);
   object-fit: cover;
+  object-position: center;
 }
 
 .ai-agent-identity span {
