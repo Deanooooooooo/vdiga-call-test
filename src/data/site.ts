@@ -19,6 +19,12 @@ export const site = {
     name: "Мариян Дечев",
     role: "Съосновател на Vdiga · Software Architect & AI Engineer",
     bio: "Мариян Дечев е софтуерен архитект и AI инженер с над 10 години опит в разработката на софтуерни продукти, cloud инфраструктури и бизнес автоматизации. Работил е по корпоративни платформи, SaaS приложения, API интеграции и системи, които свързват различни бизнес процеси. Той е AWS Certified Solutions Architect – Associate. Във Vdiga отговаря за техническата архитектура, AI интеграциите, сигурността и надеждната работа на системата при реални бизнес обаждания.",
+    credential: {
+      name: "AWS Certified Solutions Architect – Associate",
+      code: "SAA-C03",
+      dateAwarded: "2025-07-03",
+      issuer: "Amazon Web Services",
+    },
   },
   pricing: [
     {

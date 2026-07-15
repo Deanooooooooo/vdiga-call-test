@@ -41,20 +41,45 @@ export function websiteSchema() {
 }
 
 export function founderSchema() {
+  const founders = [
+    { ...site.author, credential: null },
+    site.coFounder,
+  ];
+
   return {
     "@context": "https://schema.org",
-    "@graph": [site.author, site.coFounder].map((founder) => ({
-      "@type": "Person",
-      name: founder.name,
-      jobTitle: founder.role,
-      description: founder.bio,
-      url: `${site.url}/za-nas/`,
-      worksFor: {
-        "@type": "Organization",
-        name: site.brand,
-        url: site.url,
-      },
-    })),
+    "@graph": founders.map((founder) => {
+      const credential = founder.credential;
+
+      return {
+        "@type": "Person",
+        name: founder.name,
+        jobTitle: founder.role,
+        description: founder.bio,
+        url: `${site.url}/za-nas/`,
+        worksFor: {
+          "@type": "Organization",
+          name: site.brand,
+          url: site.url,
+        },
+        ...(credential
+          ? {
+              hasCredential: {
+                "@type": "EducationalOccupationalCredential",
+                name: credential.name,
+                credentialCategory: "Professional Certification",
+                identifier: credential.code,
+                dateCreated: credential.dateAwarded,
+                recognizedBy: {
+                  "@type": "Organization",
+                  name: credential.issuer,
+                  url: "https://aws.amazon.com/certification/certified-solutions-architect-associate/",
+                },
+              },
+            }
+          : {}),
+      };
+    }),
   };
 }
 
