@@ -8,7 +8,7 @@ export const site = {
   vatId: "BG206698934",
   manager: "Деан Дечев",
   legalAddress: "гр. София 1527, ул. „Панайот Волов“ № 4",
-  legalEmail: "contact@blastoff.limited",
+  legalEmail: "legal@vdiga.bg",
   location: "София",
   descriptor:
     "Vdiga е AI рецепционист на български език. Вдига телефона, записва часове и ви праща кой се обади и какво е уговорено.",
