@@ -1,0 +1,52 @@
+---
+import LegalLayout from "../layouts/LegalLayout.astro";
+import { site } from "../data/site";
+
+const registryUrl = `https://portal.registryagency.bg/CR/Reports/ActiveConditionTabResult?uic=${site.companyId}`;
+---
+
+<LegalLayout
+  title="Данни за дружеството"
+  description="Правна и контактна информация за оператора на vdiga.bg и услугата Vdiga — „Бласт Офф“ ЕООД, ЕИК 206698934."
+  path="/danni-za-druzhestvoto/"
+  updated="2026-07-15"
+  intro="Тук е публикувана постоянната информация за доставчика на vdiga.bg и търговския оператор на Vdiga."
+>
+  <section>
+    <h2>Оператор на сайта и услугата</h2>
+    <dl class="legal-facts">
+      <div><dt>Фирма</dt><dd>{site.legalName}</dd></div>
+      <div><dt>Изписване на латиница</dt><dd>{site.legalNameLatin}</dd></div>
+      <div><dt>ЕИК</dt><dd>{site.companyId}</dd></div>
+      <div><dt>ДДС номер</dt><dd>{site.vatId}</dd></div>
+      <div><dt>Управител</dt><dd>{site.manager}</dd></div>
+      <div><dt>Седалище и адрес на управление</dt><dd>{site.legalAddress}</dd></div>
+      <div><dt>Имейл</dt><dd><a href={`mailto:${site.legalEmail}`}>{site.legalEmail}</a></dd></div>
+      <div><dt>Телефон</dt><dd><a href={`tel:${site.salesPhone.replace(/\s/g, "")}`}>{site.salesPhone}</a></dd></div>
+    </dl>
+    <p><a href={registryUrl} target="_blank" rel="noopener noreferrer">Проверка на актуалното състояние в Търговския регистър ↗</a></p>
+  </section>
+
+  <section>
+    <h2>Vdiga и дружеството</h2>
+    <p>
+      Vdiga е търговското наименование на AI рецепционист и свързаните услуги, представени на vdiga.bg. {site.legalName} е юридическото лице, което управлява сайта, издава офертите и фактурите и сключва договорите, освен ако в конкретна оферта или договор изрично не е посочено друго.
+    </p>
+  </section>
+
+  <section>
+    <h2>Цени и договори</h2>
+    <p>
+      Публикуваните на сайта цени са в евро и без ДДС, освен ако изрично не е посочено друго. Формата за запитване не сключва договор и не създава задължение за плащане. Конкретните услуги, цена, срок и технически параметри се потвърждават с индивидуална оферта и договор.
+    </p>
+  </section>
+
+  <section>
+    <h2>Правни документи</h2>
+    <ul>
+      <li><a href="/obshti-usloviya/">Общи условия за използване на сайта</a></li>
+      <li><a href="/politika-za-poveritelnost/">Политика за поверителност</a></li>
+      <li><a href="/politika-za-biskvitki/">Политика за бисквитки</a></li>
+    </ul>
+  </section>
+</LegalLayout>

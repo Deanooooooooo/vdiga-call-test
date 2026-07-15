@@ -6,6 +6,7 @@ export const site = {
   legalNameLatin: "Blast Off EOOD",
   companyId: "206698934",
   vatId: "BG206698934",
+  manager: "Деан Дечев",
   legalAddress: "гр. София 1527, ул. „Панайот Волов“ № 4",
   legalEmail: "contact@blastoff.limited",
   location: "София",

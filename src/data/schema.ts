@@ -7,6 +7,7 @@ export function organizationSchema() {
     "@type": "Organization",
     name: site.brand,
     legalName: site.legalName,
+    email: site.legalEmail,
     taxID: site.companyId,
     vatID: site.vatId,
     url: site.url,

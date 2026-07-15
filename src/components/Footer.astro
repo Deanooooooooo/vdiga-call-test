@@ -7,7 +7,7 @@ const href = (path: string) => `${basePath}${path}`;
 
 <footer class="footer">
   <div class="container footer-grid">
-    <div>
+    <div class="footer-brand">
       <a class="brand" href={href("/")}>
         <img class="brand-logo" src={href("/assets/vdiga-logo-nav-green-v.png?v=8f71ca30")} alt="Vdiga" width="320" height="123" />
       </a>
@@ -16,11 +16,18 @@ const href = (path: string) => `${basePath}${path}`;
       </p>
       <div class="trust-strip">{site.legalName} · ЕИК {site.companyId} · София</div>
     </div>
-    <div class="footer-links">
-      {site.nav.map((item) => <a href={href(item.href)}>{item.label}</a>)}
-      <a href={href("/politika-za-poveritelnost/")}>Поверителност</a>
-      <a href={href("/politika-za-biskvitki/")}>Бисквитки</a>
-      <a href={href("/obshti-usloviya/")}>Общи условия</a>
+    <div class="footer-nav">
+      <nav class="footer-link-group" aria-label="Vdiga">
+        <p class="footer-link-title">Vdiga</p>
+        {site.nav.map((item) => <a href={href(item.href)}>{item.label}</a>)}
+      </nav>
+      <nav class="footer-link-group" aria-label="Правна информация">
+        <p class="footer-link-title">Правна информация</p>
+        <a href={href("/politika-za-poveritelnost/")}>Поверителност</a>
+        <a href={href("/politika-za-biskvitki/")}>Бисквитки</a>
+        <a href={href("/obshti-usloviya/")}>Общи условия</a>
+        <a href={href("/danni-za-druzhestvoto/")}>Данни за дружеството</a>
+      </nav>
     </div>
   </div>
 </footer>
