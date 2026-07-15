@@ -6,7 +6,7 @@ import OnboardingForm from "../components/OnboardingForm.astro";
 import FAQ from "../components/FAQ.astro";
 import CTA from "../components/CTA.astro";
 import { faqSchema, productSchema } from "../data/schema";
-import { withBase as href } from "../data/site";
+import { site, withBase as href } from "../data/site";
 
 const faqs = [
   {
@@ -21,8 +21,7 @@ const faqs = [
   },
   {
     question: "Кой стои зад Vdiga?",
-    answer:
-      "Vdiga се разработва под Blast Off EOOD, София. Това е правният оператор за сайта, фактурите, условията и политиките.",
+    answer: `Vdiga се разработва от ${site.legalName}, София. Това е правният оператор за сайта, офертите, договорите, фактурите и политиките.`,
   },
   {
     question: "Как се казва това на английски?",
