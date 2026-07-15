@@ -5,7 +5,7 @@ import CTA from "../components/CTA.astro";
 import { faqSchema } from "../data/schema";
 import { articles } from "../data/articles";
 
-const article = articles[0];
+const article = articles.find((item) => item.path === "/kakvo-e-ai-retseptsionist/")!;
 const { path, title, description, answer, eyebrow, image, imageAlt, authorSlug, datePublished, dateModified } = article;
 
 const faqs = [
