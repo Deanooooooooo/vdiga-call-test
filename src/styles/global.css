@@ -2115,6 +2115,12 @@ tr:last-child td {
   font-weight: 800;
 }
 
+.founder-photo {
+  height: auto;
+  object-fit: cover;
+  object-position: center top;
+}
+
 .founder-copy h3 {
   margin-bottom: 4px;
   font-size: clamp(1.7rem, 3vw, 2.35rem);
@@ -2419,6 +2425,7 @@ tr:last-child td {
 .post-author .avatar {
   width: 64px;
   height: 64px;
+  object-fit: cover;
 }
 
 .post-author-label {

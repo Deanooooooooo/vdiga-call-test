@@ -96,7 +96,7 @@ const href = (path: string) => `${basePath}${path}`;
       </div>
       <div class="founders-grid">
         <article class="founder-card">
-          <div class="founder-mark" aria-hidden="true">ДД</div>
+          <img class="founder-mark founder-photo" src={href(site.author.image)} width="720" height="720" loading="lazy" alt="Деан Дечев, съосновател на Vdiga" />
           <div class="founder-copy">
             <h3>{site.author.name}</h3>
             <p class="founder-role">{site.author.role}</p>
@@ -104,7 +104,7 @@ const href = (path: string) => `${basePath}${path}`;
           </div>
         </article>
         <article class="founder-card">
-          <div class="founder-mark" aria-hidden="true">МД</div>
+          <img class="founder-mark founder-photo" src={href(site.coFounder.image)} width="720" height="720" loading="lazy" alt="Мариян Дечев, съосновател на Vdiga" />
           <div class="founder-copy">
             <h3>{site.coFounder.name}</h3>
             <p class="founder-role">{site.coFounder.role}</p>

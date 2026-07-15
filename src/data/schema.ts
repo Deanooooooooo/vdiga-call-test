@@ -54,6 +54,7 @@ export function founderSchema() {
       return {
         "@type": "Person",
         name: founder.name,
+        image: `${site.url}${founder.image}`,
         jobTitle: founder.role,
         description: founder.bio,
         url: `${site.url}/za-nas/`,
