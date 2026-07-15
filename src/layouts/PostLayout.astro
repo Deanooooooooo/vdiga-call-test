@@ -57,12 +57,20 @@ const formatDate = (value: string) =>
       <div class="post-container">
         <p class="eyebrow">{eyebrow}</p>
         <h1>{title}</h1>
-        <div class="post-meta" aria-label="Информация за статията">
-          <a href={authorUrl} rel="author">{author.name}</a>
-          <span aria-hidden="true">•</span>
-          <span>Публикувано <time datetime={datePublished}>{formatDate(datePublished)}</time></span>
-          <span aria-hidden="true">•</span>
-          <span>Обновено <time datetime={dateModified}>{formatDate(dateModified)}</time></span>
+        <div class="post-byline" aria-label="Автор и дата на статията">
+          <a class="post-byline-photo" href={authorUrl} rel="author" aria-label={`Профил на ${author.name}`}>
+            <img src={author.image} width="720" height="720" alt="" />
+          </a>
+          <div>
+            <a class="post-byline-name" href={authorUrl} rel="author">{author.name}</a>
+            <p class="post-byline-role">{author.role}</p>
+            <p class="post-meta">
+              <span>Публикувано на <time datetime={datePublished}>{formatDate(datePublished)}</time></span>
+              {dateModified !== datePublished && (
+                <><span aria-hidden="true">·</span><span>Обновено на <time datetime={dateModified}>{formatDate(dateModified)}</time></span></>
+              )}
+            </p>
+          </div>
         </div>
         <slot name="answer" />
       </div>
@@ -73,13 +81,16 @@ const formatDate = (value: string) =>
     </div>
 
     <footer class="post-container post-author">
-      <img class="avatar" src={author.image} width="720" height="720" loading="lazy" alt={author.name} />
-      <div>
-        <p class="post-author-label">Автор</p>
-        <h2><a href={authorUrl} rel="author">{author.name}</a></h2>
-        <p>{author.role}. {author.bio}</p>
-        <a class="post-author-link" href={authorUrl}>Профил и публикации на автора →</a>
+      <div class="post-author-head">
+        <img class="avatar" src={author.image} width="720" height="720" loading="lazy" alt={author.name} />
+        <div>
+          <p class="post-author-label">За автора</p>
+          <h2><a href={authorUrl} rel="author">{author.name}</a></h2>
+          <p class="post-author-role">{author.role}</p>
+        </div>
       </div>
+      <p class="post-author-bio">{author.bio}</p>
+      <a class="post-author-link" href={authorUrl}>Вижте профила и всички публикации →</a>
     </footer>
   </article>
 </BaseLayout>
