@@ -2370,6 +2370,11 @@ tr:last-child td {
   font-size: clamp(3rem, 6vw, 5rem);
 }
 
+.post-header h1.post-title-long {
+  max-width: 18ch;
+  font-size: clamp(2.7rem, 5vw, 4.25rem);
+}
+
 .post-byline {
   display: grid;
   grid-template-columns: 48px minmax(0, 1fr);
@@ -2453,6 +2458,7 @@ tr:last-child td {
 
 .post-body > p,
 .post-body > ul,
+.post-body > ol,
 .post-body > .table-wrap,
 .post-body > .post-figure {
   margin-bottom: 30px;
@@ -3144,6 +3150,10 @@ tr:last-child td {
 
   .post-header h1 {
     font-size: clamp(2.7rem, 14vw, 4rem);
+  }
+
+  .post-header h1.post-title-long {
+    font-size: clamp(2.35rem, 11vw, 3.25rem);
   }
 
   .post-featured-image {

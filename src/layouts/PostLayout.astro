@@ -60,7 +60,7 @@ const formatDate = (value: string) =>
     <header class="post-header">
       <div class="post-container">
         <p class="eyebrow">{eyebrow}</p>
-        <h1>{title}</h1>
+        <h1 class:list={{ "post-title-long": title.length > 45 }}>{title}</h1>
         <p class="answer-block">{answer}</p>
         <div class="post-byline" aria-label="Автор и дата на статията">
           <a class="post-byline-photo" href={authorUrl} rel="author" aria-label={`Профил на ${author.name}`}>
