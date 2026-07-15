@@ -2415,7 +2415,7 @@ tr:last-child td {
 
 @media (max-width: 620px) {
   .container {
-    width: min(var(--w), calc(100% - 28px));
+    width: min(var(--w), calc(100% - 36px));
   }
 
   .section {
@@ -2617,21 +2617,23 @@ tr:last-child td {
   }
 
   .nav {
-    gap: 12px;
+    justify-content: space-between;
+    gap: 8px;
   }
 
   .site-top .brand-logo {
-    width: 104px;
+    width: 96px;
   }
 
   .nav-actions {
+    min-width: 0;
     gap: 8px;
   }
 
   .nav-cta {
     min-height: 44px;
-    padding: 12px 14px;
-    font-size: 15px;
+    padding: 11px 10px;
+    font-size: clamp(12px, 3.6vw, 14px);
   }
 
   .hero-grid {
@@ -2673,6 +2675,18 @@ tr:last-child td {
   .setup-trust {
     margin-top: 48px;
     padding-top: 42px;
+  }
+
+  .setup-trust > div,
+  .setup-trust-grid,
+  .setup-trust-grid article {
+    min-width: 0;
+  }
+
+  .setup-trust h2,
+  .setup-trust-grid h3,
+  .setup-trust-grid p {
+    overflow-wrap: break-word;
   }
 
   .setup-trust-grid article {
