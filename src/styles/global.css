@@ -2168,6 +2168,130 @@ tr:last-child td {
   object-fit: contain;
 }
 
+.ai-team-section {
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 92% 8%, rgba(28, 216, 151, 0.15), transparent 28%),
+    var(--ink);
+  color: var(--paper);
+}
+
+.ai-team-intro {
+  max-width: 840px;
+  margin-bottom: 42px;
+}
+
+.ai-team-intro .eyebrow,
+.ai-agent-role {
+  color: var(--answer);
+}
+
+.ai-team-intro h2 {
+  max-width: 780px;
+  margin-bottom: 18px;
+  color: var(--paper);
+}
+
+.ai-team-intro .lead {
+  max-width: 780px;
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.ai-agent-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.ai-agent-card {
+  display: grid;
+  grid-template-columns: 106px minmax(0, 1fr);
+  gap: 24px;
+  padding: clamp(24px, 4vw, 38px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+}
+
+.ai-agent-identity {
+  text-align: center;
+}
+
+.ai-agent-mark {
+  display: grid;
+  width: 106px;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(28, 216, 151, 0.42);
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(28, 216, 151, 0.22), rgba(28, 216, 151, 0.04));
+  box-shadow: inset 0 0 28px rgba(28, 216, 151, 0.1);
+  color: var(--answer);
+  font-family: var(--mono);
+  font-size: 2.4rem;
+  font-weight: 800;
+}
+
+.ai-agent-identity span {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 8px;
+  border: 1px solid rgba(28, 216, 151, 0.32);
+  border-radius: 999px;
+  color: var(--answer);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ai-agent-card h3 {
+  margin-bottom: 3px;
+  color: var(--paper);
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+}
+
+.ai-agent-role {
+  margin-bottom: 20px;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.ai-agent-card div > p:last-child {
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 1rem;
+}
+
+.ai-team-proof {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 36px;
+  align-items: center;
+  margin-top: 24px;
+  padding: 24px clamp(24px, 4vw, 38px);
+  border-left: 3px solid var(--answer);
+  background: rgba(28, 216, 151, 0.08);
+}
+
+.ai-team-proof p,
+.ai-team-proof strong {
+  margin: 0;
+}
+
+.ai-team-proof p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.ai-team-proof strong {
+  color: var(--paper);
+  font-size: 1.08rem;
+}
+
 .about-team {
   align-items: start;
 }
@@ -2758,6 +2882,8 @@ tr:last-child td {
 
   .about-intro,
   .founders-grid,
+  .ai-agent-grid,
+  .ai-team-proof,
   .legal-trust {
     grid-template-columns: 1fr;
     gap: 36px;
@@ -2765,6 +2891,18 @@ tr:last-child td {
 
   .founder-card {
     grid-template-columns: 1fr;
+  }
+
+  .ai-agent-card {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-agent-identity {
+    text-align: left;
+  }
+
+  .ai-agent-mark {
+    width: 92px;
   }
 
   .founder-mark {
