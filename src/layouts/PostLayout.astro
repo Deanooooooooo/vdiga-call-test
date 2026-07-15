@@ -6,6 +6,7 @@ import { authorPath, getAuthor } from "../data/authors";
 
 interface Props {
   title: string;
+  seoTitle?: string;
   description: string;
   path: string;
   eyebrow?: string;
@@ -19,6 +20,7 @@ interface Props {
 
 const {
   title,
+  seoTitle,
   description,
   path,
   eyebrow = "Ръководство",
@@ -40,7 +42,7 @@ const formatDate = (value: string) =>
 ---
 
 <BaseLayout
-  title={`${title} | ${site.brand}`}
+  title={`${seoTitle ?? title} | ${site.brand}`}
   description={description}
   path={path}
   pageClass="post-page"
@@ -48,7 +50,7 @@ const formatDate = (value: string) =>
   image={image}
   imageAlt={imageAlt}
   schemas={[
-    articleSchema({ headline: title, description, path, datePublished, dateModified, author }),
+    articleSchema({ headline: title, description, path, datePublished, dateModified, author, image }),
     ...schemas,
   ]}
 >

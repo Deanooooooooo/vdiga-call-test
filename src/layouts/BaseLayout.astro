@@ -23,6 +23,11 @@ const canonical = `${site.url}${path}`;
 const resolvedImage = image ?? "/assets/vdiga-og-default-v2.png";
 const resolvedImageAlt = imageAlt ?? "Vdiga AI рецепционист на български";
 const socialImage = `${site.url}${resolvedImage}`;
+const socialImageType = resolvedImage.endsWith(".jpg") || resolvedImage.endsWith(".jpeg")
+  ? "image/jpeg"
+  : resolvedImage.endsWith(".webp")
+    ? "image/webp"
+    : "image/png";
 const allSchemas = [
   organizationSchema(),
   websiteSchema(),
@@ -50,7 +55,7 @@ const allSchemas = [
     <meta property="og:locale" content="bg_BG" />
     <meta property="og:image" content={socialImage} />
     <meta property="og:image:secure_url" content={socialImage} />
-    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:type" content={socialImageType} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={resolvedImageAlt} />

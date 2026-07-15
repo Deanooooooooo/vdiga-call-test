@@ -2440,8 +2440,33 @@ tr:last-child td {
 
 .post-body > p,
 .post-body > ul,
-.post-body > .table-wrap {
+.post-body > .table-wrap,
+.post-body > .post-figure {
   margin-bottom: 30px;
+}
+
+.post-figure {
+  margin: 42px 0 48px;
+}
+
+.post-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  background: var(--ink);
+}
+
+.post-figure figcaption {
+  max-width: 66ch;
+  margin-top: 12px;
+  color: var(--txt-mute);
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.post-figure-light img {
+  background: var(--paper-dim);
 }
 
 .post-body h2 {

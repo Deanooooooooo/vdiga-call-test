@@ -207,6 +207,7 @@ export function articleSchema({
   datePublished,
   dateModified,
   author = site.author,
+  image,
 }: {
   headline: string;
   description: string;
@@ -214,6 +215,7 @@ export function articleSchema({
   datePublished: string;
   dateModified: string;
   author?: Author;
+  image?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -225,6 +227,7 @@ export function articleSchema({
     inLanguage: "bg-BG",
     datePublished,
     dateModified,
+    ...(image ? { image: `${site.url}${image}` } : {}),
     author: {
       "@type": "Person",
       name: author.name,
