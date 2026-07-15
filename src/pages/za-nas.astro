@@ -110,7 +110,13 @@ const href = (path: string) => `${basePath}${path}`;
             <p class="founder-role">{site.coFounder.role}</p>
             <p>{site.coFounder.bio}</p>
             <div class="founder-credential" aria-label="Професионален сертификат от Amazon Web Services">
-              <span class="credential-check" aria-hidden="true">✓</span>
+              <img
+                src={href("/assets/aws-certified-solutions-architect-associate.png")}
+                width="600"
+                height="600"
+                loading="lazy"
+                alt="AWS Certified Solutions Architect – Associate"
+              />
               <span>
                 <strong>{site.coFounder.credential.name}</strong>
                 <small>{site.coFounder.credential.code} · Сертифициран през 2025 г.</small>
