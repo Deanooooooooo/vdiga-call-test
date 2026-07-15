@@ -2488,7 +2488,7 @@ tr:last-child td {
 
 .author-hero-grid {
   display: grid;
-  grid-template-columns: minmax(260px, 0.62fr) minmax(0, 1.38fr);
+  grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
   gap: clamp(48px, 8vw, 104px);
   align-items: center;
 }
@@ -2496,8 +2496,10 @@ tr:last-child td {
 .author-portrait {
   display: block;
   width: 100%;
-  max-width: 420px;
+  max-width: 320px;
+  height: auto;
   aspect-ratio: 1;
+  justify-self: center;
   object-fit: cover;
   object-position: center top;
 }
@@ -3086,6 +3088,8 @@ tr:last-child td {
 
   .author-portrait {
     width: 132px;
+    height: 132px;
+    justify-self: start;
   }
 
   .author-role {
