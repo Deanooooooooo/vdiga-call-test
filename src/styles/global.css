@@ -2464,6 +2464,15 @@ tr:last-child td {
   margin-bottom: 30px;
 }
 
+.post-body > .section-tight {
+  width: 100%;
+  padding: 52px 0 0;
+}
+
+.post-body > .section-tight > .container {
+  width: 100%;
+}
+
 .post-figure {
   margin: 42px 0 48px;
 }
