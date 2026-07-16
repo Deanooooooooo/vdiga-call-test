@@ -168,6 +168,7 @@ export function productSchema() {
     "@context": "https://schema.org",
     "@type": "Product",
     name: "Vdiga AI рецепционист",
+    image: `${site.url}/assets/vdiga-og-default-v2.png`,
     brand: {
       "@type": "Brand",
       name: site.brand,
