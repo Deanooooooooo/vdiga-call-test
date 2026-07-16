@@ -1,0 +1,88 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CallCard from "../components/CallCard.astro";
+import FAQ from "../components/FAQ.astro";
+import OnboardingForm from "../components/OnboardingForm.astro";
+import PricingCards from "../components/PricingCards.astro";
+import { faqSchema, serviceSchema } from "../data/schema";
+import { withBase as href } from "../data/site";
+
+const path = "/ai-retseptsionist-salon-za-krasota/";
+const title = "AI рецепционист за салон за красота | Vdiga";
+const description = "AI рецепционист за салон за красота: приема обаждания, записва според услуга, продължителност и специалист и поема промени и откази.";
+const faqs = [
+  { question: "Какво може да поема AI рецепционистът в салон за красота?", answer: "Приема обаждания за нов час, промяна или отказ, цени, услуги, адрес и работно време. Записва според правилата на салона и изпраща какво е уговорено." },
+  { question: "Може ли да записва при конкретен фризьор, козметик или терапевт?", answer: "Да. За всеки специалист могат да се зададат услугите, работните дни, продължителността и часовете, които могат да се предлагат." },
+  { question: "Как работи при услуги с различна продължителност?", answer: "Всяка услуга се настройва със собствено времетраене, нужните паузи и специалистите, които я извършват. Vdiga предлага само подходящи свободни часове." },
+  { question: "Може ли да обяснява цени, подготовка и правила за депозит?", answer: "Да, когато информацията е предварително одобрена от салона. Vdiga не измисля цени, отстъпки или изключения и предава нестандартните въпроси на екипа." },
+  { question: "Подходящ ли е за самостоятелен професионалист без рецепция?", answer: "Да. Vdiga може да отговаря, докато професионалистът е с клиент, да записва разрешените услуги и да изпраща обобщение след разговора." },
+  { question: "Колко струва AI рецепционист за салон за красота?", answer: "Плановете започват от 97 евро на месец без ДДС. Цената зависи от минутите, линиите, броя специалисти и начина на записване." },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} pageClass="beauty-page" schemas={[serviceSchema("AI рецепционист за салон за красота", path, description), faqSchema(faqs)]}>
+  <section class="hero beauty-hero"><div class="container grid-2"><div>
+    <p class="eyebrow">за салони и самостоятелни професионалисти</p>
+    <h1>AI рецепционист за салон за красота</h1>
+    <p class="answer-block">Vdiga вдига, докато вие сте с клиент. Проверява услугата, специалиста, продължителността и свободните часове, записва според вашите правила и поема промени и откази.</p>
+    <p class="lead">За самостоятелен професионалист, натоварен салон или бизнес с няколко обекта.</p>
+    <div class="button-row hero-actions"><a class="btn btn-primary" href="#zayavka">Покажете ни графика си</a><a class="btn btn-secondary" href={href("/demo/")}>Чуйте разговор</a></div>
+  </div><CallCard /></div></section>
+
+  <section class="section band"><div class="container">
+    <div class="beauty-head"><div><p class="eyebrow">цената на едно позвъняване</p><h2>Когато ръцете ви са заети, телефонът остава без отговор.</h2></div><p>Клиентът звъни между две задачи: иска свободен час, пита за цена или трябва да промени посещение. Ако никой не вдигне, следващото обаждане често е към друг салон.</p></div>
+    <div class="grid-3">
+      <article class="feature"><span class="beauty-number">01</span><h3>Услугата не може да спира</h3><p>Подстригване, маникюр, терапия или процедура не се прекъсват, за да проверите календара при всяко позвъняване.</p></article>
+      <article class="feature"><span class="beauty-number">02</span><h3>Всеки час има различна дължина</h3><p>Боядисване, поддръжка на маникюр и масаж не заемат едно и също време. Грешният слот разбърква целия ден.</p></article>
+      <article class="feature"><span class="beauty-number">03</span><h3>Промените идват в последния момент</h3><p>Откази, закъснения и премествания оставят празнини, докато нови клиенти чуват заета линия.</p></article>
+    </div>
+  </div></section>
+
+  <section class="section beauty-plans"><div class="container">
+    <div class="beauty-head"><div><p class="eyebrow">три формата на работа</p><h2>План според екипа, не според табелата на вратата.</h2></div><p>Един професионалист има различен телефонен поток от салон с няколко календара или верига с общ номер. Затова препоръката следва реалната работа.</p></div>
+    <PricingCards segments={[
+      { name: "Самостоятелен професионалист", description: "За фризьор, козметик, маникюрист или терапевт без рецепция. Vdiga вдига, докато сте с клиент." },
+      { name: "Салон с няколко специалисти", description: "За натоварен общ телефон, различни услуги, продължителности и графици на екипа." },
+      { name: "Салон с няколко обекта", description: "За повече линии, локации, екипи и правила за насочване и записване." },
+    ]} />
+  </div></section>
+
+  <section class="section"><div class="container grid-2">
+    <div><p class="eyebrow">какво поема Vdiga</p><h2>От въпроса за цена до потвърдения час.</h2><p class="beauty-intro">Салонът решава какво може да се казва, предлага и записва.</p><ul class="split-list"><li>нова резервация по услуга и специалист</li><li>промяна или отказ на съществуващ час</li><li>цени, адрес, работно време и начини на плащане</li><li>одобрена информация за подготовка и последваща грижа</li><li>депозит, закъснение и правила при неявяване</li></ul></div>
+    <aside class="beauty-focus"><p class="eyebrow">без свободни съчинения</p><h3>Цените и правилата са ваши.</h3><p>Vdiga не обещава отстъпка, не отменя депозит и не вмъква клиент в зает график. При изключение взема данни и уведомява екипа.</p><div class="focus-flow"><span>Проверява одобрената информация</span><span>Предлага разрешените варианти</span><span>Предава изключенията на човек</span></div></aside>
+  </div></section>
+
+  <section class="section band"><div class="container grid-2">
+    <div><p class="eyebrow">примерен работен поток</p><h2>От „Имате ли час?“ до резервация без разместване.</h2><ol class="beauty-steps">
+      <li><span>1</span><div><strong>Уточнява услугата</strong><p>Какво иска клиентът и нужна ли е конкретна подготовка.</p></div></li>
+      <li><span>2</span><div><strong>Проверява специалист и продължителност</strong><p>Кой извършва услугата и колко време трябва да остане свободно.</p></div></li>
+      <li><span>3</span><div><strong>Предлага подходящи часове</strong><p>Само слотове, разрешени в календара на салона.</p></div></li>
+      <li><span>4</span><div><strong>Потвърждава правилата</strong><p>Час, адрес, цена или диапазон, депозит и политика при закъснение.</p></div></li>
+    </ol></div>
+    <div class="beauty-dialogue"><p class="dialogue-label">примерен разговор</p><div class="bubble ai"><strong>Vdiga</strong><p>Здравейте, обаждате се в салона. Аз съм AI асистент. За каква услуга искате час?</p></div><div class="bubble client"><strong>Клиент</strong><p>За подстригване и боядисване при Мария, в събота следобед.</p></div><div class="bubble ai"><strong>Vdiga</strong><p>За тази комбинация са нужни два часа и половина. Мария има свободен час в събота от 14:30. Да го запазя ли?</p></div><div class="dialogue-result"><span>След разговора</span><strong>Услугата, специалистът и нужният слот съвпадат</strong></div></div>
+  </div></section>
+
+  <section class="section"><div class="container">
+    <div class="beauty-head"><div><p class="eyebrow">настройка по вашите правила</p><h2>Графикът знае повече от „свободно“ и „заето“.</h2></div><p>Преди старта описваме услугите, времетраенето, специалистите, паузите, депозитите и случаите, които трябва да се поемат от човек.</p></div>
+    <div class="beauty-control-grid">
+      <article class="beauty-control-card"><span class="control-icon">01</span><p class="control-label">Услуги</p><h3>Колко време трябва да остане свободно?</h3><p>Всяка услуга има собствена продължителност, специалисти и допустими часове.</p><div class="control-owner"><span>Настройката идва от</span><strong>салона</strong></div></article>
+      <article class="beauty-control-card dark"><span class="control-icon">02</span><p class="control-label">Откази и неявяване</p><h3>Кога се изисква депозит?</h3><p>Vdiga съобщава одобрените условия и не прави изключения без решение на екипа.</p><div class="control-owner"><span>Политиката остава при</span><strong>собственика</strong></div></article>
+      <article class="beauty-control-card"><span class="control-icon">03</span><p class="control-label">Телефон</p><h3>Кога да отговаря Vdiga?</h3><p>Постоянно, при заета линия, след определен брой позвънявания или извън работно време.</p><div class="control-owner"><span>Режимът се избира от</span><strong>салона</strong></div></article>
+    </div>
+  </div></section>
+
+  <section class="section band"><div class="container grid-2"><div><p class="eyebrow">резултатът за бизнеса</p><h2>Повече приети обаждания. По-подреден календар.</h2><p class="beauty-intro">Следите приетите разговори, записаните услуги, промените, отказите и часовете с най-силно търсене.</p><p>Така виждате кои услуги се търсят, кога губите обаждания и къде свободните слотове могат да се използват по-добре.</p><div class="button-row"><a class="btn btn-primary" href={href("/tseni/")}>Вижте планове от 97 €</a></div></div><div class="beauty-metrics"><div><strong>Записани</strong><span>услуги и специалисти</span></div><div><strong>Променени</strong><span>часове без телефонен хаос</span></div><div><strong>Отказани</strong><span>посещения и освободени слотове</span></div><div><strong>Търсени</strong><span>дни, часове и услуги</span></div></div></div></section>
+
+  <section class="section"><div class="container grid-2"><div><p class="eyebrow">чести въпроси</p><h2>Какво искат да знаят салоните?</h2></div><FAQ items={faqs} /></div></section>
+  <section class="section band"><div class="container"><OnboardingForm title="Вижте как Vdiga ще работи за вашия салон." lead="Оставете телефон. Ще разгледаме услугите, специалистите, продължителността, натоварените часове и правилата за промяна и отказ." businessPlaceholder="Например Studio Belle" callProblemPlaceholder="Например: докато сме с клиенти, вечер или при няколко едновременни обаждания" /></div></section>
+</BaseLayout>
+
+<style>
+  .beauty-hero h1{max-width:13ch}.beauty-head{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:end;margin-bottom:48px}.beauty-head h2{margin-bottom:0}.beauty-head>p,.beauty-intro{color:var(--ink-soft);font-size:1.2rem;font-weight:600;line-height:1.55}.beauty-number{display:block;margin-bottom:22px;color:var(--answer-deep);font-family:var(--mono);font-size:.86rem;font-weight:800}.beauty-plans{background:var(--paper)}.beauty-plans :global(.price-card-head h3){max-width:13ch}.beauty-plans :global(.price-recommended){margin:2px 0 12px;color:var(--answer-deep);font-size:.84rem;font-weight:700}
+  .beauty-focus{padding:38px;border-radius:18px;background:var(--ink);color:var(--paper)}.beauty-focus h3{color:var(--paper);font-size:clamp(2rem,3vw,3rem)}.beauty-focus p{color:rgba(250,250,247,.78)}.focus-flow{display:grid;gap:10px;margin-top:28px}.focus-flow span{padding:13px 15px;border:1px solid rgba(255,255,255,.16);border-radius:10px;font-weight:750}
+  .beauty-steps{display:grid;gap:22px;margin:34px 0 0;padding:0;list-style:none}.beauty-steps li{display:grid;grid-template-columns:42px 1fr;gap:16px}.beauty-steps li>span{display:grid;width:42px;height:42px;place-items:center;border-radius:50%;background:var(--answer);color:#07120b;font-weight:900}.beauty-steps strong{font-size:1.16rem}.beauty-steps p{margin:4px 0 0;color:var(--ink-soft)}
+  .beauty-dialogue{padding:30px;border:1px solid var(--line);border-radius:20px;background:var(--paper);box-shadow:0 26px 60px -42px rgba(8,29,17,.45)}.dialogue-label{color:var(--answer-deep);font-size:.78rem;font-weight:850;letter-spacing:.12em;text-transform:uppercase}.bubble{max-width:88%;margin-top:18px;padding:16px 18px;border-radius:16px}.bubble p{margin:5px 0 0;font-size:1rem;line-height:1.5}.bubble.ai{background:#e6f7e9}.bubble.client{margin-left:auto;background:#ecebe5}.dialogue-result{display:grid;gap:4px;margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}.dialogue-result span{color:var(--answer-deep);font-size:.76rem;font-weight:850;text-transform:uppercase}
+  .beauty-control-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.beauty-control-card{display:flex;min-height:410px;flex-direction:column;padding:30px;border-radius:18px;background:#edf4ed}.beauty-control-card.dark{background:var(--ink);color:var(--paper)}.control-icon{display:grid;width:44px;height:44px;margin-bottom:38px;place-items:center;border-radius:50%;background:var(--answer);color:#07120b;font-family:var(--mono);font-size:.75rem;font-weight:900}.control-label{margin-bottom:10px;color:var(--answer-deep);font-size:.76rem;font-weight:850;letter-spacing:.08em;text-transform:uppercase}.dark .control-label{color:var(--answer)}.beauty-control-card h3{font-size:clamp(1.5rem,2vw,1.95rem)}.beauty-control-card.dark h3{color:var(--paper)}.beauty-control-card>p:not(.control-label){color:var(--ink-soft);font-size:1.05rem;line-height:1.55}.beauty-control-card.dark>p:not(.control-label){color:rgba(250,250,247,.74)}.control-owner{display:grid;gap:3px;margin-top:auto;padding-top:20px;border-top:1px solid rgba(8,29,17,.14)}.dark .control-owner{border-top-color:rgba(255,255,255,.16)}.control-owner span{color:var(--ink-soft);font-size:.82rem;font-weight:650}.dark .control-owner span{color:rgba(250,250,247,.58)}.control-owner strong{font-size:1.18rem}
+  .beauty-metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px}.beauty-metrics div{min-height:150px;padding:24px;border:1px solid var(--line);border-radius:16px;background:var(--paper)}.beauty-metrics strong,.beauty-metrics span{display:block}.beauty-metrics strong{margin-bottom:10px;color:var(--ink);font-family:var(--disp);font-size:1.45rem}.beauty-metrics span{color:var(--ink-soft);font-weight:650}
+  @media(max-width:800px){.beauty-head{grid-template-columns:1fr;gap:20px}.beauty-control-grid{grid-template-columns:1fr}.beauty-control-card{min-height:0}.beauty-focus,.beauty-dialogue{padding:24px}.beauty-metrics{grid-template-columns:1fr}.beauty-metrics div{min-height:0}}
+</style>
