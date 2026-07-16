@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 
 const host = "vdiga.bg";
 const origin = `https://${host}`;
-const key = "df88cfddf9c02fd7a719288a3a31ddfa";
+const key = "b33077ad677ef89a678066efa8c0c5c1";
 const keyLocation = `${origin}/${key}.txt`;
 
 const sitemap = await readFile(new URL("../dist/sitemap.xml", import.meta.url), "utf8");
@@ -17,15 +17,38 @@ if (urlList.length === 0) {
   throw new Error("No canonical Vdiga URLs found in dist/sitemap.xml");
 }
 
-const response = await fetch("https://api.indexnow.org/indexnow", {
-  method: "POST",
-  headers: { "content-type": "application/json; charset=utf-8" },
-  body: JSON.stringify({ host, key, keyLocation, urlList }),
-});
+const payload = JSON.stringify({ host, key, keyLocation, urlList });
+const retryableStatuses = new Set([403, 429, 500, 502, 503, 504]);
+const delays = [0, 2_000, 5_000];
+let lastError;
 
-if (!response.ok) {
+for (const [attempt, delay] of delays.entries()) {
+  if (delay > 0) {
+    await new Promise((resolve) => setTimeout(resolve, delay));
+  }
+
+  const response = await fetch("https://api.indexnow.org/indexnow", {
+    method: "POST",
+    headers: { "content-type": "application/json; charset=utf-8" },
+    body: payload,
+  });
+
+  if (response.ok) {
+    console.log(`Submitted ${urlList.length} URLs to IndexNow (${response.status}).`);
+    lastError = undefined;
+    break;
+  }
+
   const body = await response.text();
-  throw new Error(`IndexNow returned ${response.status}${body ? `: ${body}` : ""}`);
+  lastError = new Error(
+    `IndexNow attempt ${attempt + 1} returned ${response.status}${body ? `: ${body}` : ""}`,
+  );
+
+  if (!retryableStatuses.has(response.status)) {
+    break;
+  }
 }
 
-console.log(`Submitted ${urlList.length} URLs to IndexNow (${response.status}).`);
+if (lastError) {
+  throw lastError;
+}
