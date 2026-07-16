@@ -1,14 +1,28 @@
 ---
 import { site } from "../data/site";
+
+interface Props {
+  title?: string;
+  lead?: string;
+  businessPlaceholder?: string;
+  callProblemPlaceholder?: string;
+}
+
+const {
+  title = "Вижте как Vdiga ще работи за вашия бизнес.",
+  lead = "Оставете ни телефон. Ще обсъдим кога изпускате обаждания, какво трябва да поема Vdiga и колко ще струва за вашия бизнес.",
+  businessPlaceholder = "Например Studio Forma",
+  callProblemPlaceholder = "Например: когато сме с клиенти или след работно време",
+} = Astro.props;
 ---
 
 <section class="onboarding-panel" id="zayavka" aria-labelledby="onboarding-title">
   <div class="onboarding-inner">
   <div class="onboarding-copy">
     <p class="eyebrow">разговор с екипа ни</p>
-    <h2 id="onboarding-title">Вижте как Vdiga ще работи за вашия бизнес.</h2>
+    <h2 id="onboarding-title">{title}</h2>
     <p class="onboarding-lead">
-      Оставете ни телефон. Ще обсъдим кога изпускате обаждания, какво трябва да поема Vdiga и колко ще струва за вашия бизнес.
+      {lead}
     </p>
     <ul class="onboarding-points" aria-label="Какво следва">
       <li>Разглеждаме как приемате обажданията сега</li>
@@ -42,7 +56,7 @@ import { site } from "../data/site";
       </label>
       <label>
         <span>Име на бизнеса</span>
-        <input type="text" name="business_name" autocomplete="organization" placeholder="Например Studio Forma" required />
+        <input type="text" name="business_name" autocomplete="organization" placeholder={businessPlaceholder} required />
       </label>
       <label>
         <span>Телефон</span>
@@ -65,7 +79,7 @@ import { site } from "../data/site";
       </label>
       <label class="form-field-wide">
         <span>Кога изпускате най-много обаждания? <small>по желание</small></span>
-        <textarea name="current_call_problem" rows="3" placeholder="Например: когато сме с клиенти или след работно време"></textarea>
+        <textarea name="current_call_problem" rows="3" placeholder={callProblemPlaceholder}></textarea>
       </label>
     </div>
 
