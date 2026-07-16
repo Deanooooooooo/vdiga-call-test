@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import CallCard from "../components/CallCard.astro";
 import FAQ from "../components/FAQ.astro";
 import OnboardingForm from "../components/OnboardingForm.astro";
+import PricingCards from "../components/PricingCards.astro";
 import { faqSchema, serviceSchema } from "../data/schema";
 import { withBase as href } from "../data/site";
 
@@ -104,41 +105,22 @@ const faqs = [
         </div>
         <p>Vdiga може да вдига вместо стоматолога, да помага на заета рецепция или да обслужва няколко линии. Настройката зависи от това кой отговаря сега и кога обажданията остават без отговор.</p>
       </div>
-      <div class="dental-models">
-        <article class="dental-model-card">
-          <span class="model-kicker">Без рецепция</span>
-          <h3>Самостоятелен стоматолог</h3>
-          <p>Vdiga вдига, докато стоматологът и асистентът са с пациент. Записва разрешените услуги или взема име, телефон и причина за обаждането.</p>
-          <ul>
-            <li>без прекъсване на лечението</li>
-            <li>записване и промяна на час</li>
-            <li>обобщение след разговора</li>
-          </ul>
-          <a href={href("/tseni/")}>Подходящ старт: план Старт</a>
-        </article>
-        <article class="dental-model-card featured">
-          <span class="model-kicker">Най-честият случай</span>
-          <h3>Клиника със заета рецепция</h3>
-          <p>Vdiga поема втората линия, натоварените часове и разговорите извън работно време. Рецепционистът остава при пациента пред него.</p>
-          <ul>
-            <li>поемане при заетост</li>
-            <li>повече приети нови пациенти</li>
-            <li>по-малко обратни обаждания</li>
-          </ul>
-          <a href={href("/tseni/")}>Подходящ старт: план Бизнес</a>
-        </article>
-        <article class="dental-model-card">
-          <span class="model-kicker">Няколко линии или обекта</span>
-          <h3>Голяма дентална клиника</h3>
-          <p>Vdiga насочва обажданията според обект, лекар, услуга и график. Екипът вижда кой се е обадил и към кой кабинет е насочен разговорът.</p>
-          <ul>
-            <li>3+ телефонни линии</li>
-            <li>различни лекари и графици</li>
-            <li>отделни правила за всеки обект</li>
-          </ul>
-          <a href="#zayavka">Индивидуално решение</a>
-        </article>
-      </div>
+      <PricingCards
+        segments={[
+          {
+            name: "Самостоятелен стоматолог",
+            description: "Vdiga вдига, докато стоматологът и асистентът са с пациент, записва разрешените услуги и изпраща обобщение.",
+          },
+          {
+            name: "Клиника със заета рецепция",
+            description: "Vdiga поема при заета линия, в натоварените часове и извън работно време, без да заменя рецепциониста.",
+          },
+          {
+            name: "Голяма дентална клиника",
+            description: "За няколко кабинета, телефонни линии или обекта с различни лекари, графици и правила.",
+          },
+        ]}
+      />
     </div>
   </section>
 
@@ -276,16 +258,9 @@ const faqs = [
   .dental-section-head > p, .dental-intro { color: var(--ink-soft); font-size: 1.25rem; font-weight: 600; line-height: 1.55; }
   .dental-number { display: block; margin-bottom: 22px; color: var(--answer-deep); font-family: var(--mono); font-size: .86rem; font-weight: 800; }
   .dental-models-section { background: var(--paper); }
-  .dental-models { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
-  .dental-model-card { display: flex; min-height: 490px; flex-direction: column; padding: 30px; border: 1px solid var(--line); border-radius: 18px; background: #fff; box-shadow: 0 22px 52px -44px rgba(8,29,17,.35); }
-  .dental-model-card.featured { border-color: var(--answer); box-shadow: 0 24px 58px -38px rgba(35,163,72,.34); }
-  .model-kicker { width: fit-content; margin-bottom: 26px; padding: 7px 10px; border-radius: 999px; background: #e6f7e9; color: var(--answer-deep); font-size: .76rem; font-weight: 850; letter-spacing: .05em; text-transform: uppercase; }
-  .dental-model-card h3 { font-size: clamp(1.65rem, 2.3vw, 2.2rem); }
-  .dental-model-card > p { color: var(--ink-soft); font-size: 1.08rem; line-height: 1.55; }
-  .dental-model-card ul { display: grid; gap: 10px; margin: 20px 0 28px; padding: 0; list-style: none; }
-  .dental-model-card li { display: grid; grid-template-columns: 16px 1fr; gap: 8px; color: var(--ink); font-weight: 700; }
-  .dental-model-card li::before { color: var(--answer-deep); content: "✓"; }
-  .dental-model-card a { margin-top: auto; color: var(--answer-deep); font-weight: 850; text-decoration: none; }
+  .dental-models-section :global(.price-card-head h3) { max-width: 12ch; }
+  .dental-models-section :global(.price-recommended) { margin: 2px 0 12px; color: var(--answer-deep); font-size: .84rem; font-weight: 700; }
+  .dental-models-section :global(.price-recommended strong) { font-weight: 900; }
   .dental-boundary { padding: 38px; border-radius: 18px; background: var(--ink); color: var(--paper); }
   .dental-boundary h3 { color: var(--paper); font-size: clamp(2rem, 3vw, 3rem); }
   .dental-boundary p { color: rgba(250,250,247,.78); }
@@ -326,8 +301,8 @@ const faqs = [
   .dental-metrics span { color: var(--ink-soft); font-weight: 650; }
   @media (max-width: 800px) {
     .dental-section-head { grid-template-columns: 1fr; gap: 20px; }
-    .dental-models, .dental-control-grid { grid-template-columns: 1fr; }
-    .dental-model-card, .dental-control-card { min-height: 0; }
+    .dental-control-grid { grid-template-columns: 1fr; }
+    .dental-control-card { min-height: 0; }
     .dental-boundary, .dental-dialogue { padding: 24px; }
     .dental-metrics { grid-template-columns: 1fr; }
     .dental-metrics div { min-height: 0; }

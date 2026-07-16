@@ -1,5 +1,16 @@
 ---
 import { site } from "../data/site";
+
+interface Segment {
+  name: string;
+  description: string;
+}
+
+interface Props {
+  segments?: Segment[];
+}
+
+const { segments } = Astro.props;
 ---
 
 <div class="billing-switch" aria-label="Период на плащане">
@@ -12,10 +23,11 @@ import { site } from "../data/site";
     site.pricing.map((tier, index) => (
       <article class:list={["price-card", index === 1 && "featured"]}>
         <div class="price-card-head">
-          <h3>{tier.name}</h3>
+          <h3>{segments?.[index]?.name ?? tier.name}</h3>
           {index === 1 && <span class="price-popular">най-избиран</span>}
         </div>
-        <p class="price-audience">{tier.note}</p>
+        {segments?.[index] && <p class="price-recommended">Препоръчителен план: <strong>{tier.name}</strong></p>}
+        <p class="price-audience">{segments?.[index]?.description ?? tier.note}</p>
         <p class="price-minutes"><strong>{tier.minutes}</strong><span>{tier.minutesContext}</span></p>
         <div class="price">
           <span data-price data-monthly={tier.price} data-annual={tier.annualPrice}>{tier.price}</span>
