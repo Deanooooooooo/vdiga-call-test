@@ -2,15 +2,9 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CallCard from "../components/CallCard.astro";
 import FAQ from "../components/FAQ.astro";
-import CTA from "../components/CTA.astro";
 import { faqSchema } from "../data/schema";
 
 const faqs = [
-  {
-    question: "Защо демо номерът още не е публичен?",
-    answer:
-      "Vdiga няма да показва фалшив номер. Първо минават тестови разговори на български. После публичният номер става основният тест за продукта.",
-  },
   {
     question: "Какво трябва да чуя в демото?",
     answer:
@@ -49,7 +43,7 @@ const href = (path: string) => `${basePath}${path}`;
           Първо слушате разговора. После виждате <a href={href("/kak-raboti/")}>как работи AI рецепционистът</a>, как се настройва и какво получавате след обаждането.
         </p>
         <div class="button-row hero-actions">
-          <a class="btn btn-primary" href="#test">Проверете критериите</a>
+          <a class="btn btn-primary" href={href("/kak-raboti/")}>Как работи</a>
           <a class="btn btn-secondary" href={href("/tseni/")}>Вижте планове</a>
         </div>
       </div>
@@ -93,27 +87,6 @@ const href = (path: string) => `${basePath}${path}`;
     </div>
   </section>
 
-  <section class="section" id="test">
-    <div class="container">
-        <p class="eyebrow">преди публичен номер</p>
-        <h2>Какво трябва да мине преди публичен номер?</h2>
-      <div class="grid-3">
-        <article class="feature">
-          <h3>Естествен български</h3>
-          <p>Имена, часове, квартали и прекъсвания трябва да звучат нормално за български клиент.</p>
-        </article>
-        <article class="feature">
-          <h3>Правилни въпроси</h3>
-          <p>AI асистентът пита за услуга, удобен час, име и спешност. Не води празен разговор.</p>
-        </article>
-        <article class="feature">
-          <h3>Пренасочване към човек</h3>
-          <p>Когато случаят е спешен или сложен, Vdiga не импровизира. Пренасочва или взема съобщение.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <section class="section band">
     <div class="container grid-2">
       <div>
@@ -123,6 +96,4 @@ const href = (path: string) => `${basePath}${path}`;
       <FAQ items={faqs} />
     </div>
   </section>
-
-  <CTA title="Демото трябва да звучи нормално." text="Ако гласът не издържи първия разговор, няма смисъл да го включвате към бизнеса си." />
 </BaseLayout>
