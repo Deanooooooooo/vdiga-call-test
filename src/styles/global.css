@@ -1072,6 +1072,21 @@ p {
   font-weight: 470;
 }
 
+.use-case-description a {
+  color: #7ce8b6;
+  font-weight: 760;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transition: color 160ms ease, text-decoration-color 160ms ease;
+}
+
+.use-case-description a:hover,
+.use-case-description a:focus-visible {
+  color: #ffffff;
+  text-decoration-color: #41d996;
+}
+
 .use-case-result {
   display: flex;
   flex-wrap: wrap;
