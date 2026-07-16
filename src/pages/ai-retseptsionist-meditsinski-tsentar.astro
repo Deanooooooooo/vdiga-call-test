@@ -1,0 +1,125 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CallCard from "../components/CallCard.astro";
+import FAQ from "../components/FAQ.astro";
+import OnboardingForm from "../components/OnboardingForm.astro";
+import PricingCards from "../components/PricingCards.astro";
+import { faqSchema, serviceSchema } from "../data/schema";
+import { withBase as href } from "../data/site";
+
+const path = "/ai-retseptsionist-meditsinski-tsentar/";
+const title = "AI рецепционист за медицински център | Vdiga";
+const description = "AI рецепционист за медицински център: приема обаждания, насочва към специалност, записва по график и предава медицинските въпроси на екипа.";
+
+const faqs = [
+  { question: "Какво може да поема AI рецепционистът в медицински център?", answer: "Приема обаждания за нов час, промяна или отказ, работно време, адрес, лекари и услуги по информация, одобрена от центъра. Медицинските въпроси и случаите, които изискват преценка, се предават на екипа." },
+  { question: "Може ли да насочи пациента към правилната специалност?", answer: "Може да задава предварително одобрени организационни въпроси и да предложи специалност или контакт според правилата на центъра. Не определя диагноза и не извършва медицински триаж." },
+  { question: "Може ли Vdiga да записва при различни лекари?", answer: "Да. За всеки лекар могат да се зададат специалност, обект, работни дни, продължителност на прегледа и часовете, които могат да се предлагат." },
+  { question: "Какво става при спешен или медицински въпрос?", answer: "Vdiga не дава медицински съвет. Следва одобрения ред на центъра: свързва с човек, взема данни за обратна връзка или при заявена непосредствена опасност насочва обаждащия се към 112." },
+  { question: "Може ли да работи при заета регистратура и извън работно време?", answer: "Да. Може да поема едновременни разговори, да се включва при заета линия, след определен брой позвънявания или по график." },
+  { question: "Колко струва AI рецепционист за медицински център?", answer: "Плановете започват от 97 евро на месец без ДДС. Цената зависи от минутите, броя линии, лекарите и графиците, както и от начина на записване." },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} pageClass="medical-page" schemas={[serviceSchema("AI рецепционист за медицински център", path, description), faqSchema(faqs)]}>
+  <section class="hero medical-hero">
+    <div class="container grid-2">
+      <div>
+        <p class="eyebrow">за медицински центрове</p>
+        <h1>AI рецепционист за медицински център</h1>
+        <p class="answer-block">Vdiga приема обажданията, когато регистратурата е заета или центърът е затворен. Проверява лекар, специалност, обект и свободен час, записва според вашите правила и предава медицинските въпроси на екипа.</p>
+        <p class="lead">За малък център, натоварена регистратура или мрежа с няколко обекта.</p>
+        <div class="button-row hero-actions"><a class="btn btn-primary" href="#zayavka">Покажете ни регистратурата</a><a class="btn btn-secondary" href={href("/demo/")}>Чуйте разговор</a></div>
+      </div>
+      <CallCard />
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="container">
+      <div class="medical-head"><div><p class="eyebrow">къде се губят пациентите</p><h2>Обаждането чака. Пациентът — не винаги.</h2></div><p>Регистратурата обслужва човек на място, проверява график или говори по друга линия. Междувременно нов пациент търси лекар, а настоящ пациент иска да промени часа си.</p></div>
+      <div class="grid-3">
+        <article class="feature"><span class="medical-number">01</span><h3>Един въпрос, няколко графика</h3><p>Пациентът знае какъв проблем има, но не винаги знае към коя специалност или лекар да се обърне.</p></article>
+        <article class="feature"><span class="medical-number">02</span><h3>Регистратурата вече е заета</h3><p>Човек е пред гишето, лекар пита за графика, а две линии звънят едновременно. Пропуснатото обаждане остава невидимо до по-късно.</p></article>
+        <article class="feature"><span class="medical-number">03</span><h3>Различни лекари, дни и обекти</h3><p>При много специалности грешният час създава повече работа от пропуснатия. Записването трябва да следва точния график и правила.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section medical-plans">
+    <div class="container">
+      <div class="medical-head"><div><p class="eyebrow">според размера на центъра</p><h2>От един общ телефон до няколко регистратури.</h2></div><p>Vdiga може да бъде основна линия за малък център, помощ при натоварване или общ вход за няколко обекта. Планът следва реалния брой разговори.</p></div>
+      <PricingCards segments={[
+        { name: "Малък медицински център", description: "За ограничен брой лекари и една линия. Vdiga приема заявки и записва по зададените графици." },
+        { name: "Център със заета регистратура", description: "Vdiga поема едновременните разговори, натоварените часове и обажданията след работно време." },
+        { name: "Мрежа от медицински центрове", description: "За няколко обекта, линии, специалности и правила за насочване към различни екипи." },
+      ]} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid-2">
+      <div><p class="eyebrow">организация, не медицина</p><h2>Vdiga подрежда часа. Лекарят преценява случая.</h2><p class="medical-intro">Асистентът работи само с информацията и правилата, одобрени от медицинския център.</p><ul class="split-list"><li>нов час при избран лекар или специалност</li><li>промяна и отказ на записан час</li><li>адрес, работно време и подготовка, одобрена от центъра</li><li>проверка на обект, лекар и наличен график</li><li>име, телефон и причина за обратна връзка</li></ul></div>
+      <aside class="medical-boundary"><p class="eyebrow">границата е предварително зададена</p><h3>Без диагнози и лечение по телефона.</h3><p>При симптоми, въпрос за изследване, рецепта, лечение, странична реакция или спешност Vdiga не импровизира. Следва реда, определен от центъра.</p><div class="boundary-flow"><span>Разпознава, че е нужен човек</span><span>Взема само нужните данни</span><span>Свързва или уведомява екипа</span></div></aside>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="container grid-2">
+      <div><p class="eyebrow">примерен работен поток</p><h2>От „При кого да запиша?“ до точния график.</h2><ol class="medical-steps"><li><span>1</span><div><strong>Уточнява целта на обаждането</strong><p>Нов час, промяна, информация или връзка с екипа.</p></div></li><li><span>2</span><div><strong>Проверява специалност, лекар и обект</strong><p>Използва само правилата, зададени от центъра.</p></div></li><li><span>3</span><div><strong>Предлага разрешени свободни часове</strong><p>Съобразява ден, продължителност и конкретен график.</p></div></li><li><span>4</span><div><strong>Потвърждава и изпраща обобщение</strong><p>Пациентът знае къде и кога, а регистратурата вижда какво е уговорено.</p></div></li></ol></div>
+      <div class="medical-dialogue"><p class="dialogue-label">примерен разговор</p><div class="bubble ai"><strong>Vdiga</strong><p>Здравейте, обаждате се в медицинския център. Аз съм AI асистент. Как мога да помогна?</p></div><div class="bubble patient"><strong>Пациент</strong><p>Искам да запиша кардиолог след 17:00, ако може в централния ви обект.</p></div><div class="bubble ai"><strong>Vdiga</strong><p>Ще проверя кардиолозите в централния обект с часове след 17:00. Имате ли предпочитан ден?</p></div><div class="dialogue-result"><span>След разговора</span><strong>Точният лекар, обект и час са потвърдени</strong></div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container"><div class="medical-head"><div><p class="eyebrow">контролът остава при центъра</p><h2>Всяка специалност следва собствените си правила.</h2></div><p>Преди старта описваме лекарите, обектите, видовете прегледи, продължителността, подготовката и точните случаи за предаване към човек.</p></div>
+      <div class="medical-control-grid">
+        <article class="medical-control-card"><span class="control-icon">01</span><p class="control-label">Графици</p><h3>Къде може да запише пациента?</h3><p>Само при разрешен лекар, в правилния обект и в свободен час за конкретния вид преглед.</p><div class="control-owner"><span>Правилата се задават от</span><strong>регистратурата</strong></div></article>
+        <article class="medical-control-card dark"><span class="control-icon">02</span><p class="control-label">Медицински въпрос</p><h3>Кога разговорът спира да бъде административен?</h3><p>При симптоми, резултати, рецепти и лечение Vdiga предава разговора по одобрения ред.</p><div class="control-owner"><span>Преценката остава при</span><strong>медицинския екип</strong></div></article>
+        <article class="medical-control-card"><span class="control-icon">03</span><p class="control-label">Натоварване</p><h3>Кога да се включва Vdiga?</h3><p>При заета линия, след определен брой позвънявания, извън работно време или постоянно.</p><div class="control-owner"><span>Режимът се избира от</span><strong>центъра</strong></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band"><div class="container grid-2"><div><p class="eyebrow">резултатът за регистратурата</p><h2>По-малко прекъсвания. Повече завършени записвания.</h2><p class="medical-intro">Измервате приетите разговори, записаните часове, промените, отказите и случаите, предадени към екипа.</p><p>Така виждате кога телефонът е най-натоварен, за кои специалности звънят пациентите и къде процесът изисква промяна.</p><div class="button-row"><a class="btn btn-primary" href={href("/tseni/")}>Вижте планове от 97 €</a><a class="btn btn-secondary" href={href("/kolko-obazhdaniya-propuska-biznesat/")}>Измерете пропуснатите разговори</a></div></div><div class="medical-metrics"><div><strong>Приети</strong><span>обаждания по час и линия</span></div><div><strong>Записани</strong><span>часове по лекар и специалност</span></div><div><strong>Променени</strong><span>или отказани посещения</span></div><div><strong>Предадени</strong><span>случаи към човек</span></div></div></div></section>
+
+  <section class="section"><div class="container grid-2"><div><p class="eyebrow">чести въпроси</p><h2>Какво искат да знаят медицинските центрове?</h2></div><FAQ items={faqs} /></div></section>
+  <section class="section band"><div class="container"><OnboardingForm title="Вижте как Vdiga ще работи за вашия медицински център." lead="Оставете телефон. Ще разгледаме линиите, лекарите, графиците и случаите, които трябва да стигат директно до екипа." businessPlaceholder="Например Медицински център Здраве" callProblemPlaceholder="Например: сутрин, при две едновременни линии или след работно време" /></div></section>
+</BaseLayout>
+
+<style>
+  .medical-hero h1 { max-width: 13ch; }
+  .medical-head { display:grid; grid-template-columns:1.2fr .8fr; gap:64px; align-items:end; margin-bottom:48px; }
+  .medical-head h2 { margin-bottom:0; }
+  .medical-head>p,.medical-intro { color:var(--ink-soft); font-size:1.2rem; font-weight:600; line-height:1.55; }
+  .medical-number { display:block; margin-bottom:22px; color:var(--answer-deep); font-family:var(--mono); font-size:.86rem; font-weight:800; }
+  .medical-plans { background:var(--paper); }
+  .medical-plans :global(.price-card-head h3) { max-width:13ch; }
+  .medical-plans :global(.price-recommended) { margin:2px 0 12px; color:var(--answer-deep); font-size:.84rem; font-weight:700; }
+  .medical-boundary { padding:38px; border-radius:18px; background:var(--ink); color:var(--paper); }
+  .medical-boundary h3 { color:var(--paper); font-size:clamp(2rem,3vw,3rem); }
+  .medical-boundary p { color:rgba(250,250,247,.78); }
+  .boundary-flow { display:grid; gap:10px; margin-top:28px; }
+  .boundary-flow span { padding:13px 15px; border:1px solid rgba(255,255,255,.16); border-radius:10px; font-weight:750; }
+  .medical-steps { display:grid; gap:22px; margin:34px 0 0; padding:0; list-style:none; }
+  .medical-steps li { display:grid; grid-template-columns:42px 1fr; gap:16px; }
+  .medical-steps li>span { display:grid; width:42px; height:42px; place-items:center; border-radius:50%; background:var(--answer); color:#07120b; font-weight:900; }
+  .medical-steps strong { font-size:1.16rem; } .medical-steps p { margin:4px 0 0; color:var(--ink-soft); }
+  .medical-dialogue { padding:30px; border:1px solid var(--line); border-radius:20px; background:var(--paper); box-shadow:0 26px 60px -42px rgba(8,29,17,.45); }
+  .dialogue-label { color:var(--answer-deep); font-size:.78rem; font-weight:850; letter-spacing:.12em; text-transform:uppercase; }
+  .bubble { max-width:88%; margin-top:18px; padding:16px 18px; border-radius:16px; } .bubble p { margin:5px 0 0; font-size:1rem; line-height:1.5; }
+  .bubble.ai { background:#e6f7e9; } .bubble.patient { margin-left:auto; background:#ecebe5; }
+  .dialogue-result { display:grid; gap:4px; margin-top:24px; padding-top:18px; border-top:1px solid var(--line); } .dialogue-result span { color:var(--answer-deep); font-size:.76rem; font-weight:850; text-transform:uppercase; }
+  .medical-control-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+  .medical-control-card { display:flex; min-height:410px; flex-direction:column; padding:30px; border-radius:18px; background:#edf4ed; }
+  .medical-control-card.dark { background:var(--ink); color:var(--paper); }
+  .control-icon { display:grid; width:44px; height:44px; margin-bottom:38px; place-items:center; border-radius:50%; background:var(--answer); color:#07120b; font-family:var(--mono); font-size:.75rem; font-weight:900; }
+  .control-label { margin-bottom:10px; color:var(--answer-deep); font-size:.76rem; font-weight:850; letter-spacing:.08em; text-transform:uppercase; } .dark .control-label { color:var(--answer); }
+  .medical-control-card h3 { font-size:clamp(1.5rem,2vw,1.95rem); } .medical-control-card.dark h3 { color:var(--paper); }
+  .medical-control-card>p:not(.control-label) { color:var(--ink-soft); font-size:1.05rem; line-height:1.55; } .medical-control-card.dark>p:not(.control-label) { color:rgba(250,250,247,.74); }
+  .control-owner { display:grid; gap:3px; margin-top:auto; padding-top:20px; border-top:1px solid rgba(8,29,17,.14); } .dark .control-owner { border-top-color:rgba(255,255,255,.16); }
+  .control-owner span { color:var(--ink-soft); font-size:.82rem; font-weight:650; } .dark .control-owner span { color:rgba(250,250,247,.58); } .control-owner strong { font-size:1.18rem; }
+  .medical-metrics { display:grid; grid-template-columns:1fr 1fr; gap:12px; } .medical-metrics div { min-height:150px; padding:24px; border:1px solid var(--line); border-radius:16px; background:var(--paper); }
+  .medical-metrics strong,.medical-metrics span { display:block; } .medical-metrics strong { margin-bottom:10px; color:var(--ink); font-family:var(--disp); font-size:1.45rem; } .medical-metrics span { color:var(--ink-soft); font-weight:650; }
+  @media(max-width:800px){.medical-head{grid-template-columns:1fr;gap:20px}.medical-control-grid{grid-template-columns:1fr}.medical-control-card{min-height:0}.medical-boundary,.medical-dialogue{padding:24px}.medical-metrics{grid-template-columns:1fr}.medical-metrics div{min-height:0}}
+</style>
