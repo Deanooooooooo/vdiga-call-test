@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FAQ from "../components/FAQ.astro";
+import OnboardingForm from "../components/OnboardingForm.astro";
+import { faqSchema, serviceSchema } from "../data/schema";
+
+const path = "/ai-dispecher-za-taksimetrova-kompaniya/";
+const title = "AI диспечер за таксиметрова компания | Vdiga";
+const description = "AI диспечер за таксиметрова компания: приема поръчки по телефона, подава ги към диспечерската система и поема пиково натоварване.";
+const faqs = [
+  { question: "Какво прави AI диспечерът за таксиметрова компания?", answer: "Приема обаждането, събира адрес за вземане, дестинация, час, брой пътници и специални изисквания и подава заявката към диспечерската система. Потвърждава само данни, върнати от свързаните системи." },
+  { question: "Може ли да приема поръчки за такси веднага и за по-късно?", answer: "Да, когато диспечерската интеграция поддържа съответния тип поръчка. За незабавно пътуване проверява наличност и ориентировъчно време; за предварителна поръчка записва дата, час и всички нужни условия." },
+  { question: "Може ли да казва цена и време за пристигане?", answer: "Само ако ги получи от системата за тарифи и диспечиране. Vdiga не изчислява цена наизуст и не обещава автомобил или точна минута без потвърждение от системата." },
+  { question: "Работи ли с настоящата ни диспечерска система?", answer: "Зависи от наличния API или друг сигурен начин за интеграция. Преди пилот проверяваме създаване и промяна на поръчка, наличност, статус, цена, превозни средства и начина за предаване към оператор." },
+  { question: "Замества ли човешките диспечери?", answer: "Не е задължително. Най-силният начален модел е Vdiga да поема стандартните поръчки и пиковото натоварване, а операторите да решават нестандартни, рискови и спорни случаи." },
+  { question: "Колко струва AI диспечер за таксиметрова компания?", answer: "Цената е индивидуална. Зависи от разговорите и минутите, едновременните линии, работното време, диспечерската интеграция, картите, съобщенията и нужната поддръжка. Започваме с ограничен пилот и измерваме реалния разход." },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} pageClass="taxi-page" schemas={[serviceSchema("AI диспечер за таксиметрова компания", path, description), faqSchema(faqs)]}>
+  <section class="hero taxi-hero"><div class="container grid-2"><div>
+    <p class="eyebrow">телефонни поръчки и диспечиране</p>
+    <h1>AI диспечер за таксиметрова компания</h1>
+    <p class="answer-block">Vdiga приема поръчки по телефона, събира адрес, дестинация, час и изисквания за автомобила и подава заявката към диспечерската система. Поема едновременни разговори, без да обещава цена, автомобил или време извън данните от системата.</p>
+    <p class="lead">За местна такси компания, градски оператор или голям контактен център.</p>
+    <div class="button-row hero-actions"><a class="btn btn-primary" href="#zayavka">Обсъдете интеграцията</a><a class="btn btn-secondary" href="#pilot">Как започва пилотът</a></div>
+  </div><div class="taxi-call-card" aria-label="Примерна телефонна поръчка за такси">
+    <div class="taxi-call-head"><div><span class="call-dot"></span><strong>Поръчка в реално време</strong></div><span>01:14</span></div>
+    <div class="taxi-call-route"><div><span>A</span><p><small>Вземане</small><strong>Лозенец, точен адрес и вход</strong></p></div><div><span>B</span><p><small>Дестинация</small><strong>Летище София, Терминал 2</strong></p></div></div>
+    <div class="taxi-call-details"><span>Утре · 05:30</span><span>2 пътници</span><span>3 големи куфара</span></div>
+    <div class="taxi-call-status"><span>✓</span><div><small>Диспечерската система потвърди</small><strong>Подходящ автомобил · поръчка #1842</strong></div></div>
+  </div></div></section>
+
+  <section class="section band"><div class="container">
+    <div class="taxi-head"><div><p class="eyebrow">болката е в пиковите минути</p><h2>Поръчките не идват равномерно. Операторите са фиксиран брой.</h2></div><p>Дъжд, час пик, концерт, летищен трафик или прекъсване на градския транспорт могат да натрупат повече обаждания, отколкото екипът може да приеме. Клиентът не чака дълго, когато има друг номер.</p></div>
+    <div class="grid-3">
+      <article class="feature"><span class="taxi-number">01</span><h3>Едновременни поръчки</h3><p>Десетки обаждания могат да пристигнат в рамките на минути. Опашката расте точно когато всяка свободна кола има стойност.</p></article>
+      <article class="feature"><span class="taxi-number">02</span><h3>Адресът трябва да е точен</h3><p>Вход, терминал, хотел, болнично отделение или събитийна зона могат да променят реалната точка за вземане.</p></article>
+      <article class="feature"><span class="taxi-number">03</span><h3>Не всяка поръчка е стандартна</h3><p>Детско столче, инвалидна количка, домашен любимец, много багаж или шестима пътници изискват подходящ автомобил и потвърждение.</p></article>
+    </div>
+  </div></section>
+
+  <section class="section"><div class="container">
+    <div class="taxi-head"><div><p class="eyebrow">три модела на внедряване</p><h2>Не продаваме пакет минути. Проектираме капацитет.</h2></div><p>При такси оператора цената зависи от обема, едновременните линии, интеграцията и режима на работа. И трите формата започват с техническо проучване и пилот.</p></div>
+    <div class="taxi-model-grid">
+      <article class="taxi-model"><span class="model-index">01</span><h3>Местна такси компания</h3><p>AI приема стандартни поръчки или се включва, когато операторът не може да вдигне.</p><ul><li>една зона или град</li><li>предварителни поръчки</li><li>overflow при заета линия</li></ul><div class="model-price"><span>Модел</span><strong>Индивидуален пилот</strong></div></article>
+      <article class="taxi-model featured"><span class="model-badge">най-силен начален случай</span><span class="model-index">02</span><h3>Градски оператор с диспечери</h3><p>Vdiga поема стандартните заявки и пиковите периоди. Хората решават изключенията.</p><ul><li>24/7 или избрани смени</li><li>много едновременни разговори</li><li>живо предаване към оператор</li></ul><div class="model-price"><span>Модел</span><strong>Пилот + интеграция</strong></div></article>
+      <article class="taxi-model"><span class="model-index">03</span><h3>Голяма флота или контактен център</h3><p>Дълбока връзка с диспечиране, тарифи, статуси, няколко услуги и корпоративни клиенти.</p><ul><li>висока конкурентност</li><li>няколко типа автомобили</li><li>наблюдение и SLA</li></ul><div class="model-price"><span>Модел</span><strong>Enterprise оферта</strong></div></article>
+    </div>
+  </div></section>
+
+  <section class="section band"><div class="container grid-2">
+    <div><p class="eyebrow">стандартната поръчка</p><h2>От адреса до заявка в диспечерската система.</h2><ol class="taxi-steps">
+      <li><span>1</span><div><strong>Уточнява кога е нужно таксито</strong><p>Веднага, за конкретен час, двупосочно или периодично.</p></div></li>
+      <li><span>2</span><div><strong>Събира маршрута</strong><p>Точен адрес за вземане, вход или ориентир, дестинация и междинни спирки.</p></div></li>
+      <li><span>3</span><div><strong>Проверява нужния автомобил</strong><p>Пътници, багаж, детско столче, достъпност, домашен любимец или по-голяма кола.</p></div></li>
+      <li><span>4</span><div><strong>Изпраща и потвърждава</strong><p>Създава заявката чрез интеграцията и повтаря само потвърдените данни.</p></div></li>
+    </ol></div>
+    <div class="taxi-dialogue"><p class="dialogue-label">примерна предварителна поръчка</p><div class="bubble ai"><strong>Vdiga</strong><p>За кога ви е нужен автомобилът и откъде да ви вземе?</p></div><div class="bubble caller"><strong>Клиент</strong><p>Утре в 05:30 от Лозенец до Терминал 2. Двама сме с три големи куфара.</p></div><div class="bubble ai"><strong>Vdiga</strong><p>Ще проверя подходящ автомобил за двама пътници и три големи куфара. Моля, кажете точния адрес и вход.</p></div><div class="dialogue-result"><span>След потвърждение от системата</span><strong>Поръчката получава номер и статус</strong></div></div>
+  </div></section>
+
+  <section class="section"><div class="container">
+    <div class="taxi-head"><div><p class="eyebrow">живите данни идват от системите</p><h2>AI разговорът е входът. Диспечерската система е източникът.</h2></div><p>Статична информация може да обясни услуги и правила. Наличност, цена, ETA, автомобил и статус трябва да идват от живи инструменти.</p></div>
+    <div class="taxi-system-grid">
+      <article class="system-card"><span>01</span><h3>Приема разговора</h3><p>Разбира заявката и събира нужните полета.</p></article><div class="system-arrow">→</div>
+      <article class="system-card active"><span>02</span><h3>Проверява системата</h3><p>Наличност, зона, автомобил, цена и статус.</p></article><div class="system-arrow">→</div>
+      <article class="system-card"><span>03</span><h3>Потвърждава резултата</h3><p>Казва само това, което системата е върнала.</p></article>
+    </div>
+  </div></section>
+
+  <section class="section band"><div class="container grid-2">
+    <div><p class="eyebrow">кога се намесва човек</p><h2>Стандартните заявки се автоматизират. Рискът не се импровизира.</h2><p class="taxi-intro">Vdiga предава случая при липса на подходящ автомобил, проблем с интеграцията, спор, заплаха, инцидент, уязвим пътник или нестандартно изискване.</p><ul class="split-list"><li>опасност, насилие, катастрофа или медицинска спешност</li><li>непридружен непълнолетен според политиката на компанията</li><li>спор за цена, плащане, щета или възстановяване</li><li>изгубена вещ, жалба или проблем с конкретно пътуване</li><li>липса на потвърждение от системата</li></ul></div>
+    <aside class="taxi-boundary"><p class="eyebrow">не се обещава без потвърждение</p><h3>Нито кола. Нито цена. Нито точна минута.</h3><p>Ако диспечерската или тарифната система не върне отговор, Vdiga не измисля. Предава към оператор или записва заявка за обратно обаждане според одобрения резервен процес.</p></aside>
+  </div></section>
+
+  <section class="section"><div class="container">
+    <div class="taxi-head"><div><p class="eyebrow">мащабът на задачата</p><h2>60 000 разговора месечно променят икономиката.</h2></div><p>Предварително проучване с голяма таксиметрова компания показа около 1000 обаждания за 12-часова смяна с шестима оператори. Това е сценарий за моделиране, не резултат от внедряване на Vdiga.</p></div>
+    <div class="scale-grid"><div><strong>~1 000</strong><span>обаждания за 12-часова смяна</span></div><div><strong>6</strong><span>оператори в разглеждания сценарий</span></div><div><strong>~60 000</strong><span>обаждания месечно при две смени</span></div><div><strong>Пикове</strong><span>истинската причина за overflow капацитет</span></div></div>
+  </div></section>
+
+  <section class="section band" id="pilot"><div class="container grid-2">
+    <div><p class="eyebrow">контролиран старт</p><h2>Първо доказваме един поток. После увеличаваме трафика.</h2><p class="taxi-intro">Пилотът не започва с всички линии и всички случаи. Избираме стандартна поръчка, ограничен трафик и измерими критерии.</p></div>
+    <ol class="pilot-list"><li><strong>Техническа проверка</strong><span>API, телефония, статуси и тестова среда</span></li><li><strong>Ограничен сценарий</strong><span>например предварителни поръчки или overflow</span></li><li><strong>Тестови разговори</strong><span>адреси, специални автомобили и грешки на инструментите</span></li><li><strong>Реален пилот</strong><span>точност, продължителност, трансфери и цена на разговор</span></li></ol>
+  </div></section>
+
+  <section class="section"><div class="container grid-2"><div><p class="eyebrow">чести въпроси</p><h2>Какво искат да знаят такси операторите?</h2></div><FAQ items={faqs} /></div></section>
+  <section class="section band"><div class="container"><OnboardingForm title="Обсъдете AI диспечер за вашата такси компания." lead="Оставете телефон. Ще разгледаме обема, пиковите часове, диспечерската система, типовете поръчки и подходящия обхват за пилот." businessPlaceholder="Например City Taxi" callProblemPlaceholder="Например: пикови часове, нощна смяна или предварителни поръчки" /></div></section>
+</BaseLayout>
+
+<style>
+  .taxi-hero h1{max-width:13ch}.taxi-head{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:end;margin-bottom:48px}.taxi-head h2{margin-bottom:0}.taxi-head>p,.taxi-intro{color:var(--ink-soft);font-size:1.2rem;font-weight:600;line-height:1.55}.taxi-number{display:block;margin-bottom:22px;color:var(--answer-deep);font-family:var(--mono);font-size:.86rem;font-weight:800}
+  .taxi-call-card{align-self:center;padding:28px;border-radius:18px;background:var(--paper);color:var(--ink);box-shadow:0 30px 70px -38px rgba(0,0,0,.65)}.taxi-call-head{display:flex;justify-content:space-between;padding-bottom:18px;border-bottom:1px solid var(--line);font-size:.82rem}.taxi-call-head>div{display:flex;align-items:center;gap:9px}.taxi-call-head>span{font-family:var(--mono);color:var(--ink-soft)}.call-dot{width:9px;height:9px;border-radius:50%;background:var(--answer);box-shadow:0 0 0 5px rgba(32,192,99,.12)}.taxi-call-route{display:grid;gap:16px;margin:24px 0}.taxi-call-route>div{display:grid;grid-template-columns:34px 1fr;gap:13px;align-items:center}.taxi-call-route>div>span{display:grid;width:34px;height:34px;place-items:center;border-radius:50%;background:#e6f7e9;color:var(--answer-deep);font-family:var(--mono);font-weight:900}.taxi-call-route p,.taxi-call-status div{display:grid;margin:0}.taxi-call-route small,.taxi-call-status small{color:var(--ink-soft);font-size:.72rem;font-weight:700}.taxi-call-details{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}.taxi-call-details span{padding:7px 9px;border-radius:99px;background:#ecebe5;font-size:.72rem;font-weight:750}.taxi-call-status{display:grid;grid-template-columns:32px 1fr;gap:12px;padding:15px;border-radius:12px;background:var(--ink);color:var(--paper)}.taxi-call-status>span{display:grid;width:28px;height:28px;place-items:center;border-radius:50%;background:var(--answer);color:#07120b;font-weight:900}.taxi-call-status strong{font-size:.86rem}.taxi-call-status small{color:rgba(250,250,247,.62)}
+  .taxi-model-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.taxi-model{display:flex;min-height:500px;flex-direction:column;padding:30px;border:1px solid var(--line);border-radius:18px;background:var(--paper);position:relative}.taxi-model.featured{border:2px solid var(--answer);box-shadow:0 26px 60px -44px rgba(8,29,17,.5)}.model-badge{position:absolute;right:18px;top:-13px;padding:7px 12px;border-radius:99px;background:var(--answer);font-size:.68rem;font-weight:900;text-transform:uppercase}.model-index{color:var(--answer-deep);font-family:var(--mono);font-size:.8rem;font-weight:900}.taxi-model h3{margin-top:32px;font-size:clamp(1.65rem,2.2vw,2.25rem)}.taxi-model>p{color:var(--ink-soft);font-weight:600}.taxi-model ul{display:grid;gap:10px;margin:25px 0;padding:0;list-style:none}.taxi-model li:before{content:"✓";margin-right:9px;color:var(--answer-deep);font-weight:900}.model-price{display:grid;gap:4px;margin-top:auto;padding-top:22px;border-top:1px solid var(--line)}.model-price span{color:var(--ink-soft);font-size:.76rem;font-weight:800;text-transform:uppercase}.model-price strong{font-size:1.25rem}
+  .taxi-steps{display:grid;gap:22px;margin:34px 0 0;padding:0;list-style:none}.taxi-steps li{display:grid;grid-template-columns:42px 1fr;gap:16px}.taxi-steps li>span{display:grid;width:42px;height:42px;place-items:center;border-radius:50%;background:var(--answer);font-weight:900}.taxi-steps strong{font-size:1.16rem}.taxi-steps p{margin:4px 0 0;color:var(--ink-soft)}.taxi-dialogue{padding:30px;border:1px solid var(--line);border-radius:20px;background:var(--paper);box-shadow:0 26px 60px -42px rgba(8,29,17,.45)}.dialogue-label{color:var(--answer-deep);font-size:.78rem;font-weight:850;letter-spacing:.12em;text-transform:uppercase}.bubble{max-width:88%;margin-top:18px;padding:16px 18px;border-radius:16px}.bubble p{margin:5px 0 0;font-size:1rem;line-height:1.5}.bubble.ai{background:#e6f7e9}.bubble.caller{margin-left:auto;background:#ecebe5}.dialogue-result{display:grid;gap:4px;margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}.dialogue-result span{color:var(--answer-deep);font-size:.76rem;font-weight:850;text-transform:uppercase}
+  .taxi-system-grid{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:16px;align-items:center}.system-card{min-height:220px;padding:28px;border-radius:18px;background:#edf4ed}.system-card.active{background:var(--ink);color:var(--paper)}.system-card>span{color:var(--answer-deep);font-family:var(--mono);font-size:.8rem;font-weight:900}.system-card.active>span{color:var(--answer)}.system-card h3{margin-top:42px}.system-card.active h3{color:var(--paper)}.system-card p{color:var(--ink-soft)}.system-card.active p{color:rgba(250,250,247,.72)}.system-arrow{font-size:2rem;color:var(--answer-deep);font-weight:900}
+  .taxi-boundary{padding:38px;border-radius:18px;background:var(--ink);color:var(--paper)}.taxi-boundary h3{color:var(--paper);font-size:clamp(2rem,3vw,3rem)}.taxi-boundary p{color:rgba(250,250,247,.76)}.scale-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.scale-grid div{min-height:165px;padding:24px;border-radius:16px;background:#edf4ed}.scale-grid strong,.scale-grid span{display:block}.scale-grid strong{margin-bottom:14px;font-family:var(--disp);font-size:clamp(1.8rem,3vw,3rem)}.scale-grid span{color:var(--ink-soft);font-weight:650}.pilot-list{display:grid;gap:10px;margin:0;padding:0;list-style:none;counter-reset:pilot}.pilot-list li{display:grid;grid-template-columns:1fr 1.2fr;gap:20px;padding:20px;border-bottom:1px solid var(--line);counter-increment:pilot}.pilot-list strong:before{content:"0" counter(pilot) " ";color:var(--answer-deep);font-family:var(--mono);font-size:.75rem}.pilot-list span{color:var(--ink-soft);font-weight:600}
+  @media(max-width:800px){.taxi-head,.taxi-model-grid,.scale-grid{grid-template-columns:1fr}.taxi-head{gap:20px}.taxi-model{min-height:0}.taxi-system-grid{grid-template-columns:1fr}.system-arrow{transform:rotate(90deg);text-align:center}.taxi-boundary,.taxi-dialogue{padding:24px}.pilot-list li{grid-template-columns:1fr;gap:7px}}
+</style>
