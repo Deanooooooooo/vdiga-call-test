@@ -1,0 +1,240 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CallCard from "../components/CallCard.astro";
+import FAQ from "../components/FAQ.astro";
+import CTA from "../components/CTA.astro";
+import { faqSchema, serviceSchema } from "../data/schema";
+import { withBase as href } from "../data/site";
+
+const path = "/ai-retseptsionist-dentalna-klinika/";
+const title = "AI рецепционист за дентална клиника | Vdiga";
+const description = "AI рецепционист за дентална клиника: приема обаждания, записва пациенти по правилата на клиниката и предава спешните случаи към екипа.";
+
+const faqs = [
+  {
+    question: "Какво може да поема AI рецепционистът в дентална клиника?",
+    answer: "Може да приема обаждания за нов час, промяна или отказ, работно време, адрес и услуги с предварително одобрена информация. При болка, травма, усложнение или медицински въпрос следва правилата на клиниката и предава разговора към човек.",
+  },
+  {
+    question: "Може ли Vdiga да записва директно в календара?",
+    answer: "Да, когато клиниката има ясен график и правила за лекар, услуга, продължителност и свободни часове. Ако случаят изисква преценка от екипа, Vdiga взема нужната информация и изпраща заявка вместо да обещава час.",
+  },
+  {
+    question: "Дава ли медицински съвет или диагноза?",
+    answer: "Не. Vdiga не поставя диагноза и не препоръчва лечение. Медицинските въпроси, спешните симптоми и случаите извън одобрената информация се насочват към екипа на клиниката.",
+  },
+  {
+    question: "Може ли да работи, когато рецепцията е заета или клиниката е затворена?",
+    answer: "Да. Vdiga може да поема разговори при заета линия, едновременно позвъняване, извън работно време или по график, определен от клиниката.",
+  },
+  {
+    question: "Колко струва AI рецепционист за дентална клиника?",
+    answer: "Плановете на Vdiga започват от 97 евро на месец без ДДС. Подходящият план зависи от минутите входящи разговори, броя линии и нужните правила или интеграции.",
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  pageClass="dental-page"
+  schemas={[
+    serviceSchema("AI рецепционист за дентална клиника", path, description),
+    faqSchema(faqs),
+  ]}
+>
+  <section class="hero dental-hero">
+    <div class="container grid-2">
+      <div>
+        <p class="eyebrow">AI рецепционист за дентална клиника</p>
+        <h1>Пациентът звъни сега. Vdiga вдига сега.</h1>
+        <p class="answer-block">
+          AI рецепционистът за дентална клиника приема входящи обаждания, разбира дали пациентът търси час, промяна или бърза връзка с екипа, и действа по правилата на клиниката. Vdiga записва само когато има право; при болка, травма или медицински въпрос предава случая към човек.
+        </p>
+        <p class="lead">По-малко пропуснати нови пациенти. По-малко прекъсвания по време на преглед. По-ясна рецепция в натоварените часове.</p>
+        <div class="button-row hero-actions">
+          <a class="btn btn-primary" href={href("/#zayavka")}>Обсъдете вашата клиника</a>
+          <a class="btn btn-secondary" href={href("/demo/")}>Чуйте разговор</a>
+        </div>
+      </div>
+      <CallCard />
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="container">
+      <div class="dental-section-head">
+        <div>
+          <p class="eyebrow">болката зад пропуснатия разговор</p>
+          <h2>Рецепцията не изпуска телефона нарочно. Просто върши още пет неща.</h2>
+        </div>
+        <p>Пациент е пред бюрото. Друг плаща. Лекар пита за графика. Телефонът звъни. За новия пациент това не е „натоварена рецепция“, а клиника, която не отговаря.</p>
+      </div>
+      <div class="grid-3 dental-pains">
+        <article class="feature">
+          <span class="dental-number">01</span>
+          <h3>Новият пациент не чака</h3>
+          <p>Когато няма отговор, следващата клиника е на едно търсене разстояние. Намерението за записване съществува точно в момента на обаждането.</p>
+        </article>
+        <article class="feature">
+          <span class="dental-number">02</span>
+          <h3>Прекъсването има цена</h3>
+          <p>Вдигането по време на преглед прехвърля проблема към лекаря и пациента в кабинета. Някой винаги плаща с внимание и време.</p>
+        </article>
+        <article class="feature">
+          <span class="dental-number">03</span>
+          <h3>Обратното обаждане идва късно</h3>
+          <p>Списъкът с пропуснати номера не казва кой има болка, кой иска профилактика и кой вече е намерил друг час.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid-2">
+      <div>
+        <p class="eyebrow">какво поема Vdiga</p>
+        <h2>Ясните разговори се приключват. Чувствителните стигат до човек.</h2>
+        <p class="dental-intro">Целта не е AI да играе лекар. Целта е всяко обаждане да завърши с правилното следващо действие.</p>
+        <ul class="split-list">
+          <li>нов пациент и причина за посещението</li>
+          <li>заявка за преглед или профилактика</li>
+          <li>промяна или отказ на съществуващ час</li>
+          <li>работно време, адрес и одобрена информация за услуги</li>
+          <li>име, телефон и кратко резюме към рецепцията</li>
+        </ul>
+      </div>
+      <div class="dental-boundary">
+        <p class="eyebrow">границата е част от продукта</p>
+        <h3>Vdiga не поставя диагноза.</h3>
+        <p>При болка, подуване, кървене, травма, усложнение след лечение или въпрос, който изисква медицинска преценка, асистентът следва одобрения ред за ескалация.</p>
+        <div class="boundary-flow" aria-label="Път на чувствителен разговор">
+          <span>Разпознава случая</span>
+          <span>Събира необходимото</span>
+          <span>Предава към екипа</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="container grid-2">
+      <div>
+        <p class="eyebrow">примерен работен поток</p>
+        <h2>От „Имате ли час?“ до действие в графика.</h2>
+        <ol class="dental-steps">
+          <li><span>1</span><div><strong>Разбира намерението</strong><p>Нов час, промяна, информация или случай за екипа.</p></div></li>
+          <li><span>2</span><div><strong>Проверява правилата</strong><p>Услуга, лекар, продължителност, свободен диапазон и ограничения.</p></div></li>
+          <li><span>3</span><div><strong>Записва или предава</strong><p>Потвърждава разрешения час или изпраща структурирана заявка към рецепцията.</p></div></li>
+          <li><span>4</span><div><strong>Оставя ясна следа</strong><p>Екипът получава кой се е обадил, защо и какво е уговорено.</p></div></li>
+        </ol>
+      </div>
+      <div class="dental-dialogue">
+        <p class="dialogue-label">примерен разговор</p>
+        <div class="bubble ai"><strong>Vdiga</strong><p>Здравейте, обаждате се в денталната клиника. Аз съм AI асистент. Как мога да помогна?</p></div>
+        <div class="bubble patient"><strong>Пациент</strong><p>Искам час за профилактичен преглед след работа.</p></div>
+        <div class="bubble ai"><strong>Vdiga</strong><p>Мога да проверя свободните часове след 17:30. Имате ли предпочитан ден или лекар?</p></div>
+        <div class="dialogue-result"><span>Резултат</span><strong>Записан час или готова заявка към рецепцията</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="dental-section-head">
+        <div>
+          <p class="eyebrow">настройка за конкретната клиника</p>
+          <h2>Vdiga не идва с измислени отговори. Идва с вашите правила.</h2>
+        </div>
+        <p>Преди старта описваме услугите, лекарите, графиците, продължителността на часовете, информацията за пациенти и случаите, които никога не трябва да се автоматизират.</p>
+      </div>
+      <div class="table-wrap dental-table">
+        <table>
+          <thead><tr><th>Клиниката определя</th><th>Vdiga прави</th><th>Екипът запазва контрол</th></tr></thead>
+          <tbody>
+            <tr><td>Кои услуги се записват директно</td><td>Предлага само разрешени часове</td><td>Изключенията идват като заявка</td></tr>
+            <tr><td>Кои сигнали изискват реакция</td><td>Маркира и предава по приоритет</td><td>Медицинската преценка остава при човек</td></tr>
+            <tr><td>Кога и по кои линии да отговаря</td><td>Поема по график, при заетост или извън работно време</td><td>Правилата могат да се променят</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="container grid-2">
+      <div>
+        <p class="eyebrow">бизнес резултатът</p>
+        <h2>Не „повече AI“. Повече приети намерения за записване.</h2>
+        <p class="dental-intro">Vdiga има смисъл, когато намалява пропуснатите възможности и освобождава рецепцията за работата пред нея.</p>
+        <p>Измерването е практично: колко обаждания са приети, колко заявки са записани или предадени, кога се натрупва трафик и кои разговори изискват промяна на правилата.</p>
+        <div class="button-row">
+          <a class="btn btn-primary" href={href("/tseni/")}>Вижте планове от 97 €</a>
+          <a class="btn btn-secondary" href={href("/kolko-obazhdaniya-propuska-biznesat/")}>Измерете пропуснатите обаждания</a>
+        </div>
+      </div>
+      <div class="dental-metrics">
+        <div><strong>Приети</strong><span>обаждания по час и ден</span></div>
+        <div><strong>Завършени</strong><span>записвания и заявки</span></div>
+        <div><strong>Предадени</strong><span>случаи към екипа</span></div>
+        <div><strong>Подобрени</strong><span>правила след реални разговори</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid-2">
+      <div>
+        <p class="eyebrow">чести въпроси</p>
+        <h2>Какво искат да знаят денталните клиники?</h2>
+      </div>
+      <FAQ items={faqs} />
+    </div>
+  </section>
+
+  <CTA
+    title="Следващият пациент не трябва да попада в списъка с пропуснати обаждания."
+    text="Разкажете ни как работят графикът и рецепцията ви. Ще покажем какво може да поеме Vdiga и къде трябва да остане човек."
+    buttonLabel="Обсъдете вашата клиника"
+    buttonHref="/#zayavka"
+  />
+</BaseLayout>
+
+<style>
+  .dental-hero h1 { max-width: 12ch; }
+  .dental-section-head { display: grid; grid-template-columns: 1.2fr .8fr; gap: 64px; align-items: end; margin-bottom: 48px; }
+  .dental-section-head h2 { margin-bottom: 0; }
+  .dental-section-head > p, .dental-intro { color: var(--ink-soft); font-size: 1.25rem; font-weight: 600; line-height: 1.55; }
+  .dental-number { display: block; margin-bottom: 22px; color: var(--answer-deep); font-family: var(--mono); font-size: .86rem; font-weight: 800; }
+  .dental-boundary { padding: 38px; border-radius: 18px; background: var(--ink); color: var(--paper); }
+  .dental-boundary h3 { color: var(--paper); font-size: clamp(2rem, 3vw, 3rem); }
+  .dental-boundary p { color: rgba(250,250,247,.78); }
+  .boundary-flow { display: grid; gap: 10px; margin-top: 28px; }
+  .boundary-flow span { padding: 13px 15px; border: 1px solid rgba(255,255,255,.16); border-radius: 10px; font-weight: 750; }
+  .dental-steps { display: grid; gap: 22px; margin: 34px 0 0; padding: 0; list-style: none; }
+  .dental-steps li { display: grid; grid-template-columns: 42px 1fr; gap: 16px; }
+  .dental-steps li > span { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 50%; background: var(--answer); color: #07120b; font-weight: 900; }
+  .dental-steps strong { font-size: 1.16rem; }
+  .dental-steps p { margin: 4px 0 0; color: var(--ink-soft); }
+  .dental-dialogue { padding: 30px; border: 1px solid var(--line); border-radius: 20px; background: var(--paper); box-shadow: 0 26px 60px -42px rgba(8,29,17,.45); }
+  .dialogue-label { color: var(--answer-deep); font-size: .78rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+  .bubble { max-width: 88%; margin-top: 18px; padding: 16px 18px; border-radius: 16px; }
+  .bubble p { margin: 5px 0 0; font-size: 1rem; line-height: 1.5; }
+  .bubble.ai { background: #e6f7e9; }
+  .bubble.patient { margin-left: auto; background: #ecebe5; }
+  .dialogue-result { display: grid; gap: 4px; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line); }
+  .dialogue-result span { color: var(--answer-deep); font-size: .76rem; font-weight: 850; text-transform: uppercase; }
+  .dental-table td:first-child { color: var(--ink); font-weight: 800; }
+  .dental-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .dental-metrics div { min-height: 150px; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); }
+  .dental-metrics strong, .dental-metrics span { display: block; }
+  .dental-metrics strong { margin-bottom: 10px; color: var(--ink); font-family: var(--disp); font-size: 1.45rem; }
+  .dental-metrics span { color: var(--ink-soft); font-weight: 650; }
+  @media (max-width: 800px) {
+    .dental-section-head { grid-template-columns: 1fr; gap: 20px; }
+    .dental-boundary, .dental-dialogue { padding: 24px; }
+    .dental-metrics { grid-template-columns: 1fr; }
+    .dental-metrics div { min-height: 0; }
+  }
+</style>

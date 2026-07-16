@@ -1,7 +1,7 @@
 import { site } from "../data/site";
 
-const pages = ["/", "/tseni/", "/demo/", "/kak-raboti/", "/za-nas/", "/za-nas/dean-dechev/", "/za-nas/mariyan-dechev/", "/kakvo-e-ai-retseptsionist/", "/kolko-obazhdaniya-propuska-biznesat/", "/ai-retseptsionist-ili-chovek/", "/politika-za-poveritelnost/", "/politika-za-biskvitki/", "/obshti-usloviya/", "/danni-za-druzhestvoto/"];
-const lastModified = "2026-07-15";
+const pages = ["/", "/tseni/", "/demo/", "/kak-raboti/", "/za-nas/", "/za-nas/dean-dechev/", "/za-nas/mariyan-dechev/", "/kakvo-e-ai-retseptsionist/", "/kolko-obazhdaniya-propuska-biznesat/", "/ai-retseptsionist-ili-chovek/", "/ai-retseptsionist-dentalna-klinika/", "/politika-za-poveritelnost/", "/politika-za-biskvitki/", "/obshti-usloviya/", "/danni-za-druzhestvoto/"];
+const lastModified = "2026-07-16";
 
 export function GET() {
   const body = `<?xml version="1.0" encoding="UTF-8"?>
