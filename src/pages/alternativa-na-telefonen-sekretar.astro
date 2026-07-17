@@ -109,6 +109,18 @@ const faqs = [
 
   <p>Клиент се обажда в салон в 18:40 и иска час за боядисване в събота.</p>
 
+  <figure class="article-visual">
+    <img
+      src="/assets/articles/telefonen-sekretar-ili-ai/propusnato-obazhdane-salon-v1.webp"
+      alt="Телефон звъни на празната рецепция на салон след работно време"
+      width="1600"
+      height="901"
+      loading="lazy"
+      decoding="async"
+    />
+    <figcaption>Когато няма кой да вдигне, гласовата поща оставя следващото действие за по-късно.</figcaption>
+  </figure>
+
   <div class="comparison-call" aria-label="Примерен разговор с гласова поща и AI рецепционист">
     <section>
       <p class="comparison-label">Гласова поща</p>
@@ -145,6 +157,18 @@ const faqs = [
   <p>
     Той може да покрива само заетата линия и извънработните часове. Не е необходимо от първия ден да поема всички обаждания. По-безопасно е да започне с две или три повтарящи се задачи и с точно правило кога разговорът отива при човек. Вижте <a href="/kak-raboti/"><strong>как се настройва и тества AI рецепционистът</strong></a> преди реални разговори.
   </p>
+
+  <figure class="article-visual">
+    <img
+      src="/assets/articles/telefonen-sekretar-ili-ai/zapisan-chas-ai-v1.webp"
+      alt="Собственик на малък бизнес вижда потвърден час до работния календар"
+      width="1600"
+      height="901"
+      loading="lazy"
+      decoding="async"
+    />
+    <figcaption>Ползата не е само в приетото обаждане, а в потвърдения час или подредената заявка след него.</figcaption>
+  </figure>
 
   <h2>Какво може външният телефонен оператор, което AI не бива да прави сам?</h2>
 
@@ -215,6 +239,9 @@ const faqs = [
   .comparison-call p{margin:0 0 14px;color:var(--ink-soft)}
   .comparison-call p:last-child{margin-bottom:0}
   .comparison-call .comparison-label{color:var(--ink);font-family:var(--mono);font-size:.82rem;font-weight:850;letter-spacing:.08em;text-transform:uppercase}
+  .article-visual{margin:34px 0 46px}
+  .article-visual img{display:block;width:100%;height:auto;border-radius:18px;background:#e8eee7}
+  .article-visual figcaption{margin-top:12px;color:var(--ink-soft);font-size:.88rem;line-height:1.5}
   @media(max-width:700px){
     :global(.post-header h1.post-title-long){overflow-wrap:anywhere}
     .answering-options{grid-template-columns:1fr;gap:12px;margin:28px 0 38px}
@@ -223,5 +250,7 @@ const faqs = [
     .comparison-call{grid-template-columns:1fr}
     .comparison-call section{padding:22px 0}
     .comparison-call section+section{border-top:1px solid var(--line);border-left:0}
+    .article-visual{margin:28px 0 38px}
+    .article-visual img{border-radius:14px}
   }
 </style>
