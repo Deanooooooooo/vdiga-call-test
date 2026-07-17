@@ -69,43 +69,40 @@ const faqs = [
     AI рецепционистът води двустранен разговор. Той може да попита за липсващите данни, да повтори дата или телефон за потвърждение и да изпълни само задачите, които бизнесът предварително е разрешил. Какво точно може да прави зависи от настройката и свързаните системи — не от етикета „AI“.
   </p>
 
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>При входящо обаждане</th>
-          <th>Гласова поща</th>
-          <th>Външен оператор</th>
-          <th>AI рецепционист</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-label="Действие">Отговаря веднага</td>
-          <td data-label="Гласова поща">Пуска запис</td>
-          <td data-label="Външен оператор">Да, ако има свободен оператор</td>
-          <td data-label="AI рецепционист">Да; броят едновременни разговори зависи от услугата</td>
-        </tr>
-        <tr>
-          <td data-label="Действие">Задава уточняващи въпроси</td>
-          <td data-label="Гласова поща">Не</td>
-          <td data-label="Външен оператор">Да, по инструкция</td>
-          <td data-label="AI рецепционист">Да, по зададени правила</td>
-        </tr>
-        <tr>
-          <td data-label="Действие">Проверява свободен час</td>
-          <td data-label="Гласова поща">Не</td>
-          <td data-label="Външен оператор">Само при достъп до календара</td>
-          <td data-label="AI рецепционист">Само при работеща връзка с календара</td>
-        </tr>
-        <tr>
-          <td data-label="Действие">Поема необичаен случай</td>
-          <td data-label="Гласова поща">Само записва казаното</td>
-          <td data-label="Външен оператор">Може да прецени и да потърси съдействие</td>
-          <td data-label="AI рецепционист">Трябва да предаде случая по зададеното правило</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="answering-options" aria-label="Сравнение на трите начина за приемане на обаждания">
+    <section>
+      <p class="option-number">01</p>
+      <h3>Гласова поща</h3>
+      <p class="option-summary">Пуска запис и пази съобщението за по-късно.</p>
+      <ul>
+        <li>не задава въпроси;</li>
+        <li>не проверява календара;</li>
+        <li>служител трябва да върне обаждането.</li>
+      </ul>
+      <p class="option-fit"><strong>Подходяща за:</strong> редки обаждания без нужда от незабавен отговор.</p>
+    </section>
+    <section>
+      <p class="option-number">02</p>
+      <h3>Външен оператор</h3>
+      <p class="option-summary">Човек отговаря по дадена от бизнеса инструкция.</p>
+      <ul>
+        <li>може да задава допълнителни въпроси;</li>
+        <li>може да прецени необичаен случай;</li>
+        <li>проверява часове само с достъп до календара.</li>
+      </ul>
+      <p class="option-fit"><strong>Подходящ за:</strong> разговори, които често изискват човешка преценка.</p>
+    </section>
+    <section class="option-ai">
+      <p class="option-number">03</p>
+      <h3>AI рецепционист</h3>
+      <p class="option-summary">Разговаря по зададените правила и изпълнява разрешените задачи.</p>
+      <ul>
+        <li>събира липсващите данни;</li>
+        <li>може да работи с календар;</li>
+        <li>предава необичайните случаи на човек.</li>
+      </ul>
+      <p class="option-fit"><strong>Подходящ за:</strong> записвания, повтарящи се въпроси и заети линии.</p>
+    </section>
   </div>
 
   <h2>Как протича един и същ разговор при двете системи?</h2>
@@ -201,6 +198,17 @@ const faqs = [
 </PostLayout>
 
 <style>
+  .answering-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:36px 0 46px}
+  .answering-options section{display:flex;min-width:0;flex-direction:column;padding:26px 24px;border:1px solid var(--line);border-radius:16px;background:var(--paper)}
+  .answering-options .option-ai{border-color:var(--answer-deep);background:#f0f6ed}
+  .answering-options .option-number{margin:0 0 20px;color:var(--answer-deep);font-family:var(--mono);font-size:.78rem;font-weight:850;letter-spacing:.08em}
+  .answering-options h3{margin:0 0 12px;font-size:1.3rem;line-height:1.08}
+  .answering-options .option-summary{min-height:4.8em;margin:0 0 18px;color:var(--ink);font-weight:750;line-height:1.55}
+  .answering-options ul{margin:0 0 24px;padding:0;list-style:none}
+  .answering-options li{position:relative;margin:0;padding:9px 0 9px 18px;border-top:1px solid var(--line);color:var(--ink-soft);font-size:.93rem;line-height:1.45}
+  .answering-options li::before{position:absolute;top:15px;left:1px;width:6px;height:6px;border-radius:50%;background:var(--answer-deep);content:""}
+  .answering-options .option-fit{margin:auto 0 0;padding-top:18px;border-top:2px solid var(--ink);color:var(--ink-soft);font-size:.9rem;line-height:1.5}
+  .answering-options .option-fit strong{display:block;margin-bottom:4px;color:var(--ink)}
   .comparison-call{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:36px 0;border-block:2px solid var(--ink)}
   .comparison-call section{padding:26px 28px}
   .comparison-call section+section{border-left:1px solid var(--line)}
@@ -209,12 +217,11 @@ const faqs = [
   .comparison-call .comparison-label{color:var(--ink);font-family:var(--mono);font-size:.82rem;font-weight:850;letter-spacing:.08em;text-transform:uppercase}
   @media(max-width:700px){
     :global(.post-header h1.post-title-long){overflow-wrap:anywhere}
+    .answering-options{grid-template-columns:1fr;gap:12px;margin:28px 0 38px}
+    .answering-options section{padding:22px 20px}
+    .answering-options .option-summary{min-height:0}
     .comparison-call{grid-template-columns:1fr}
     .comparison-call section{padding:22px 0}
     .comparison-call section+section{border-top:1px solid var(--line);border-left:0}
-    .table-wrap td{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;padding:7px 0}
-    .table-wrap td::before{color:var(--txt-mute);font-size:.76rem;font-weight:800;line-height:1.35;content:attr(data-label)}
-    .table-wrap td[data-label="Действие"]{display:block;padding:0 0 10px;color:var(--ink);font-size:1.05rem;font-weight:850}
-    .table-wrap td[data-label="Действие"]::before{display:none}
   }
 </style>
