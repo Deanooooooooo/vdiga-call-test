@@ -1,7 +1,7 @@
 import { site } from "../data/site";
 
-const pages = ["/", "/tseni/", "/demo/", "/kak-raboti/", "/za-nas/", "/za-nas/dean-dechev/", "/za-nas/mariyan-dechev/", "/kakvo-e-ai-retseptsionist/", "/kolko-obazhdaniya-propuska-biznesat/", "/ai-retseptsionist-ili-chovek/", "/ai-retseptsionist-gdpr/", "/ai-retseptsionist-dentalna-klinika/", "/ai-retseptsionist-meditsinski-tsentar/", "/ai-retseptsionist-salon-za-krasota/", "/ai-dispecher-za-taksimetrova-kompaniya/", "/politika-za-poveritelnost/", "/politika-za-biskvitki/", "/obshti-usloviya/", "/danni-za-druzhestvoto/"];
-const lastModified = "2026-07-16";
+const pages = ["/", "/tseni/", "/demo/", "/kak-raboti/", "/za-nas/", "/za-nas/dean-dechev/", "/za-nas/mariyan-dechev/", "/kakvo-e-ai-retseptsionist/", "/kolko-obazhdaniya-propuska-biznesat/", "/ai-retseptsionist-ili-chovek/", "/alternativa-na-telefonen-sekretar/", "/ai-retseptsionist-gdpr/", "/ai-retseptsionist-dentalna-klinika/", "/ai-retseptsionist-meditsinski-tsentar/", "/ai-retseptsionist-salon-za-krasota/", "/ai-dispecher-za-taksimetrova-kompaniya/", "/politika-za-poveritelnost/", "/politika-za-biskvitki/", "/obshti-usloviya/", "/danni-za-druzhestvoto/"];
+const lastModified = "2026-07-17";
 
 export function GET() {
   const body = `<?xml version="1.0" encoding="UTF-8"?>
