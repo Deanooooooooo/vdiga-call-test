@@ -16,8 +16,12 @@ FTP_PASS=$PASSWORD python3 scripts/upload_ftps.py
 
 printf 'Deployed %s to https://vdiga.bg/\n' "$(git rev-parse --short HEAD)"
 
-if node scripts/submit-indexnow.mjs; then
-  printf 'IndexNow notified for sitemap URLs.\n'
+if [ "${SUBMIT_INDEXNOW:-0}" = "1" ]; then
+  if node scripts/submit-indexnow.mjs; then
+    printf 'IndexNow notified for sitemap URLs.\n'
+  else
+    printf 'Warning: deployment succeeded, but IndexNow notification failed.\n' >&2
+  fi
 else
-  printf 'Warning: deployment succeeded, but IndexNow notification failed.\n' >&2
+  printf 'IndexNow skipped. Set SUBMIT_INDEXNOW=1 only when URLs need submission.\n'
 fi
