@@ -4,6 +4,7 @@ const host = "vdiga.bg";
 const origin = `https://${host}`;
 const key = "b33077ad677ef89a678066efa8c0c5c1";
 const keyLocation = `${origin}/${key}.txt`;
+const endpoint = "https://indexnow.yep.com/indexnow";
 
 const sitemap = await readFile(new URL("../dist/sitemap.xml", import.meta.url), "utf8");
 const urlList = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)]
@@ -27,14 +28,16 @@ for (const [attempt, delay] of delays.entries()) {
     await new Promise((resolve) => setTimeout(resolve, delay));
   }
 
-  const response = await fetch("https://api.indexnow.org/indexnow", {
+  const response = await fetch(endpoint, {
     method: "POST",
     headers: { "content-type": "application/json; charset=utf-8" },
     body: payload,
   });
 
   if (response.ok) {
-    console.log(`Submitted ${urlList.length} URLs to IndexNow (${response.status}).`);
+    console.log(
+      `Submitted ${urlList.length} URLs to IndexNow via ${endpoint} (${response.status}).`,
+    );
     lastError = undefined;
     break;
   }
