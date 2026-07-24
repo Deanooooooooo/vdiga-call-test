@@ -2,9 +2,9 @@ import { readFile } from "node:fs/promises";
 
 const host = "vdiga.bg";
 const origin = `https://${host}`;
-const key = "b33077ad677ef89a678066efa8c0c5c1";
+const key = "eab32ba5562147078dedd8a48ee7d7b1";
 const keyLocation = `${origin}/${key}.txt`;
-const endpoint = "https://indexnow.yep.com/indexnow";
+const endpoint = "https://api.indexnow.org/indexnow";
 
 const sitemap = await readFile(new URL("../dist/sitemap.xml", import.meta.url), "utf8");
 const urlList = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)]
